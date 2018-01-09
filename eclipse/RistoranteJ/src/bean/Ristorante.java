@@ -2,6 +2,13 @@ package bean;
 
 public class Ristorante {
 	
+	private int idRistorante;
+	public int getIdRistorante() {
+		return idRistorante;
+	}
+	public void setIdRistorante(int idRistorante) {
+		this.idRistorante = idRistorante;
+	}
 	private int nome;
 	private String indirizzo;
     private String telefono;
