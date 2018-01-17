@@ -1,9 +1,10 @@
-package allyoucanapp;
+package allyoucanapp.model2;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -25,27 +26,28 @@ public class Prenotazione implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date giorno;
 
-	@Column(name="numero_carta")
-	private String numeroCarta;
+	@Column(name="metodo_pagamento")
+	private String metodoPagamento;
 
 	private Time ora;
-
-	@Column(name="pin_carta")
-	private String pinCarta;
 
 	@Column(name="posti_prenotati")
 	private int postiPrenotati;
 
+	//bi-directional many-to-one association to BevandeHasPrenotazione
+	@OneToMany(mappedBy="prenotazione")
+	private List<BevandeHasPrenotazione> bevandeHasPrenotazioni;
+
 	//bi-directional many-to-one association to Menu
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Menu menu;
 
 	//bi-directional many-to-one association to Ristorante
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Utente utente;
 
 	public Prenotazione() {
@@ -75,12 +77,12 @@ public class Prenotazione implements Serializable {
 		this.giorno = giorno;
 	}
 
-	public String getNumeroCarta() {
-		return this.numeroCarta;
+	public String getMetodoPagamento() {
+		return this.metodoPagamento;
 	}
 
-	public void setNumeroCarta(String numeroCarta) {
-		this.numeroCarta = numeroCarta;
+	public void setMetodoPagamento(String metodoPagamento) {
+		this.metodoPagamento = metodoPagamento;
 	}
 
 	public Time getOra() {
@@ -91,20 +93,34 @@ public class Prenotazione implements Serializable {
 		this.ora = ora;
 	}
 
-	public String getPinCarta() {
-		return this.pinCarta;
-	}
-
-	public void setPinCarta(String pinCarta) {
-		this.pinCarta = pinCarta;
-	}
-
 	public int getPostiPrenotati() {
 		return this.postiPrenotati;
 	}
 
 	public void setPostiPrenotati(int postiPrenotati) {
 		this.postiPrenotati = postiPrenotati;
+	}
+
+	public List<BevandeHasPrenotazione> getBevandeHasPrenotazioni() {
+		return this.bevandeHasPrenotazioni;
+	}
+
+	public void setBevandeHasPrenotazioni(List<BevandeHasPrenotazione> bevandeHasPrenotazioni) {
+		this.bevandeHasPrenotazioni = bevandeHasPrenotazioni;
+	}
+
+	public BevandeHasPrenotazione addBevandeHasPrenotazioni(BevandeHasPrenotazione bevandeHasPrenotazioni) {
+		getBevandeHasPrenotazioni().add(bevandeHasPrenotazioni);
+		bevandeHasPrenotazioni.setPrenotazione(this);
+
+		return bevandeHasPrenotazioni;
+	}
+
+	public BevandeHasPrenotazione removeBevandeHasPrenotazioni(BevandeHasPrenotazione bevandeHasPrenotazioni) {
+		getBevandeHasPrenotazioni().remove(bevandeHasPrenotazioni);
+		bevandeHasPrenotazioni.setPrenotazione(null);
+
+		return bevandeHasPrenotazioni;
 	}
 
 	public Menu getMenu() {

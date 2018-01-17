@@ -1,4 +1,4 @@
-package allyoucanapp;
+package allyoucanapp.model2;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -24,11 +24,11 @@ public class Feedback implements Serializable {
 	private String descrizione;
 
 	//bi-directional many-to-one association to Ristorante
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
 	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Utente utente;
 
 	public Feedback() {

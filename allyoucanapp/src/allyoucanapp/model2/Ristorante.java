@@ -1,4 +1,4 @@
-package allyoucanapp;
+package allyoucanapp.model2;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -31,7 +31,7 @@ public class Ristorante implements Serializable {
 	private String telefono;
 
 	//bi-directional many-to-one association to Feedback
-	@OneToMany(mappedBy="ristorante")
+	@OneToMany(mappedBy="ristorante", cascade={CascadeType.ALL})
 	private List<Feedback> feedbacks;
 
 	//bi-directional many-to-one association to Menu
@@ -40,7 +40,7 @@ public class Ristorante implements Serializable {
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="ristorante")
-	private List<Prenotazione> prenotaziones;
+	private List<Prenotazione> prenotazioni;
 
 	public Ristorante() {
 	}
@@ -145,26 +145,26 @@ public class Ristorante implements Serializable {
 		return menus;
 	}
 
-	public List<Prenotazione> getPrenotaziones() {
-		return this.prenotaziones;
+	public List<Prenotazione> getPrenotazioni() {
+		return this.prenotazioni;
 	}
 
-	public void setPrenotaziones(List<Prenotazione> prenotaziones) {
-		this.prenotaziones = prenotaziones;
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
 	}
 
-	public Prenotazione addPrenotazione(Prenotazione prenotazione) {
-		getPrenotaziones().add(prenotazione);
-		prenotazione.setRistorante(this);
+	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().add(prenotazioni);
+		prenotazioni.setRistorante(this);
 
-		return prenotazione;
+		return prenotazioni;
 	}
 
-	public Prenotazione removePrenotazione(Prenotazione prenotazione) {
-		getPrenotaziones().remove(prenotazione);
-		prenotazione.setRistorante(null);
+	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().remove(prenotazioni);
+		prenotazioni.setRistorante(null);
 
-		return prenotazione;
+		return prenotazioni;
 	}
 
 }

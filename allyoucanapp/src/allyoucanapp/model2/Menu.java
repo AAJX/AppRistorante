@@ -1,4 +1,4 @@
-package allyoucanapp;
+package allyoucanapp.model2;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -24,17 +24,13 @@ public class Menu implements Serializable {
 
 	private float prezzo;
 
-	//bi-directional many-to-one association to Bevande
-	@OneToMany(mappedBy="menu")
-	private List<Bevande> bevandes;
-
 	//bi-directional many-to-one association to Ristorante
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="menu")
-	private List<Prenotazione> prenotaziones;
+	private List<Prenotazione> prenotazioni;
 
 	public Menu() {
 	}
@@ -71,28 +67,6 @@ public class Menu implements Serializable {
 		this.prezzo = prezzo;
 	}
 
-	public List<Bevande> getBevandes() {
-		return this.bevandes;
-	}
-
-	public void setBevandes(List<Bevande> bevandes) {
-		this.bevandes = bevandes;
-	}
-
-	public Bevande addBevande(Bevande bevande) {
-		getBevandes().add(bevande);
-		bevande.setMenu(this);
-
-		return bevande;
-	}
-
-	public Bevande removeBevande(Bevande bevande) {
-		getBevandes().remove(bevande);
-		bevande.setMenu(null);
-
-		return bevande;
-	}
-
 	public Ristorante getRistorante() {
 		return this.ristorante;
 	}
@@ -101,26 +75,26 @@ public class Menu implements Serializable {
 		this.ristorante = ristorante;
 	}
 
-	public List<Prenotazione> getPrenotaziones() {
-		return this.prenotaziones;
+	public List<Prenotazione> getPrenotazioni() {
+		return this.prenotazioni;
 	}
 
-	public void setPrenotaziones(List<Prenotazione> prenotaziones) {
-		this.prenotaziones = prenotaziones;
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
 	}
 
-	public Prenotazione addPrenotazione(Prenotazione prenotazione) {
-		getPrenotaziones().add(prenotazione);
-		prenotazione.setMenu(this);
+	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().add(prenotazioni);
+		prenotazioni.setMenu(this);
 
-		return prenotazione;
+		return prenotazioni;
 	}
 
-	public Prenotazione removePrenotazione(Prenotazione prenotazione) {
-		getPrenotaziones().remove(prenotazione);
-		prenotazione.setMenu(null);
+	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().remove(prenotazioni);
+		prenotazioni.setMenu(null);
 
-		return prenotazione;
+		return prenotazioni;
 	}
 
 }
