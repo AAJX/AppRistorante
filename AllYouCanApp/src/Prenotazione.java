@@ -1,4 +1,4 @@
-package AllYouCanApp.model;
+package src;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -19,16 +19,26 @@ public class Prenotazione implements Serializable {
 	@Column(name="id_prenotazione")
 	private int idPrenotazione;
 
-	@Temporal(TemporalType.DATE)
-	private Date data;
+	@Column(name="email_ricevente")
+	private String emailRicevente;
 
 	@Temporal(TemporalType.DATE)
 	private Date giorno;
 
+	@Column(name="numero_carta")
+	private String numeroCarta;
+
 	private Time ora;
+
+	@Column(name="pin_carta")
+	private String pinCarta;
 
 	@Column(name="posti_prenotati")
 	private int postiPrenotati;
+
+	//bi-directional many-to-one association to Menu
+	@ManyToOne
+	private Menu menu;
 
 	//bi-directional many-to-one association to Ristorante
 	@ManyToOne
@@ -49,12 +59,12 @@ public class Prenotazione implements Serializable {
 		this.idPrenotazione = idPrenotazione;
 	}
 
-	public Date getData() {
-		return this.data;
+	public String getEmailRicevente() {
+		return this.emailRicevente;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setEmailRicevente(String emailRicevente) {
+		this.emailRicevente = emailRicevente;
 	}
 
 	public Date getGiorno() {
@@ -65,6 +75,14 @@ public class Prenotazione implements Serializable {
 		this.giorno = giorno;
 	}
 
+	public String getNumeroCarta() {
+		return this.numeroCarta;
+	}
+
+	public void setNumeroCarta(String numeroCarta) {
+		this.numeroCarta = numeroCarta;
+	}
+
 	public Time getOra() {
 		return this.ora;
 	}
@@ -73,12 +91,28 @@ public class Prenotazione implements Serializable {
 		this.ora = ora;
 	}
 
+	public String getPinCarta() {
+		return this.pinCarta;
+	}
+
+	public void setPinCarta(String pinCarta) {
+		this.pinCarta = pinCarta;
+	}
+
 	public int getPostiPrenotati() {
 		return this.postiPrenotati;
 	}
 
 	public void setPostiPrenotati(int postiPrenotati) {
 		this.postiPrenotati = postiPrenotati;
+	}
+
+	public Menu getMenu() {
+		return this.menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
 
 	public Ristorante getRistorante() {

@@ -1,4 +1,4 @@
-package AllYouCanApp.model;
+package src;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -29,10 +29,6 @@ public class Ristorante implements Serializable {
 	private String orario;
 
 	private String telefono;
-
-	//bi-directional many-to-one association to Bevande
-	@OneToMany(mappedBy="ristorante")
-	private List<Bevande> bevandes;
 
 	//bi-directional many-to-one association to Feedback
 	@OneToMany(mappedBy="ristorante")
@@ -103,28 +99,6 @@ public class Ristorante implements Serializable {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
-	}
-
-	public List<Bevande> getBevandes() {
-		return this.bevandes;
-	}
-
-	public void setBevandes(List<Bevande> bevandes) {
-		this.bevandes = bevandes;
-	}
-
-	public Bevande addBevande(Bevande bevande) {
-		getBevandes().add(bevande);
-		bevande.setRistorante(this);
-
-		return bevande;
-	}
-
-	public Bevande removeBevande(Bevande bevande) {
-		getBevandes().remove(bevande);
-		bevande.setRistorante(null);
-
-		return bevande;
 	}
 
 	public List<Feedback> getFeedbacks() {

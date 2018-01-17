@@ -1,4 +1,4 @@
-package AllYouCanApp.model;
+package src;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -22,9 +22,9 @@ public class Bevande implements Serializable {
 	@Column(name="prezzo_bevanda")
 	private float prezzoBevanda;
 
-	//bi-directional many-to-one association to Ristorante
+	//bi-directional many-to-one association to Menu
 	@ManyToOne
-	private Ristorante ristorante;
+	private Menu menu;
 
 	public Bevande() {
 	}
@@ -53,12 +53,12 @@ public class Bevande implements Serializable {
 		this.prezzoBevanda = prezzoBevanda;
 	}
 
-	public Ristorante getRistorante() {
-		return this.ristorante;
+	public Menu getMenu() {
+		return this.menu;
 	}
 
-	public void setRistorante(Ristorante ristorante) {
-		this.ristorante = ristorante;
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
 
 }

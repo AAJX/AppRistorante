@@ -1,4 +1,4 @@
-package AllYouCanApp.model;
+package src;
 
 import java.io.Serializable;
 import javax.persistence.*;
