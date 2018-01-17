@@ -19,7 +19,8 @@ public class InizializzaPiatti {
 		
 		Prodotto p = new Prodotto();
 		p.setCategoria("Primi piatti");
-		p.setNome("Spaghetti alla carbonara");
+		p.setNome("Spaghetti alla amatriciana"
+				+ "");
 		
 		Menu m = new Menu();
 		m.setNome("Inverno 2018");

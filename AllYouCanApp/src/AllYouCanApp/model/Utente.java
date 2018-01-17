@@ -1,8 +1,7 @@
-package it.ristapp.model;
+package AllYouCanApp.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 
@@ -16,15 +15,10 @@ public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_cliente")
 	private int idCliente;
 
 	private String cognome;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_nascita")
-	private Date dataNascita;
 
 	private String email;
 
@@ -32,9 +26,13 @@ public class Utente implements Serializable {
 
 	private String password;
 
+	private String telefono;
+
 	private String username;
-	
-	private boolean attivo;
+
+	//bi-directional many-to-one association to Feedback
+	@OneToMany(mappedBy="utente")
+	private List<Feedback> feedbacks;
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
@@ -57,14 +55,6 @@ public class Utente implements Serializable {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
-	}
-
-	public Date getDataNascita() {
-		return this.dataNascita;
-	}
-
-	public void setDataNascita(Date dataNascita) {
-		this.dataNascita = dataNascita;
 	}
 
 	public String getEmail() {
@@ -91,12 +81,42 @@ public class Utente implements Serializable {
 		this.password = password;
 	}
 
+	public String getTelefono() {
+		return this.telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public String getUsername() {
 		return this.username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public List<Feedback> getFeedbacks() {
+		return this.feedbacks;
+	}
+
+	public void setFeedbacks(List<Feedback> feedbacks) {
+		this.feedbacks = feedbacks;
+	}
+
+	public Feedback addFeedback(Feedback feedback) {
+		getFeedbacks().add(feedback);
+		feedback.setUtente(this);
+
+		return feedback;
+	}
+
+	public Feedback removeFeedback(Feedback feedback) {
+		getFeedbacks().remove(feedback);
+		feedback.setUtente(null);
+
+		return feedback;
 	}
 
 	public List<Prenotazione> getPrenotaziones() {
@@ -119,14 +139,6 @@ public class Utente implements Serializable {
 		prenotazione.setUtente(null);
 
 		return prenotazione;
-	}
-
-	public boolean isAttivo() {
-		return attivo;
-	}
-
-	public void setAttivo(boolean attivo) {
-		this.attivo = attivo;
 	}
 
 }
