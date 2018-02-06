@@ -1,4 +1,4 @@
-package model;
+package model.nuovo;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -16,19 +16,21 @@ public class Prenotazione implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int id_Prenotazione;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID_PRENOTAZIONE")
+	private int idPrenotazione;
 
 	@Temporal(TemporalType.DATE)
 	private Date data;
 
-	private int numero_Prenotati;
+	@Column(name="NUMERO_PRENOTATI")
+	private int numeroPrenotati;
 
 	private Time orario;
 
 	//bi-directional many-to-one association to Ristorante
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="Ristorante_Id_Ristorante")
-	private Ristorante ristoranti;
+	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -37,12 +39,12 @@ public class Prenotazione implements Serializable {
 	public Prenotazione() {
 	}
 
-	public int getId_Prenotazione() {
-		return this.id_Prenotazione;
+	public int getIdPrenotazione() {
+		return this.idPrenotazione;
 	}
 
-	public void setId_Prenotazione(int id_Prenotazione) {
-		this.id_Prenotazione = id_Prenotazione;
+	public void setIdPrenotazione(int idPrenotazione) {
+		this.idPrenotazione = idPrenotazione;
 	}
 
 	public Date getData() {
@@ -53,12 +55,12 @@ public class Prenotazione implements Serializable {
 		this.data = data;
 	}
 
-	public int getNumero_Prenotati() {
-		return this.numero_Prenotati;
+	public int getNumeroPrenotati() {
+		return this.numeroPrenotati;
 	}
 
-	public void setNumero_Prenotati(int numero_Prenotati) {
-		this.numero_Prenotati = numero_Prenotati;
+	public void setNumeroPrenotati(int numeroPrenotati) {
+		this.numeroPrenotati = numeroPrenotati;
 	}
 
 	public Time getOrario() {
@@ -69,12 +71,12 @@ public class Prenotazione implements Serializable {
 		this.orario = orario;
 	}
 
-	public Ristorante getRistoranti() {
-		return this.ristoranti;
+	public Ristorante getRistorante() {
+		return this.ristorante;
 	}
 
-	public void setRistoranti(Ristorante ristoranti) {
-		this.ristoranti = ristoranti;
+	public void setRistorante(Ristorante ristorante) {
+		this.ristorante = ristorante;
 	}
 
 	public Utente getUtente() {

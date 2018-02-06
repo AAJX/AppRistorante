@@ -1,32 +1,37 @@
-package model;
+package model.nuovo;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
 
-
+/**
+ * The persistent class for the utente database table.
+ * 
+ */
 @Entity
 @NamedQuery(name="Utente.findAll", query="SELECT u FROM Utente u")
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String email;
 
 	private String cognome;
 
 	private String nome;
 
-	private String numero_Telefono;
+	@Column(name="NUMERO_TELEFONO")
+	private String numeroTelefono;
 
 	private String password;
 
 	private String username;
 
-	
+	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
-	private List<Prenotazione> prenotazioni;
+	private List<Prenotazione> prenotaziones;
 
 	public Utente() {
 	}
@@ -55,12 +60,12 @@ public class Utente implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getNumero_Telefono() {
-		return this.numero_Telefono;
+	public String getNumeroTelefono() {
+		return this.numeroTelefono;
 	}
 
-	public void setNumero_Telefono(String numero_Telefono) {
-		this.numero_Telefono = numero_Telefono;
+	public void setNumeroTelefono(String numeroTelefono) {
+		this.numeroTelefono = numeroTelefono;
 	}
 
 	public String getPassword() {
@@ -79,26 +84,26 @@ public class Utente implements Serializable {
 		this.username = username;
 	}
 
-	public List<Prenotazione> getPrenotazioni() {
-		return this.prenotazioni;
+	public List<Prenotazione> getPrenotaziones() {
+		return this.prenotaziones;
 	}
 
-	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
-		this.prenotazioni = prenotazioni;
+	public void setPrenotaziones(List<Prenotazione> prenotaziones) {
+		this.prenotaziones = prenotaziones;
 	}
 
-	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
-		getPrenotazioni().add(prenotazioni);
-		prenotazioni.setUtente(this);
+	public Prenotazione addPrenotazione(Prenotazione prenotazione) {
+		getPrenotaziones().add(prenotazione);
+		prenotazione.setUtente(this);
 
-		return prenotazioni;
+		return prenotazione;
 	}
 
-	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
-		getPrenotazioni().remove(prenotazioni);
-		prenotazioni.setUtente(null);
+	public Prenotazione removePrenotazione(Prenotazione prenotazione) {
+		getPrenotaziones().remove(prenotazione);
+		prenotazione.setUtente(null);
 
-		return prenotazioni;
+		return prenotazione;
 	}
 
 }
