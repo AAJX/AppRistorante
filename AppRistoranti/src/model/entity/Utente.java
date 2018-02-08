@@ -1,4 +1,4 @@
-package model.nuovo;
+package model.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -15,7 +15,7 @@ public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private String email;
 
 	private String cognome;
@@ -31,7 +31,7 @@ public class Utente implements Serializable {
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
-	private List<Prenotazione> prenotazioni;
+	private List<Prenotazione> prenotazionI;
 
 	public Utente() {
 	}
@@ -84,26 +84,26 @@ public class Utente implements Serializable {
 		this.username = username;
 	}
 
-	public List<Prenotazione> getPrenotazioni() {
-		return this.prenotazioni;
+	public List<Prenotazione> getPrenotazionI() {
+		return this.prenotazionI;
 	}
 
-	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
-		this.prenotazioni = prenotazioni;
+	public void setPrenotazionI(List<Prenotazione> prenotazionI) {
+		this.prenotazionI = prenotazionI;
 	}
 
-	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
-		getPrenotazioni().add(prenotazioni);
-		prenotazioni.setUtente(this);
+	public Prenotazione addPrenotazionI(Prenotazione prenotazionI) {
+		getPrenotazionI().add(prenotazionI);
+		prenotazionI.setUtente(this);
 
-		return prenotazioni;
+		return prenotazionI;
 	}
 
-	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
-		getPrenotazioni().remove(prenotazioni);
-		prenotazioni.setUtente(null);
+	public Prenotazione removePrenotazionI(Prenotazione prenotazionI) {
+		getPrenotazionI().remove(prenotazionI);
+		prenotazionI.setUtente(null);
 
-		return prenotazioni;
+		return prenotazionI;
 	}
 
 }
