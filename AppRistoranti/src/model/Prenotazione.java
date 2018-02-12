@@ -28,11 +28,15 @@ public class Prenotazione implements Serializable {
 	private String orario;
 
 	//bi-directional many-to-one association to Ristorante
+<<<<<<< HEAD
 	@ManyToOne(fetch=FetchType.LAZY)
+=======
+	@ManyToOne
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	private Utente utente;
 
 	public Prenotazione() {

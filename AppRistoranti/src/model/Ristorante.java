@@ -46,9 +46,16 @@ public class Ristorante implements Serializable {
 	@OneToMany(mappedBy="ristorante")
 	private List<Prenotazione> prenotazioni;
 
+<<<<<<< HEAD
 	//bi-directional many-to-one association to Citta
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Citta citta;
+=======
+	//bi-directional many-to-one association to Città
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="Città_id_Città")
+	private Città città;
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 
 	public Ristorante() {
 	}
@@ -163,12 +170,22 @@ public class Ristorante implements Serializable {
 		return prenotazioni;
 	}
 
+<<<<<<< HEAD
 	public Citta getCitta() {
 		return this.citta;
+=======
+	public Città getCittà() {
+		return this.città;
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 	}
 
+<<<<<<< HEAD
 	public void setCitta(Citta citta) {
 		this.citta = citta;
+=======
+	public void setCittà(Città città) {
+		this.città = città;
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 	}
 
 }

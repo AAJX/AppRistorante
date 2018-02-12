@@ -22,9 +22,15 @@ public class Regione implements Serializable {
 	@Column(name="NOME_REGIONE")
 	private String nomeRegione;
 
+<<<<<<< HEAD
 	//bi-directional many-to-one association to Citta
 	@OneToMany(mappedBy="regione", cascade={CascadeType.ALL})
 	private List<Citta> citta;
+=======
+	//bi-directional many-to-one association to Città
+	@OneToMany(mappedBy="regione")
+	private List<Città> cittàs;
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 
 	public Regione() {
 	}
@@ -45,26 +51,48 @@ public class Regione implements Serializable {
 		this.nomeRegione = nomeRegione;
 	}
 
+<<<<<<< HEAD
 	public List<Citta> getCitta() {
 		return this.citta;
+=======
+	public List<Città> getCittàs() {
+		return this.cittàs;
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 	}
 
+<<<<<<< HEAD
 	public void setCitta(List<Citta> citta) {
 		this.citta = citta;
+=======
+	public void setCittàs(List<Città> cittàs) {
+		this.cittàs = cittàs;
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 	}
 
+<<<<<<< HEAD
 	public Citta addCitta(Citta citta) {
 		getCitta().add(citta);
 		citta.setRegione(this);
+=======
+	public Città addCittà(Città città) {
+		getCittàs().add(città);
+		città.setRegione(this);
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 
-		return citta;
+		return città;
 	}
 
+<<<<<<< HEAD
 	public Citta removeCitta(Citta citta) {
 		getCitta().remove(citta);
 		citta.setRegione(null);
+=======
+	public Città removeCittà(Città città) {
+		getCittàs().remove(città);
+		città.setRegione(null);
+>>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 
-		return citta;
+		return città;
 	}
 
 }
