@@ -4,9 +4,9 @@ import java.util.Date;
 
 import javax.persistence.EntityManager;
 
-import model.nuovo.Prenotazione;
-import model.nuovo.Ristorante;
-import model.nuovo.Utente;
+import model.Prenotazione;
+import model.Ristorante;
+import model.Utente;
 
 
 

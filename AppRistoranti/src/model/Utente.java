@@ -1,4 +1,4 @@
-package model.entity;
+package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -31,7 +31,7 @@ public class Utente implements Serializable {
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
-	private List<Prenotazione> prenotazionI;
+	private List<Prenotazione> prenotazioni;
 
 	public Utente() {
 	}
@@ -84,26 +84,26 @@ public class Utente implements Serializable {
 		this.username = username;
 	}
 
-	public List<Prenotazione> getPrenotazionI() {
-		return this.prenotazionI;
+	public List<Prenotazione> getPrenotazioni() {
+		return this.prenotazioni;
 	}
 
-	public void setPrenotazionI(List<Prenotazione> prenotazionI) {
-		this.prenotazionI = prenotazionI;
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
 	}
 
-	public Prenotazione addPrenotazionI(Prenotazione prenotazionI) {
-		getPrenotazionI().add(prenotazionI);
-		prenotazionI.setUtente(this);
+	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().add(prenotazioni);
+		prenotazioni.setUtente(this);
 
-		return prenotazionI;
+		return prenotazioni;
 	}
 
-	public Prenotazione removePrenotazionI(Prenotazione prenotazionI) {
-		getPrenotazionI().remove(prenotazionI);
-		prenotazionI.setUtente(null);
+	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().remove(prenotazioni);
+		prenotazioni.setUtente(null);
 
-		return prenotazionI;
+		return prenotazioni;
 	}
 
 }

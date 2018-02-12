@@ -1,4 +1,4 @@
-package model.nuovo;
+package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -25,7 +25,7 @@ public class Prenotazione implements Serializable {
 	@Column(name="NUMERO_PRENOTATI")
 	private int numeroPrenotati;
 
-	private Orario orario;
+	private String orario;
 
 	//bi-directional many-to-one association to Ristorante
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -62,11 +62,11 @@ public class Prenotazione implements Serializable {
 		this.numeroPrenotati = numeroPrenotati;
 	}
 
-	public Orario getOrario() {
+	public String getOrario() {
 		return this.orario;
 	}
 
-	public void setOrario(Orario orario) {
+	public void setOrario(String orario) {
 		this.orario = orario;
 	}
 
