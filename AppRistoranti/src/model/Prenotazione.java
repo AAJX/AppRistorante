@@ -26,12 +26,11 @@ public class Prenotazione implements Serializable {
 	private Time orario;
 
 	//bi-directional many-to-one association to Ristorante
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="Ristorante_Id_Ristorante")
-	private Ristorante ristoranti;
+	@ManyToOne
+	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	private Utente utente;
 
 	public Prenotazione() {
@@ -69,12 +68,12 @@ public class Prenotazione implements Serializable {
 		this.orario = orario;
 	}
 
-	public Ristorante getRistoranti() {
-		return this.ristoranti;
+	public Ristorante getRistorante() {
+		return this.ristorante;
 	}
 
-	public void setRistoranti(Ristorante ristoranti) {
-		this.ristoranti = ristoranti;
+	public void setRistorante(Ristorante ristorante) {
+		this.ristorante = ristorante;
 	}
 
 	public Utente getUtente() {

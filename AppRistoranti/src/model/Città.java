@@ -5,7 +5,10 @@ import javax.persistence.*;
 import java.util.List;
 
 
-
+/**
+ * The persistent class for the città database table.
+ * 
+ */
 @Entity
 @NamedQuery(name="Città.findAll", query="SELECT c FROM Città c")
 public class Città implements Serializable {
@@ -16,12 +19,12 @@ public class Città implements Serializable {
 
 	private String nome;
 
-	
-	@ManyToOne(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
+	//bi-directional many-to-one association to Regione
+	@ManyToOne
 	private Regione regione;
 
-	
-	@OneToMany(mappedBy="citta")
+	//bi-directional many-to-one association to Ristorante
+	@OneToMany(mappedBy="città", cascade={CascadeType.ALL})
 	private List<Ristorante> ristoranti;
 
 	public Città() {
@@ -61,14 +64,14 @@ public class Città implements Serializable {
 
 	public Ristorante addRistoranti(Ristorante ristoranti) {
 		getRistoranti().add(ristoranti);
-		ristoranti.setCitta(this);
+		ristoranti.setCittà(this);
 
 		return ristoranti;
 	}
 
 	public Ristorante removeRistoranti(Ristorante ristoranti) {
 		getRistoranti().remove(ristoranti);
-		ristoranti.setCitta(null);
+		ristoranti.setCittà(null);
 
 		return ristoranti;
 	}

@@ -5,7 +5,10 @@ import javax.persistence.*;
 import java.util.List;
 
 
-
+/**
+ * The persistent class for the regione database table.
+ * 
+ */
 @Entity
 @NamedQuery(name="Regione.findAll", query="SELECT r FROM Regione r")
 public class Regione implements Serializable {
@@ -16,9 +19,9 @@ public class Regione implements Serializable {
 
 	private String nome_Regione;
 
-	
-	@OneToMany(mappedBy="regione", cascade={CascadeType.ALL})
-	private List<Città> citta;
+	//bi-directional many-to-one association to Città
+	@OneToMany(mappedBy="regione")
+	private List<Città> cittàs;
 
 	public Regione() {
 	}
@@ -39,26 +42,26 @@ public class Regione implements Serializable {
 		this.nome_Regione = nome_Regione;
 	}
 
-	public List<Città> getCitta() {
-		return this.citta;
+	public List<Città> getCittàs() {
+		return this.cittàs;
 	}
 
-	public void setCitta(List<Città> citta) {
-		this.citta = citta;
+	public void setCittàs(List<Città> cittàs) {
+		this.cittàs = cittàs;
 	}
 
-	public Città addCitta(Città citta) {
-		getCitta().add(citta);
-		citta.setRegione(this);
+	public Città addCittà(Città città) {
+		getCittàs().add(città);
+		città.setRegione(this);
 
-		return citta;
+		return città;
 	}
 
-	public Città removeCitta(Città citta) {
-		getCitta().remove(citta);
-		citta.setRegione(null);
+	public Città removeCittà(Città città) {
+		getCittàs().remove(città);
+		città.setRegione(null);
 
-		return citta;
+		return città;
 	}
 
 }

@@ -5,7 +5,10 @@ import javax.persistence.*;
 import java.util.List;
 
 
-
+/**
+ * The persistent class for the ristorante database table.
+ * 
+ */
 @Entity
 @NamedQuery(name="Ristorante.findAll", query="SELECT r FROM Ristorante r")
 public class Ristorante implements Serializable {
@@ -34,14 +37,14 @@ public class Ristorante implements Serializable {
 
 	private String telefono_Ristorante;
 
-	
-	@OneToMany(mappedBy="ristoranti")
+	//bi-directional many-to-one association to Prenotazione
+	@OneToMany(mappedBy="ristorante")
 	private List<Prenotazione> prenotazioni;
 
-	
-	@ManyToOne(fetch=FetchType.LAZY)
+	//bi-directional many-to-one association to Città
+	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="Città_id_Città")
-	private Città citta;
+	private Città città;
 
 	public Ristorante() {
 	}
@@ -144,24 +147,24 @@ public class Ristorante implements Serializable {
 
 	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
 		getPrenotazioni().add(prenotazioni);
-		prenotazioni.setRistoranti(this);
+		prenotazioni.setRistorante(this);
 
 		return prenotazioni;
 	}
 
 	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
 		getPrenotazioni().remove(prenotazioni);
-		prenotazioni.setRistoranti(null);
+		prenotazioni.setRistorante(null);
 
 		return prenotazioni;
 	}
 
-	public Città getCitta() {
-		return this.citta;
+	public Città getCittà() {
+		return this.città;
 	}
 
-	public void setCitta(Città citta) {
-		this.citta = citta;
+	public void setCittà(Città città) {
+		this.città = città;
 	}
 
 }
