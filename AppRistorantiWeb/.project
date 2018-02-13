@@ -3,7 +3,7 @@
 	<name>AppRistorantiWeb</name>
 	<comment></comment>
 	<projects>
-		<project>AppRistoranti</project>
+		<project>ApplicazioneRistoranti</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

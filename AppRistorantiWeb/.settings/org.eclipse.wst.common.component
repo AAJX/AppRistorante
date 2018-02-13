@@ -2,7 +2,7 @@
     <wb-module deploy-name="AppRistorantiWeb">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="AppRistoranti.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AppRistoranti/AppRistoranti">
+        <dependent-module archiveName="ApplicazioneRistoranti.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ApplicazioneRistoranti/ApplicazioneRistoranti">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="AppRistorantiWeb"/>
