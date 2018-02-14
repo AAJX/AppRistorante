@@ -15,28 +15,27 @@ import model.Prenotazione;
 import model.Ristorante;
 import model.Utente;
 
-
-
-
 /**
- * Servlet implementation class NuovaPrenotazioneServlet
+ * Servlet implementation class EliminaPrenotazioneServlet
  */
-@WebServlet("/NuovaPrenotazioneServlet")
-public class NuovaPrenotazioneServlet extends HttpServlet {
+@WebServlet("/EliminaPrenotazioneServlet")
+public class EliminaPrenotazioneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NuovaPrenotazioneServlet() {
+    public EliminaPrenotazioneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		ObjectMapper om = new ObjectMapper();
 		
 		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
@@ -45,12 +44,9 @@ public class NuovaPrenotazioneServlet extends HttpServlet {
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean andataBuonFine = gp.nuovaPrenotazione(utente, prenotazione, r);
+		Boolean eliminata = gp.eliminaPrenotazione(utente, prenotazione, r);
 		
-		response.getWriter().append(andataBuonFine.toString());
-		
-		
-		
+		response.getWriter().append(eliminata.toString());
 	}
 
 }

@@ -1,4 +1,4 @@
-package servlet;
+package appristoranti.web;
 
 
 import java.io.IOException;
@@ -15,42 +15,39 @@ import model.Prenotazione;
 import model.Ristorante;
 import model.Utente;
 
-
-
-
 /**
- * Servlet implementation class NuovaPrenotazioneServlet
+ * Servlet implementation class ModificaPrenotazioneServlet
  */
-@WebServlet("/NuovaPrenotazioneServlet")
-public class NuovaPrenotazioneServlet extends HttpServlet {
+@WebServlet("/ModificaPrenotazioneServlet")
+public class ModificaPrenotazioneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NuovaPrenotazioneServlet() {
+    public ModificaPrenotazioneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ObjectMapper om = new ObjectMapper();
 		
-		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
-		Ristorante r = om.readValue(request.getParameter("r"), Ristorante.class);
-		Prenotazione prenotazione = om.readValue(request.getParameter("prenotazione"), Prenotazione.class);
+		Utente utente = om.readValue("Utente", Utente.class);
+		Ristorante r = om.readValue("Ristorante", Ristorante.class);
+		Prenotazione prenotazione = om.readValue("Prenotazione", Prenotazione.class);
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean andataBuonFine = gp.nuovaPrenotazione(utente, prenotazione, r);
+		Boolean modificato = gp.modificaPrenotazione(utente, prenotazione, r);
 		
-		response.getWriter().append(andataBuonFine.toString());
-		
-		
-		
+		response.getWriter().append(modificato.toString());
+		doGet(request, response);
 	}
 
 }

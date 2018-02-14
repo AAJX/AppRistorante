@@ -3,22 +3,16 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/andre/git/itsrizzoli2k17/Librerie/jackson-annotations-2.9.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/git/itsrizzoli2k17/Librerie/jackson-core-2.9.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/git/itsrizzoli2k17/Librerie/jackson-databind-2.9.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/git/itsrizzoli2k17/Librerie/mariadb-java-client-2.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/Desktop/Temp/Corsi/AFOL2017/AndroidWebIoT/Modulo5/eclipse/libraries/EclipseLink 2.5.2/eclipselink/jlib/eclipselink.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/Desktop/Temp/Corsi/AFOL2017/AndroidWebIoT/Modulo5/eclipse/libraries/EclipseLink 2.5.2/eclipselink/jlib/jpa/javax.persistence.source_2.1.0.v201304241213.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/Desktop/Temp/Corsi/AFOL2017/AndroidWebIoT/Modulo5/eclipse/libraries/EclipseLink 2.5.2/eclipselink/jlib/jpa/javax.persistence_2.1.0.v201304241213.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/Desktop/Temp/Corsi/AFOL2017/AndroidWebIoT/Modulo5/eclipse/libraries/EclipseLink 2.5.2/eclipselink/jlib/jpa/org.eclipse.persistence.jpa.modelgen.source_2.5.2.v20140319-9ad6abd.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/Desktop/Temp/Corsi/AFOL2017/AndroidWebIoT/Modulo5/eclipse/libraries/EclipseLink 2.5.2/eclipselink/jlib/jpa/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/Desktop/Temp/Corsi/AFOL2017/AndroidWebIoT/Modulo5/eclipse/libraries/EclipseLink 2.5.2/eclipselink/jlib/jpa/org.eclipse.persistence.jpars.source_2.5.2.v20140319-9ad6abd.jar"/>
-	<classpathentry kind="lib" path="C:/Users/andre/Desktop/Temp/Corsi/AFOL2017/AndroidWebIoT/Modulo5/eclipse/libraries/EclipseLink 2.5.2/eclipselink/jlib/jpa/org.eclipse.persistence.jpars_2.5.2.v20140319-9ad6abd.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2"/>
+	<classpathentry kind="lib" path="/Librerie/jackson-annotations-2.9.4.jar"/>
+	<classpathentry kind="lib" path="/Librerie/jackson-core-2.9.4.jar"/>
+	<classpathentry kind="lib" path="/Librerie/jackson-databind-2.9.4.jar"/>
+	<classpathentry kind="lib" path="/Librerie/mariadb-java-client-2.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
