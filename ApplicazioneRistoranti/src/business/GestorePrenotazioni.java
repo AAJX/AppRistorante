@@ -1,15 +1,7 @@
 package business;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.management.Query;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import model.Prenotazione;
 import model.*;
@@ -20,7 +12,7 @@ public class GestorePrenotazioni {
 
 		public boolean nuovaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
 
-			EntityManager em = JPAUtility.emf.createEntityManager();
+			EntityManager em = JPAUtility.getInstance().getEm();
 			Ristorante ristorante = null;
 			try {
 				ristorante = em.find(Ristorante.class, r.getIdRistorante());
@@ -39,7 +31,7 @@ public class GestorePrenotazioni {
 
 		// leggo prenotazione
 		public List<Prenotazione> prenotazioniUtente(String email) {
-			EntityManager em = JPAUtility.emf.createEntityManager();
+			EntityManager em = JPAUtility.getInstance().getEm();
 			try {
 				Utente u = em.find(Utente.class, email);
 				if (u != null)
@@ -51,7 +43,7 @@ public class GestorePrenotazioni {
 		}
 
 		public boolean leggoPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
-			EntityManager em = JPAUtility.emf.createEntityManager();
+			EntityManager em = JPAUtility.getInstance().getEm();
 
 			Utente u = null;
 
@@ -73,7 +65,7 @@ public class GestorePrenotazioni {
 
 		public boolean modificaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
 
-			EntityManager em = JPAUtility.emf.createEntityManager();
+			EntityManager em = JPAUtility.getInstance().getEm();
 			Ristorante ristorante = null;
 			try {
 				ristorante = em.find(Ristorante.class, r.getIdRistorante());
@@ -94,7 +86,7 @@ public class GestorePrenotazioni {
 		// cancello prenotazione
 
 		public boolean eliminaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
-			EntityManager em = JPAUtility.emf.createEntityManager();
+			EntityManager em = JPAUtility.getInstance().getEm();
 			Ristorante ristorante = null;
 			try {
 				ristorante = em.find(Ristorante.class, r.getIdRistorante());
