@@ -21,7 +21,6 @@
         <activity android:name=".fragment.LoginFragment" />
         <activity android:name=".ExploreNotLogged" />
         <activity android:name=".Explore" />
-        <activity android:name=".Android_image_slider"></activity>
     </application>
 
 </manifest>

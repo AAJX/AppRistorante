@@ -40,7 +40,7 @@ public class Welcome extends AppCompatActivity {
 
 
         videoview = findViewById(R.id.videoView);
-        Uri uri = Uri.parse("android.resource://" + getPackageName()+"/"+ R.raw.foodvid240);
+        Uri uri = Uri.parse("android.resource://" + getPackageName()+"/"+ R.raw.foodvid480);
         videoview.setVideoURI(uri);
         videoview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
