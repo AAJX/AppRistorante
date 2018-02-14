@@ -2,13 +2,13 @@ package business;
 
 import javax.persistence.EntityManager;
 
+import model.Citta;
 import model.Ristorante;
-import model.Utente;
 
 public class GestoreRistoranti {
 
 	
-	public boolean aggiungiRistorante(String categoria, String Città, String descrizione, 
+	public boolean aggiungiRistorante(String categoria, Citta citta, String descrizione, 
 			int feedback, String indirizzo, String nome, int numeroPosti) {
 		
 		EntityManager em = JPAUtility.emf.createEntityManager();
@@ -17,7 +17,7 @@ public class GestoreRistoranti {
 		if(rist == null) {
 			Ristorante r = new Ristorante();
 					r.setCategoria(categoria);
-					r.setCitta(Città);
+					r.setCitta(citta);
 					r.setDescrizione(descrizione);
 					r.setDescrizione(descrizione);
 					r.setFeedback(feedback);
