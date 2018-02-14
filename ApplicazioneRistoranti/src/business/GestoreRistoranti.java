@@ -5,13 +5,14 @@ import javax.persistence.EntityManager;
 import model.Citta;
 import model.Ristorante;
 
+
 public class GestoreRistoranti {
 
 	
 	public boolean aggiungiRistorante(String categoria, Citta citta, String descrizione, 
 			int feedback, String indirizzo, String nome, int numeroPosti) {
 		
-		EntityManager em = JPAUtility.emf.createEntityManager();
+		EntityManager em = JPAUtility.getInstance().getEm();
 		Ristorante rist = em.find(Ristorante.class, nome);
 		
 		if(rist == null) {
@@ -38,7 +39,7 @@ public class GestoreRistoranti {
 	
 	public void eliminaRistorante(int id) {
 
-		EntityManager em = JPAUtility.emf.createEntityManager();
+		EntityManager em = JPAUtility.getInstance().getEm();
 		  Ristorante rist = em.find(Ristorante.class, id);
 
 		  em.getTransaction().begin();
@@ -49,7 +50,7 @@ public class GestoreRistoranti {
 	}
 	
 	public void modificaTelefonoRistorante(int id, String nuovoTelefono) {
-		EntityManager em = JPAUtility.emf.createEntityManager();
+		EntityManager em = JPAUtility.getInstance().getEm();
 		Ristorante rist = em.find(Ristorante.class, id);
 
 		  em.getTransaction().begin();
@@ -60,7 +61,7 @@ public class GestoreRistoranti {
 	
 	
 	public void modificaNumeroPosti(int id, int nPostiAggiornato) {
-		EntityManager em = JPAUtility.emf.createEntityManager();
+		EntityManager em = JPAUtility.getInstance().getEm();
 		Ristorante rist = em.find(Ristorante.class, id);
 
 		  em.getTransaction().begin();
@@ -70,7 +71,7 @@ public class GestoreRistoranti {
 	}
 	
 	public void modificaPrezzoMenu(int id, float nuovoPrezzo) {
-		EntityManager em = JPAUtility.emf.createEntityManager();
+		EntityManager em = JPAUtility.getInstance().getEm();
 		Ristorante rist = em.find(Ristorante.class, id);
 
 		  em.getTransaction().begin();

@@ -1,15 +1,7 @@
 package business;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.management.Query;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import model.Prenotazione;
 import model.*;
@@ -20,15 +12,16 @@ public class GestorePrenotazioni {
 
 		public boolean nuovaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
 
-			EntityManager em = JPAUtility.emf.createEntityManager();
-			Ristorante ristorante = null;
-			try {
-				ristorante = em.find(Ristorante.class, r.getIdRistorante());
-			} catch (Exception e) {
-			}
-			if (ristorante != null) {
+			EntityManager em = JPAUtility.getInstance().getEm();
+			
+			utente = em.find(Utente.class, utente.getEmail());
+			r = em.find(Ristorante.class, r.getIdRistorante());
+			
+			if (r != null && utente != null) {
 
 				em.getTransaction().begin();
+				prenotazione.setRistorante(r);
+				prenotazione.setUtente(utente);
 				em.persist(prenotazione);
 				em.getTransaction().commit();
 				return true;
@@ -39,7 +32,7 @@ public class GestorePrenotazioni {
 
 		// leggo prenotazione
 		public List<Prenotazione> prenotazioniUtente(String email) {
-			EntityManager em = JPAUtility.emf.createEntityManager();
+			EntityManager em = JPAUtility.getInstance().getEm();
 			try {
 				Utente u = em.find(Utente.class, email);
 				if (u != null)
@@ -51,7 +44,7 @@ public class GestorePrenotazioni {
 		}
 
 		public boolean leggoPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
-			EntityManager em = JPAUtility.emf.createEntityManager();
+			EntityManager em = JPAUtility.getInstance().getEm();
 
 			Utente u = null;
 
@@ -73,38 +66,39 @@ public class GestorePrenotazioni {
 
 		public boolean modificaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
 
-			EntityManager em = JPAUtility.emf.createEntityManager();
-			Ristorante ristorante = null;
-			try {
-				ristorante = em.find(Ristorante.class, r.getIdRistorante());
-			} catch (Exception e) {
-			}
-			if (ristorante != null) {
+			EntityManager em = JPAUtility.getInstance().getEm();
+			
+			utente = em.find(Utente.class, utente.getEmail());
+			r = em.find(Ristorante.class, r.getIdRistorante());
+			Prenotazione p = em.find(Prenotazione.class, prenotazione.getIdPrenotazione());
+			
+			if (r != null && utente != null && p != null) {
 
 				em.getTransaction().begin();
+				
 				em.merge(prenotazione);
 				em.getTransaction().commit();
 				return true;
 			} else {
 				return false;
 			}
-
 		}
 
 		// cancello prenotazione
 
 		public boolean eliminaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
-			EntityManager em = JPAUtility.emf.createEntityManager();
-			Ristorante ristorante = null;
-			try {
-				ristorante = em.find(Ristorante.class, r.getIdRistorante());
-			} catch (Exception e) {
-			}
-			if (ristorante != null) {
+			EntityManager em = JPAUtility.getInstance().getEm();
+			
+			utente = em.find(Utente.class, utente.getEmail());
+			r = em.find(Ristorante.class, r.getIdRistorante());
+			prenotazione = em.find(Prenotazione.class,prenotazione.getIdPrenotazione());
+			
+			if (r != null && utente != null && prenotazione != null) {
 
-				Prenotazione p = em.find(Prenotazione.class, prenotazione.getIdPrenotazione());
 				em.getTransaction().begin();
-				em.remove(p);
+				
+				
+				em.remove(prenotazione);
 				em.getTransaction().commit();
 				return true;
 			} else {

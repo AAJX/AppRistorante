@@ -1,3 +1,4 @@
+package appristoranti.web;
 
 
 import java.io.IOException;
@@ -38,9 +39,9 @@ public class NuovaPrenotazioneServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ObjectMapper om = new ObjectMapper();
 		
-		Utente utente = om.readValue("Utente", Utente.class);
-		Ristorante r = om.readValue("Ristorante", Ristorante.class);
-		Prenotazione prenotazione = om.readValue("Prenotazione", Prenotazione.class);
+		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
+		Ristorante r = om.readValue(request.getParameter("r"), Ristorante.class);
+		Prenotazione prenotazione = om.readValue(request.getParameter("prenotazione"), Prenotazione.class);
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
