@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/MENU_1"
+        android:checkable="false"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Prima voce" />
+    <!--android:showAsAction="ifRoom"
+    -->
+
+
+    <item
+        android:id="@+id/MENU_2"
+        android:title="Seconda voce"
+        android:icon="@android:drawable/ic_menu_agenda"/>
+</menu>
