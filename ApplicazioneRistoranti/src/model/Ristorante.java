@@ -22,7 +22,7 @@ public class Ristorante implements Serializable {
 
 	private String descrizione;
 
-	private String feedback;
+	private int feedback;
 
 	private String indirizzo;
 
@@ -76,11 +76,11 @@ public class Ristorante implements Serializable {
 		this.descrizione = descrizione;
 	}
 
-	public String getFeedback() {
+	public int getFeedback() {
 		return this.feedback;
 	}
 
-	public void setFeedback(String feedback) {
+	public void setFeedback(int feedback) {
 		this.feedback = feedback;
 	}
 
