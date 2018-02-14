@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.android.itfs.myapplication.fragment.LoginFragment"
+    android:background="@color/black"
+    >
+
+
+    <TextView
+        android:id="@+id/testo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="Inserisci le credenziali con cui ti sei registrato neostra app!"
+        android:textColor="@color/orange" />
+
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/testo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Mail"
+        android:inputType="textPersonName" />
+
+
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/mail"
+        android:layout_marginTop="27dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_centerHorizontal="true"/>
+    
+
+    <Button
+        android:id="@+id/accediDialog"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/pwd"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/buttonstyle"
+        android:textColor="@color/orange"
+        android:text="Accedi" />
+
+
+    <Button
+        android:id="@+id/registrati"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/accediDialog"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/buttonstyle"
+        android:text="Registrati"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        />
+</RelativeLayout>
