@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<title>AllyouCanApp</title>
+</head>
+<body >
+<div class="jumbotron text-center">
+	<h1>Dove vuoi mangiare?</h1>
+</div>
+<div class="text-center">
+	<button id="btnLog" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Inizia subito!</button>
+</div>
+
+<div id="Modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Login to Your Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<form class="form-signin" id="frmLogin">
+			<label for="inputEmail" class="sr-only">Email address</label> 
+				<input
+					type="email" id="inputEmail" class="form-control"
+					placeholder="Email address" required autofocus name="email"> 
+			
+			<label
+					for="inputPassword" class="sr-only">Password</label> 
+			<input
+				type="password" id="inputPassword" class="form-control"
+				placeholder="Password" required name="password">
+			
+			<button class="btn btn-lg btn-primary btn-block" id="btnLogin">Sign in</button>
+	  	</form>
+      </div>
+      <div class="modal-footer">
+		<div class="login-help">
+			<a href="#">Register</a> - <a href="#">Forgot Password</a>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
