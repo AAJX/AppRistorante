@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import business.GestorePrenotazioni;
+import model.Prenotazione;
+import model.Ristorante;
+import model.Utente;
+
 
 
 
@@ -28,7 +35,19 @@ public class NuovaPrenotazioneServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ObjectMapper om = new ObjectMapper();
+		
+		Utente utente = om.readValue("Utente", Utente.class);
+		Ristorante r = om.readValue("Ristorante", Ristorante.class);
+		Prenotazione prenotazione = om.readValue("Prenotazione", Prenotazione.class);
+		
+		GestorePrenotazioni gp = new GestorePrenotazioni();
+		
+		Boolean andataBuonFine = gp.nuovaPrenotazione(utente, prenotazione, r);
+		
+		response.getWriter().append(andataBuonFine.toString());
+		
 		
 		
 	}
