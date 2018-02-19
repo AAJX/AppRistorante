@@ -5,7 +5,7 @@
         <dependent-module archiveName="ApplicazioneRistoranti.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ApplicazioneRistoranti/ApplicazioneRistoranti">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="java-output-path" value="/AppRistorantiWeb/build/classes"/>
         <property name="context-root" value="AppRistorantiWeb"/>
+        <property name="java-output-path" value="/AppRistorantiWeb/build/classes"/>
     </wb-module>
 </project-modules>
