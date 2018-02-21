@@ -7,35 +7,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import business.GestoreNuovoUtente;
+import business.GestoreRistoranti;
+import model.Citta;
+import model.Regione;
+import model.Ristorante;
+import model.Utente;
+
 /**
- * Servlet implementation class ModificaRistoranteServlet
+ * Servlet implementation class NuovoAccountServlet
  */
-@WebServlet("/modificaRistorante")
-public class ModificaRistoranteServlet extends HttpServlet {
+@WebServlet("/nuovoAccount")
+public class NuovoAccount_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificaRistoranteServlet() {
+    public NuovoAccount_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		ObjectMapper om = new ObjectMapper();
+
+		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
+		
+		GestoreNuovoUtente gnu = new GestoreNuovoUtente();
+
+		Boolean registrato = gnu.nuovoUtente(utente);
+		response.getWriter().append(registrato.toString());
 	}
 
 }

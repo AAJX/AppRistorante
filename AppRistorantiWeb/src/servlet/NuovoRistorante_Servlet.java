@@ -1,6 +1,5 @@
 package servlet;
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,43 +9,42 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import business.GestorePrenotazioni;
-import model.Prenotazione;
+import business.GestoreRistoranti;
+import model.Citta;
+import model.Regione;
 import model.Ristorante;
-import model.Utente;
 
 /**
- * Servlet implementation class ModificaPrenotazioneServlet
+ * Servlet implementation class NuovoRistorante_Servlet
  */
-@WebServlet("/ModificaPrenotazioneServlet")
-public class ModificaPrenotazioneServlet extends HttpServlet {
+@WebServlet("/nuovoRistorante")
+public class NuovoRistorante_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificaPrenotazioneServlet() {
+    public NuovoRistorante_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-ObjectMapper om = new ObjectMapper();
 		
-		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
+		ObjectMapper om = new ObjectMapper();
+
+		
+		Regione regione = om.readValue(request.getParameter("regione"), Regione.class);
+		Citta citta = om.readValue(request.getParameter("citta"), Citta.class);
 		Ristorante r = om.readValue(request.getParameter("r"), Ristorante.class);
-		Prenotazione prenotazione = om.readValue(request.getParameter("prenotazione"), Prenotazione.class);
 		
-		GestorePrenotazioni gp = new GestorePrenotazioni();
-		
-		Boolean modificata = gp.modificaPrenotazione(utente, prenotazione, r);
-		
-		response.getWriter().append(modificata.toString());
+		GestoreRistoranti gr = new GestoreRistoranti();
+
+		Boolean registrato = gr.aggiungiRistorante(regione, citta, r);
+		response.getWriter().append(registrato.toString());
 	}
 
 }
