@@ -1,3 +1,5 @@
+
+
 	#myVideo {
     position: fixed;
     right: 0;
@@ -20,5 +22,22 @@
 	top:500px;
 	
 }
+<!-- login -->
+<!-- homepage   --> 
 
+#ristojumb{
+    background-color: #ffe5a0;
+    margin-top:30px;
+}
+
+
+#ristorantislide {
+background-color:yellow;
+	width:100%;
+}
+
+#bodyhome {
+	margin-top:0;
+
+}
 
