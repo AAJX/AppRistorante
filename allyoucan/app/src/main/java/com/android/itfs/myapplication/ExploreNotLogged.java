@@ -20,6 +20,7 @@ public class ExploreNotLogged extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_explore_not_logged);
 
+
             viewPager = (ViewPager) findViewById(R.id.viewPager);
 
             sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
