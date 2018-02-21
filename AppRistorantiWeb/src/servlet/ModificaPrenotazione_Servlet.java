@@ -1,6 +1,5 @@
 package servlet;
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,25 +15,26 @@ import model.Ristorante;
 import model.Utente;
 
 /**
- * Servlet implementation class EliminaPrenotazioneServlet
+ * Servlet implementation class ModificaPrenotazione_Servlet
  */
-@WebServlet("/EliminaPrenotazioneServlet")
-public class EliminaPrenotazioneServlet extends HttpServlet {
+@WebServlet("/modificaPrenotazione")
+public class ModificaPrenotazione_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminaPrenotazioneServlet() {
+    public ModificaPrenotazione_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ObjectMapper om = new ObjectMapper();
 		
@@ -44,9 +44,9 @@ public class EliminaPrenotazioneServlet extends HttpServlet {
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean eliminata = gp.eliminaPrenotazione(utente, prenotazione, r);
+		Boolean modificata = gp.modificaPrenotazione(utente, prenotazione, r);
 		
-		response.getWriter().append(eliminata.toString());
+		response.getWriter().append(modificata.toString());
 	}
 
 }

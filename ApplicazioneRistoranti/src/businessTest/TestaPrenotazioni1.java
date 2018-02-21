@@ -23,8 +23,8 @@ public class TestaPrenotazioni1 {
 		@Test
 		public void elencoPrenotazioniTest() {
 			GestorePrenotazioni gv = new GestorePrenotazioni();
-			String emailTest = "email@ciao";
-			for(Prenotazione p : gv.prenotazioniUtente(emailTest)) {
+			int codiceUtente = 12345;
+			for(Prenotazione p : gv.prenotazioniUtente(codiceUtente)) {
 				System.out.println(p.getOrario());
 			}
 		}
@@ -34,7 +34,7 @@ public class TestaPrenotazioni1 {
 			GestorePrenotazioni gv = new GestorePrenotazioni();
 			
 			Utente u = new Utente();
-			u.setEmail("email@prova");
+			u.setcodiceUtente(12345);
 			
 			
 			Ristorante r = new Ristorante();
@@ -50,6 +50,7 @@ public class TestaPrenotazioni1 {
 			
 			p.setUtente(u);
 			p.setRistorante(r);
+			
 			boolean esito = gv.nuovaPrenotazione(u, p, r);
 			assertTrue("Esito ", esito == true);}
 			

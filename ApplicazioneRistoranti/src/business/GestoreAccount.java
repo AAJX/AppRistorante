@@ -3,7 +3,7 @@ package business;
 import javax.persistence.EntityManager;
 
 import model.Utente;
-
+/*
 public class GestoreAccount {
 	
 	public EsitoOperazioni login(String email, String password) {
@@ -26,18 +26,22 @@ public class GestoreAccount {
 		return _return;
 	}
 
-	public EsitoOperazioni registraUtente(String email, String password, String nome, String cognome,
-			String numeroTelefono) {
+	public EsitoOperazioni registraUtente(String email, String cognome, String nome, String numeroTelefono,
+			String password) {
 		EsitoOperazioni _return = new EsitoOperazioni();
 		Utente u = new Utente();
 		u.setEmail(email);
-		u.setPassword(password);
-		u.setNome(nome);
 		u.setCognome(cognome);
+		u.setNome(nome);
 		u.setNumeroTelefono(numeroTelefono);
+		u.setPassword(password);
 		_return = registraUtente(u);
 		return _return;
 	}
+		
+		
+		
+		
 	
 	public EsitoOperazioni registraUtente(Utente nuovoUtente) {
 		EsitoOperazioni _return = new EsitoOperazioni();
@@ -93,3 +97,4 @@ public class GestoreAccount {
 	
 	
 }
+*/

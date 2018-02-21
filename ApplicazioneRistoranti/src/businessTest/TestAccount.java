@@ -1,5 +1,5 @@
 package businessTest;
-
+/*
 import static org.junit.Assert.assertTrue;
 
 
@@ -11,6 +11,8 @@ import business.GestoreAccount;
 
 
 class TestAccount {
+	
+	// TEST LOGIN UTENTE
 
 	@Test
 	void testLogin() {
@@ -29,15 +31,22 @@ class TestAccount {
 		assertTrue(eo.isSuccess());	
 	}
 	
+	// TEST REGISTRAZIONE UTENTE 
+	
 	@Test
 	public void testRegistraUtente() {
 		GestoreAccount ga = new GestoreAccount();
 		
-		EsitoOperazioni eo = ga.registraUtente("test@email", "testpassword", "Test", "Test", "012345");
+		//Crea nuovo utente
+		
+		EsitoOperazioni eo = ga.registraUtente("test2@email", "blu", "peppe","3636363","gatto");
 		assertTrue(eo.isSuccess());
 		
-		eo = ga.rimuoviUtente("test@email");
+		//Eliminia Utente
+		
+		 eo = ga.rimuoviUtente("test2@email");
 		assertTrue(eo.isSuccess());	
 	}
 
 }
+*/
