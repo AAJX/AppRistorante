@@ -1,4 +1,4 @@
-package model;
+package model1;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -22,13 +22,13 @@ public class Ristorante implements Serializable {
 
 	private String descrizione;
 
-	//private int feedback;
+	private int feedback;
 
 	private String indirizzo;
 
-	//private double latitudine;
+	private double latitudine;
 
-	//private double longitudine;
+	private double longitudine;
 
 	private String nome;
 
@@ -75,7 +75,7 @@ public class Ristorante implements Serializable {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-/*
+
 	public int getFeedback() {
 		return this.feedback;
 	}
@@ -83,7 +83,7 @@ public class Ristorante implements Serializable {
 	public void setFeedback(int feedback) {
 		this.feedback = feedback;
 	}
-*/
+
 	public String getIndirizzo() {
 		return this.indirizzo;
 	}
@@ -91,7 +91,7 @@ public class Ristorante implements Serializable {
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
-/*
+
 	public double getLatitudine() {
 		return this.latitudine;
 	}
@@ -107,7 +107,7 @@ public class Ristorante implements Serializable {
 	public void setLongitudine(double longitudine) {
 		this.longitudine = longitudine;
 	}
-*/
+
 	public String getNome() {
 		return this.nome;
 	}
@@ -115,7 +115,7 @@ public class Ristorante implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public int getNumeroPosti() {
 		return this.numeroPosti;
 	}

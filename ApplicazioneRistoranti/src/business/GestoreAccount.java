@@ -2,7 +2,7 @@ package business;
 
 import javax.persistence.EntityManager;
 
-import model.Utente;
+import model1.Utente;
 /*
 public class GestoreAccount {
 	

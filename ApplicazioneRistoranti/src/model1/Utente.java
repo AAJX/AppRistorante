@@ -1,4 +1,4 @@
-package model;
+package model1;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,14 +14,13 @@ import java.util.List;
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	
-	
 	@Id
 	@Column(name="CODICE_UTENTE")
 	private int codiceUtente;
 
 	private String cognome;
+
+	private String email;
 
 	private String nome;
 
@@ -30,8 +29,6 @@ public class Utente implements Serializable {
 
 	private String password;
 
-	private String username;
-
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
 	private List<Prenotazione> prenotazioni;
@@ -39,11 +36,11 @@ public class Utente implements Serializable {
 	public Utente() {
 	}
 
-	public int codiceUtente() {
+	public int getCodiceUtente() {
 		return this.codiceUtente;
 	}
 
-	public void setcodiceUtente(int codiceUtente) {
+	public void setCodiceUtente(int codiceUtente) {
 		this.codiceUtente = codiceUtente;
 	}
 
@@ -53,6 +50,14 @@ public class Utente implements Serializable {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getNome() {
@@ -77,14 +82,6 @@ public class Utente implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getUsername() {
-		return this.username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public List<Prenotazione> getPrenotazioni() {

@@ -2,17 +2,17 @@ package business;
 
 import javax.persistence.EntityManager;
 
-import model.Citta;
-import model.Prenotazione;
-import model.Regione;
-import model.Ristorante;
-import model.Utente;
+import model1.Citta;
+import model1.Prenotazione;
+import model1.Regione;
+import model1.Ristorante;
+import model1.Utente;
 
 
 public class GestoreRistoranti {
 
 	//CREA NUOVO RISTORANTE
-	public boolean aggiungiRistorante(Regione regione,Citta citta,Ristorante r) {
+	public boolean aggiungiRistorante(Regione regione,Citta citta,Ristorante ristorante) {
 		
 		EntityManager em = JPAUtility.getInstance().getEm();
 		
@@ -26,8 +26,8 @@ public class GestoreRistoranti {
 			
 			em.getTransaction().begin();
 			citta.setRegione(regione);
-			r.setCitta(citta);
-			em.persist(r);
+			ristorante.setCitta(citta);
+			em.persist(ristorante);
 			em.getTransaction().commit();
 			
 			return true;	
@@ -39,16 +39,16 @@ return false;
 			
 			
 			
-	public boolean eliminaRistorante(Ristorante r) {
+	public boolean eliminaRistorante(Ristorante ristorante) {
 
 		EntityManager em = JPAUtility.getInstance().getEm();
 		  
-		r = em.find(Ristorante.class,r.getIdRistorante());
+		ristorante = em.find(Ristorante.class,ristorante.getIdRistorante());
 		
-		  if (r != null ) {
+		  if (ristorante != null ) {
 
 		  em.getTransaction().begin();
-		  em.remove(r);
+		  em.remove(ristorante);
 		  em.getTransaction().commit();
 		  return true;
 		  }else {
@@ -56,14 +56,14 @@ return false;
 			}
 	}	
 			
-	public boolean modificaRistorante(Ristorante r) {
+	public boolean modificaRistorante(Ristorante ristorante) {
 		EntityManager em = JPAUtility.getInstance().getEm();
 		
-		Ristorante rist = em.find(Ristorante.class,r.getIdRistorante());
+		Ristorante rist = em.find(Ristorante.class,ristorante.getIdRistorante());
 		
 		if (rist != null ) {
 		  em.getTransaction().begin();
-		  em.merge(r);
+		  em.merge(ristorante);
 		  em.getTransaction().commit();
 		  return true;
 	}else {

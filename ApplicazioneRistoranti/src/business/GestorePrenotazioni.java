@@ -1,28 +1,30 @@
 package business;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-import model.Prenotazione;
-import model.*;
+import model1.Prenotazione;
+import model1.*;
 
 public class GestorePrenotazioni {
 	
 	// CREA NUOVA PRENOTAZIONE
 
-		public boolean nuovaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
+		public boolean nuovaPrenotazione(Utente utente, Ristorante ristorante,Prenotazione prenotazione) {
 
 			EntityManager em = JPAUtility.getInstance().getEm();
 			
-			utente = em.find(Utente.class, utente.codiceUtente());
-			r = em.find(Ristorante.class, r.getIdRistorante());
+			 utente = em.find(Utente.class, utente.getCodiceUtente());
+			 ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
 			
 			
-			if (r != null && utente != null ) {
+			if (ristorante != null && utente != null ) {
 
 				em.getTransaction().begin();
-				prenotazione.setRistorante(r);
+				prenotazione.setRistorante(ristorante);
 				prenotazione.setUtente(utente);
+				
 				em.persist(prenotazione);
 				em.getTransaction().commit();
 				return true;
@@ -65,20 +67,26 @@ public class GestorePrenotazioni {
 			}
 		}
 
+		
+		
+		
+		
+		
 		// MODIFICA PRENOTAZIONE
-
-		public boolean modificaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
+		
+		public boolean modificaPrenotazione(Utente utente, Ristorante ristorante, Prenotazione prenotazione) {
 
 			EntityManager em = JPAUtility.getInstance().getEm();
 			
-			utente = em.find(Utente.class, utente.codiceUtente());
-			r = em.find(Ristorante.class, r.getIdRistorante());
+			utente = em.find(Utente.class, utente.getCodiceUtente());
+			ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
 			
-			Prenotazione p = em.find(Prenotazione.class, prenotazione.getIdPrenotazione());
+			Prenotazione p = em.find(Prenotazione.class, prenotazione.getIdPrenotazione() );
 			
-			if (r != null && utente != null ) {
+			if (ristorante != null && utente != null && prenotazione != null ) {
 
 				em.getTransaction().begin();
+				
 				em.merge(prenotazione);
 				em.getTransaction().commit();
 				return true;
@@ -89,15 +97,15 @@ public class GestorePrenotazioni {
 				
 		// ELIMINA PRENOTAZIONE
 		
-			public boolean eliminaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante r) {
+			public boolean eliminaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante ristorante) {
 				EntityManager em = JPAUtility.getInstance().getEm();
 					
-				utente = em.find(Utente.class, utente.codiceUtente());
-				r = em.find(Ristorante.class, r.getIdRistorante());
+				utente = em.find(Utente.class, utente.getCodiceUtente());
+				ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
 					
 				prenotazione = em.find(Prenotazione.class,prenotazione.getIdPrenotazione());
 					
-				if (r != null && utente != null ) {
+				if (ristorante != null && utente != null ) {
 
 					em.getTransaction().begin();
 					em.remove(prenotazione);

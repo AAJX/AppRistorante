@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import business.GestorePrenotazioni;
-import model.Prenotazione;
-import model.Ristorante;
-import model.Utente;
+import model1.Prenotazione;
+import model1.Ristorante;
+import model1.Utente;
 
 /**
  * Servlet implementation class EliminaPrenotazione_Servlet
@@ -37,12 +37,12 @@ public class EliminaPrenotazione_Servlet extends HttpServlet {
 		ObjectMapper om = new ObjectMapper();
 		
 		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
-		Ristorante r = om.readValue(request.getParameter("r"), Ristorante.class);
+		Ristorante ristorante = om.readValue(request.getParameter("r"), Ristorante.class);
 		Prenotazione prenotazione = om.readValue(request.getParameter("prenotazione"), Prenotazione.class);
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean eliminata = gp.eliminaPrenotazione(utente, prenotazione, r);
+		Boolean eliminata = gp.eliminaPrenotazione(utente, prenotazione, ristorante);
 		
 		response.getWriter().append(eliminata.toString());
 	}
