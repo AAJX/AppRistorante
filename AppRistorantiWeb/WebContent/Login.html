@@ -8,49 +8,100 @@
 <title>AllyouCanApp</title>
 </head>
 <body >
-<div class="jumbotron text-center">
-	<h1>Dove vuoi mangiare?</h1>
-</div>
-<div class="text-center">
+
+<video autoplay loop id="myVideo">
+  <source src="media/foodvideo.mp4" type="video/mp4">
+</video>
+
+<div class="content text-center">
+  <h1 >Pronto ad ingrassare?</h1>
+  
+  
+  <h3>Scegli il ristorante giusto per riempire il tuo stomaco.</h3>
+
 	<button id="btnLog" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Inizia subito!</button>
+
 </div>
 
-<div id="Modal" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Login to Your Account</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-		<form class="form-signin" id="frmLogin">
-			<label for="inputEmail" class="sr-only">Email address</label> 
-				<input
-					type="email" id="inputEmail" class="form-control"
-					placeholder="Email address" required autofocus name="email"> 
+<div id="Modal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+      			<div class="container">
+	      			<div class="row align-items-start">
+	      				<img class="col-6 offset-3" src=media/chef-icon-8.png alt="" width="200" height="200">	
+	      			</div>
+		      		<div class="row align-items-start">
+		      			<h2 class="modal-title col-9 offset-3">Benvenuto!</h2>
+		      		</div>
+        		</div>
+      		</div>
+		    <div class="modal-body">  
+				<form class="form-signin" id="frmLogin">
+					<label for="inputEmail" class="sr-only">Email</label> 
+						<input
+							type="email" id="inputEmail" class="form-control"
+							placeholder="Email" required autofocus name="email"> 	
+					<label
+							for="inputPassword" class="sr-only">Password</label> 
+					<input
+						type="password" id="inputPassword" class="form-control"
+						placeholder="Password" required name="password">
+					
+					<button class="btn btn-lg btn-primary btn-block" id="btnLogin">Accedi</button>
+				</form>
+		    </div>
+			<div class="modal-footer">
+				<div class="container">
+		      	   			
+						<a href="#Register" data-dismiss="modal" data-toggle="modal">Sei nuovo di qui?</a> - <a href="#">Non ricordi la password?</a> 
 			
-			<label
-					for="inputPassword" class="sr-only">Password</label> 
-			<input
-				type="password" id="inputPassword" class="form-control"
-				placeholder="Password" required name="password">
-			
-			<button class="btn btn-lg btn-primary btn-block" id="btnLogin">Sign in</button>
-	  	</form>
-      </div>
-      <div class="modal-footer">
-		<div class="login-help">
-			<a href="#">Register</a> - <a href="#">Forgot Password</a>
+					
+				</div>
+			</div>
 		</div>
-      </div>
-    </div>
-  </div>
+	</div>
+</div>
+
+<div id="Register" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+	    	<div class="modal-header">
+	      		<div class="container">
+		      		<div class="row align-items-start">
+		      			<h2 class="modal-title col-9 offset-3">Crea account</h2>
+		      		</div>
+	        	</div>
+	      	</div>
+	      	<div class="modal-body">
+	      
+				<form class="form-signin" id="frmLogin">
+					<label for="inputEmail" class="sr-only">Email</label> 
+						<input
+							type="email" id="inputEmail" class="form-control"
+							placeholder="Email" required autofocus name="email"> 
+				
+					<label for="inputPassword" class="sr-only">Password</label> 
+						<input
+							type="password" id="inputPassword" class="form-control"
+							placeholder="Password" required name="password">
+				
+					<button class="btn btn-lg btn-primary btn-block" id="btnLogin">Registrati</button>
+		  		</form>
+			</div>
+			<div class="modal-footer">
+	      		<div class="container">
+	      			<div class="row ">     			
+						<div class="col-md-6"><button class="col align-self-end" type="btn btn-sm"  data-dismiss="modal">Chiudi</button></div> 
+					</div>
+			 	</div>
+	      	</div>
+	  	</div>
+	</div>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
  <script src="js/bootstrap.min.js"></script>
-
+<script src="js/account.js"></script>
 </body>
 </html>

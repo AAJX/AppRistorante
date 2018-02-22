@@ -14,8 +14,12 @@ import java.util.List;
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	
+	
+	
 	@Id
-	private String email;
+	@Column(name="CODICE_UTENTE")
+	private int codiceUtente;
 
 	private String cognome;
 
@@ -35,12 +39,12 @@ public class Utente implements Serializable {
 	public Utente() {
 	}
 
-	public String getEmail() {
-		return this.email;
+	public int codiceUtente() {
+		return this.codiceUtente;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setcodiceUtente(int codiceUtente) {
+		this.codiceUtente = codiceUtente;
 	}
 
 	public String getCognome() {
