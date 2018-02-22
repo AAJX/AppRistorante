@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <body id="bodyhome">
-
+<!-- navbar rossa -->
 <nav id="fix" class="navbar fixed-top navbar-light navbar-expand-lg">
   <a href="#"> <img id="logo" class="navbar-brand"  src="media/risto/logo.jpg"></img> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,10 +19,10 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">La nostra filosofia</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">Lascia un commento</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,7 +38,7 @@
   </div>
 <button type="button" class="btn btn-outline-light" style="font-weight:bold;">Accedi</button>
 </nav>
-
+<!-- ristoranti -->
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner" >
 	    <div class="carousel-item active">
@@ -73,18 +73,37 @@
 	  </a>
 	</div>
 
-<h1  class="text-danger text-center">Scegli la tua meta!</h1>
+<h1  class="text-danger text-center" style="margin-top:10px;">Scegli la tua meta!</h1>
 
- 
+ <!-- ricerca ristoranti -->
 <div class=container>
 <nav id="vic" class="navbar navbar-light navbar-expand-lg bg-dark">
-  <a href="#">ciao</a>
-  
-  
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Navbar</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form >
+      <input class="form-control " style="width:80%;"type="text" placeholder="Cerca per nome,indirizzo, o città">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
 </nav>
 </div>
 
-
+<!-- banner -->
 <img  src="media/risto/dining-food-Banner-1920-x-750.jpg" style="width:100%;margin-top:10%;">
 
 
