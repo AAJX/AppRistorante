@@ -9,10 +9,10 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import business.GestorePrenotazioni;
-import model1.Prenotazione;
-import model1.Ristorante;
-import model1.Utente;
-import model1.Orario;
+import model.Orario;
+import model.Prenotazione;
+import model.Ristorante;
+import model.Utente;
 
 class TestTest {
 	

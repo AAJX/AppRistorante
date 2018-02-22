@@ -2,11 +2,11 @@ package business;
 
 import javax.persistence.EntityManager;
 
-import model1.Citta;
-import model1.Prenotazione;
-import model1.Regione;
-import model1.Ristorante;
-import model1.Utente;
+import model.Citta;
+import model.Prenotazione;
+import model.Regione;
+import model.Ristorante;
+import model.Utente;
 
 
 public class GestoreRistoranti {

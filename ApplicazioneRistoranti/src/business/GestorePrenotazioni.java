@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-import model1.Prenotazione;
-import model1.*;
+import model.Prenotazione;
+import model.*;
 
 public class GestorePrenotazioni {
 	

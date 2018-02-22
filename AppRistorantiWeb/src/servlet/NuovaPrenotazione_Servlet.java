@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import business.GestorePrenotazioni;
-import model1.Prenotazione;
-import model1.Ristorante;
-import model1.Utente;
+import model.Prenotazione;
+import model.Ristorante;
+import model.Utente;
 
 /**
  * Servlet implementation class NuovaPrenotazione_Servlet

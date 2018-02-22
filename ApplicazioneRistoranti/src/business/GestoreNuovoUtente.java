@@ -3,7 +3,7 @@ package business;
 import javax.persistence.EntityManager;
 
 
-import model1.Utente;
+import model.Utente;
 
 
 public class GestoreNuovoUtente {

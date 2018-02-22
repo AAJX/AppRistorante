@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import business.GestoreNuovoUtente;
-import model1.Utente;
+import model.Utente;
 
 /**
  * Servlet implementation class EliminaAccountServlet

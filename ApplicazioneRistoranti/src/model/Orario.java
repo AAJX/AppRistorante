@@ -1,4 +1,4 @@
-package model1;
+package model;
 
 public class Orario {
 

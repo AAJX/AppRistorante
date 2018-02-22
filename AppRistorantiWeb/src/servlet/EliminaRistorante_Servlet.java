@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import business.GestoreRistoranti;
-import model1.Ristorante;
+import model.Ristorante;
 
 /**
  * Servlet implementation class EliminaRistorante_Servlet
