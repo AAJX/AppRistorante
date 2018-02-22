@@ -39,11 +39,11 @@ public class NuovoRistorante_Servlet extends HttpServlet {
 		
 		Regione regione = om.readValue(request.getParameter("regione"), Regione.class);
 		Citta citta = om.readValue(request.getParameter("citta"), Citta.class);
-		Ristorante r = om.readValue(request.getParameter("r"), Ristorante.class);
+		Ristorante ristorante = om.readValue(request.getParameter("r"), Ristorante.class);
 		
 		GestoreRistoranti gr = new GestoreRistoranti();
 
-		Boolean registrato = gr.aggiungiRistorante(regione, citta, r);
+		Boolean registrato = gr.aggiungiRistorante(regione, citta, ristorante);
 		response.getWriter().append(registrato.toString());
 	}
 
