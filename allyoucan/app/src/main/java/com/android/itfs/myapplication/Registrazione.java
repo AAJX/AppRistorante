@@ -1,13 +1,13 @@
-package com.android.itfs.myapplication;
+package com.android.itfs.myapplication.model;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class elencoristoranti extends AppCompatActivity {
+public class Registrazione extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elencoristoranti);
+        setContentView(R.layout.activity_registrazione);
     }
 }
