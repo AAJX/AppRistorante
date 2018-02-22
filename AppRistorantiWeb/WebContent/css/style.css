@@ -19,25 +19,47 @@
 
  #btnLog {
 	position: relative;
-	top:500px;
-	
+	top:60%;
+	width:30%;
+}
+ #btnLog2 {
+	position: relative;
+	top:60%;
+	width:30%;
 }
 <!-- login -->
 <!-- homepage   --> 
 
-#ristojumb{
-    background-color: #ffe5a0;
-    margin-top:20px;
-}
-
-
-#ristorantislide {
-background-color:yellow;
-	width:100%;
-}
-
 #bodyhome {
 	margin-top:0;
-
 }
 
+#logo {
+	width:50%;
+}
+
+.fixed 
+{
+    min-height:90px;
+    max-width:100%;
+    background-color:red;
+    transition: background 500ms;
+}
+.navbar-light .navbar-nav .active>.nav-link {
+	color:#f8f9fa;
+	
+}
+.navbar-light .navbar-nav .nav-link {
+	color:#f8f9fa;
+	
+}
+
+
+.navbar-nav {
+    float: left;
+    margin: 0 0 0 75px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+	padding-right:1.5rem;
+}

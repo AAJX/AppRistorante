@@ -8,12 +8,36 @@
 <link rel="stylesheet" href="css/style.css">
 <body id="bodyhome">
 
-<nav class="navbar fixed-top navbar-light">
- <nav class="navbar navbar-light ">
-  <img class="navbar-brand" src="media/risto/logo.jpg"></img>
+<nav id="fix" class="navbar fixed-top navbar-light navbar-expand-lg">
+  <a href="#"> <img id="logo" class="navbar-brand"  src="media/risto/logo.jpg"></img> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul> 
+  </div>
+<button type="button" class="btn btn-outline-light" style="font-weight:bold;">Accedi</button>
 </nav>
-</nav>
-
 
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner" >
@@ -49,15 +73,20 @@
 	  </a>
 	</div>
 
-
+<h1  class="text-danger text-center">Scegli la tua meta!</h1>
 
  
-<div class=jumbotron>
-<p>ciao</p>
+<div class=container>
+<nav id="vic" class="navbar navbar-light navbar-expand-lg bg-dark">
+  <a href="#">ciao</a>
+  
+  
+</nav>
 </div>
-<div class=jumbotron>
-<p>ciao</p>
-</div>
+
+
+<img  src="media/risto/dining-food-Banner-1920-x-750.jpg" style="width:100%;margin-top:10%;">
+
 
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
