@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -15,6 +18,7 @@ public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="CODICE_UTENTE")
 	private int codiceUtente;
 
@@ -31,6 +35,7 @@ public class Utente implements Serializable {
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
+	@JsonIgnore
 	private List<Prenotazione> prenotazioni;
 
 	public Utente() {

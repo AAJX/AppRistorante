@@ -46,7 +46,7 @@ public class Ristorante implements Serializable {
 	private List<Prenotazione> prenotazioni;
 
 	//bi-directional many-to-one association to Citta
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Citta citta;
 
 	public Ristorante() {

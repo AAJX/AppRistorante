@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -15,6 +18,7 @@ public class Citta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	
 	@Column(name="ID_CITTA")
 	private int idCitta;
 
@@ -25,7 +29,8 @@ public class Citta implements Serializable {
 	private Regione regione;
 
 	//bi-directional many-to-one association to Ristorante
-	@OneToMany(mappedBy="citta")
+	@OneToMany(mappedBy="citta",cascade=CascadeType.ALL)
+	@JsonIgnore
 	private List<Ristorante> ristoranti;
 
 	public Citta() {

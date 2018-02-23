@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import business.GestorePrenotazioni;
+import business.JPAUtility;
 import model.Prenotazione;
 import model.Ristorante;
 import model.Utente;
@@ -38,13 +39,14 @@ public class ModificaPrenotazione_Servlet extends HttpServlet {
 		
 		ObjectMapper om = new ObjectMapper();
 		
-		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
-		Ristorante ristorante = om.readValue(request.getParameter("r"), Ristorante.class);
+		
 		Prenotazione prenotazione = om.readValue(request.getParameter("prenotazione"), Prenotazione.class);
+		int idRistorante = Integer.parseInt(request.getParameter("idRistorante"));
+		int codiceUtente = Integer.parseInt(request.getParameter("codiceUtente"));
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean modificata = gp.modificaPrenotazione(utente, ristorante, prenotazione);
+		Boolean modificata = gp.modificaPrenotazione(prenotazione, idRistorante, codiceUtente);
 		
 		response.getWriter().append(modificata.toString());
 	}

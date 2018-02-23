@@ -1,8 +1,9 @@
 package business;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 
-
+import model.Ristorante;
 import model.Utente;
 
 
@@ -29,7 +30,55 @@ public class GestoreNuovoUtente {
 	}	
 		
 			
+	//ELIMINA UTENTE
+	
+			public boolean eliminaUtente(Utente utente) {
+
+				EntityManager em = JPAUtility.getInstance().getEm();
+				
+				Utente u = em.find(Utente.class,utente.getCodiceUtente());
+				
+				
+				if (u != null ) {
+				  em.getTransaction().begin();
+				  em.remove(u);
+				  em.getTransaction().commit();
+				  return true;
+			}else {
+				return false;
+			}
+			  
+			  
+		}	
 			
+			// MODIFICA EMAIL-PASSWORD UTENTE		
+			
+			public boolean modificaUtente(Utente utente) {
+				
+				EntityManager em = JPAUtility.getInstance().getEm();
+				
+				
+				try {
+					Utente u = em.find(Utente.class, utente.getCodiceUtente());
+					
+					 em.getTransaction().begin();
+						em.merge(utente);
+						em.getTransaction().commit();
+						return true;
+					} catch (PersistenceException ex) {
+						return false;
+					}
+					
+
+					
+				
+			}
+			
+	}  
+					  
+			
+				
+
 				
 					
 				
@@ -50,49 +99,7 @@ public class GestoreNuovoUtente {
 		
 		
 			
-		//ELIMINA UTENTE
-	
-		public boolean eliminaUtente(Utente utente) {
-
-			EntityManager em = JPAUtility.getInstance().getEm();
-			
-			Utente u = em.find(Utente.class,utente.getCodiceUtente());
-			
-			if (u != null ) {
-			  em.getTransaction().begin();
-			  em.merge(utente);
-			  em.getTransaction().commit();
-			  return true;
-		}else {
-			return false;
-		}
-		  
-		  
-	}	
-		// MODIFICA UTENTE
-		public boolean modificaUtente(Utente utente) {
-			
-			EntityManager em = JPAUtility.getInstance().getEm();
-			int codiceUtente = utente.getCodiceUtente();
-			
-			utente = em.find(Utente.class, codiceUtente);
-			
-			if (utente != null ) {
-
-				  em.getTransaction().begin();
-				  em.merge(utente);
-				  em.getTransaction().commit();
-				  return true;
-				  }else {
-						return false;
-					}
-			
-		}
-}  
-				  
-		
-			
-			
+					
 			  
 		
 		

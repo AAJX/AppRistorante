@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 
@@ -28,6 +31,7 @@ public class Prenotazione implements Serializable {
 
 	//bi-directional many-to-one association to Ristorante
 	@ManyToOne
+	@JsonIgnore
 	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente

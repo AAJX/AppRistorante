@@ -3,8 +3,8 @@ package business;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 
-import model.Prenotazione;
 import model.*;
 
 public class GestorePrenotazioni {
@@ -74,23 +74,21 @@ public class GestorePrenotazioni {
 		
 		// MODIFICA PRENOTAZIONE
 		
-		public boolean modificaPrenotazione(Utente utente, Ristorante ristorante, Prenotazione prenotazione) {
+		public boolean modificaPrenotazione(Prenotazione prenotazione, int idRistorante, int codiceUtente) {
 
 			EntityManager em = JPAUtility.getInstance().getEm();
-			
-			utente = em.find(Utente.class, utente.getCodiceUtente());
-			ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
-			
-			Prenotazione p = em.find(Prenotazione.class, prenotazione.getIdPrenotazione() );
-			
-			if (ristorante != null && utente != null && prenotazione != null ) {
+			try {
+				Ristorante ristorante = em.find(Ristorante.class, idRistorante);
+				Utente utente = em.find(Utente.class, codiceUtente);
+				
+				prenotazione.setRistorante(ristorante);
+				prenotazione.setUtente(utente);
 
 				em.getTransaction().begin();
-				
 				em.merge(prenotazione);
 				em.getTransaction().commit();
 				return true;
-			} else {
+			} catch (PersistenceException ex) {
 				return false;
 			}
 		}

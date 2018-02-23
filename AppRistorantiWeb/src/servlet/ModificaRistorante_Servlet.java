@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import business.GestoreRistoranti;
+import business.JPAUtility;
+import model.Citta;
 import model.Ristorante;
 
 /**
@@ -33,11 +35,15 @@ public class ModificaRistorante_Servlet extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ObjectMapper om = new ObjectMapper();
+		Citta citta = om.readValue(request.getParameter("citta"), Citta.class);
+		citta = JPAUtility.getInstance().getEm().find(Citta.class, citta.getIdCitta());
 		
-		Ristorante r = om.readValue(request.getParameter("r"), Ristorante.class);
+		Ristorante ristorante = om.readValue(request.getParameter("r"), Ristorante.class);
+		ristorante.setCitta(citta);
+		
 		GestoreRistoranti gr = new GestoreRistoranti();
 		
-		Boolean modifica = gr.modificaRistorante(r);
+		Boolean modifica = gr.modificaRistorante(ristorante);
 		
 		response.getWriter().append(modifica.toString());
 	}

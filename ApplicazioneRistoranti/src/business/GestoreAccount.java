@@ -3,7 +3,7 @@ package business;
 import javax.persistence.EntityManager;
 
 import model.Utente;
-/*
+
 public class GestoreAccount {
 	
 	public EsitoOperazioni login(String email, String password) {
@@ -97,4 +97,3 @@ public class GestoreAccount {
 	
 	
 }
-*/
