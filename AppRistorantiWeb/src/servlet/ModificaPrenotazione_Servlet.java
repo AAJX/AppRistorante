@@ -42,11 +42,11 @@ public class ModificaPrenotazione_Servlet extends HttpServlet {
 		
 		Prenotazione prenotazione = om.readValue(request.getParameter("prenotazione"), Prenotazione.class);
 		int idRistorante = Integer.parseInt(request.getParameter("idRistorante"));
-		int codiceUtente = Integer.parseInt(request.getParameter("codiceUtente"));
+		String email = om.readValue(request.getParameter("email"));
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean modificata = gp.modificaPrenotazione(prenotazione, idRistorante, codiceUtente);
+		Boolean modificata = gp.modificaPrenotazione(prenotazione, idRistorante, email);
 		
 		response.getWriter().append(modificata.toString());
 	}

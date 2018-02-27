@@ -15,7 +15,7 @@ public class GestoreNuovoUtente {
 
 		EntityManager em = JPAUtility.getInstance().getEm();
 		
-			 Utente u = em.find(Utente.class,utente.getCodiceUtente());
+			 Utente u = em.find(Utente.class,utente.getEmail());
 		
 			 if(u==null) {
 					em.getTransaction().begin();
@@ -36,7 +36,7 @@ public class GestoreNuovoUtente {
 
 				EntityManager em = JPAUtility.getInstance().getEm();
 				
-				Utente u = em.find(Utente.class,utente.getCodiceUtente());
+				Utente u = em.find(Utente.class,utente.getEmail());
 				
 				
 				if (u != null ) {
@@ -59,7 +59,7 @@ public class GestoreNuovoUtente {
 				
 				
 				try {
-					Utente u = em.find(Utente.class, utente.getCodiceUtente());
+					Utente u = em.find(Utente.class, utente.getEmail());
 					
 					 em.getTransaction().begin();
 						em.merge(utente);

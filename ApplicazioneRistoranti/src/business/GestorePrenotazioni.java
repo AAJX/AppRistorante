@@ -15,7 +15,7 @@ public class GestorePrenotazioni {
 
 			EntityManager em = JPAUtility.getInstance().getEm();
 			
-			 utente = em.find(Utente.class, utente.getCodiceUtente());
+			 utente = em.find(Utente.class, utente.getEmail());
 			 ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
 			
 			
@@ -36,10 +36,10 @@ public class GestorePrenotazioni {
 
 		// LEGGO PRENOTAZIONI UTENTE
 		
-		public List<Prenotazione> prenotazioniUtente(int codiceUtente) {
+		public List<Prenotazione> prenotazioniUtente(String email) {
 			EntityManager em = JPAUtility.getInstance().getEm();
 			try {
-				Utente u = em.find(Utente.class, codiceUtente);
+				Utente u = em.find(Utente.class, email);
 				if (u != null)
 					return u.getPrenotazioni();
 			} catch (Exception ex) {
@@ -74,12 +74,12 @@ public class GestorePrenotazioni {
 		
 		// MODIFICA PRENOTAZIONE
 		
-		public boolean modificaPrenotazione(Prenotazione prenotazione, int idRistorante, int codiceUtente) {
+		public boolean modificaPrenotazione(Prenotazione prenotazione, int idRistorante, String email) {
 
 			EntityManager em = JPAUtility.getInstance().getEm();
 			try {
 				Ristorante ristorante = em.find(Ristorante.class, idRistorante);
-				Utente utente = em.find(Utente.class, codiceUtente);
+				Utente utente = em.find(Utente.class, email);
 				
 				prenotazione.setRistorante(ristorante);
 				prenotazione.setUtente(utente);
@@ -98,7 +98,7 @@ public class GestorePrenotazioni {
 			public boolean eliminaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante ristorante) {
 				EntityManager em = JPAUtility.getInstance().getEm();
 					
-				utente = em.find(Utente.class, utente.getCodiceUtente());
+				utente = em.find(Utente.class, utente.getEmail());
 				ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
 					
 				prenotazione = em.find(Prenotazione.class,prenotazione.getIdPrenotazione());

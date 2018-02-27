@@ -17,13 +17,13 @@ import java.util.List;
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CODICE_UTENTE")
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Column(name="CODICE_UTENTE")
 	private int codiceUtente;
 
 	private String cognome;
-
+    @Id
 	private String email;
 
 	private String nome;
@@ -41,13 +41,13 @@ public class Utente implements Serializable {
 	public Utente() {
 	}
 
-	public int getCodiceUtente() {
-		return this.codiceUtente;
-	}
-
-	public void setCodiceUtente(int codiceUtente) {
-		this.codiceUtente = codiceUtente;
-	}
+//	public int getCodiceUtente() {
+//		return this.codiceUtente;
+//	}
+//
+//	public void setCodiceUtente(int codiceUtente) {
+//		this.codiceUtente = codiceUtente;
+//	}
 
 	public String getCognome() {
 		return this.cognome;
