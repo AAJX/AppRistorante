@@ -14,29 +14,24 @@ import java.util.List;
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-<<<<<<< HEAD
-	@Id
-	private String email;
-=======
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name="CODICE_UTENTE")
-	private int codiceUtente;
->>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 
-	private String cognome;
-<<<<<<< HEAD
-=======
+	
+
+	
+
     @Id
 	private String email;
->>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
 
+    private String password;
+    
 	private String nome;
+	
+	private String cognome;
 
 	@Column(name="NUMERO_TELEFONO")
 	private String numeroTelefono;
 
-	private String password;
+	
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
@@ -45,25 +40,9 @@ public class Utente implements Serializable {
 	public Utente() {
 	}
 
-<<<<<<< HEAD
-=======
-//	public int getCodiceUtente() {
-//		return this.codiceUtente;
-//	}
-//
-//	public void setCodiceUtente(int codiceUtente) {
-//		this.codiceUtente = codiceUtente;
-//	}
 
-	public String getCognome() {
-		return this.cognome;
-	}
 
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-
->>>>>>> branch 'master' of https://github.com/AAJX/AppRistorante.git
+	
 	public String getEmail() {
 		return this.email;
 	}
