@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import business.GestoreListaRistoranti;
 import business.GestorePrenotazioniRistorante;
 
-class PrenotazioniRistoranteTest {
+class ListaRistorantiTest {
 
 	@Test
-	public void TestPrenotazioniPerRistorante() {
-		GestorePrenotazioniRistorante p = new GestorePrenotazioniRistorante();
-		p.prenotazioni(1);
+	public void TestListaRistorante() {
+		GestoreListaRistoranti p = new GestoreListaRistoranti();
+		p.ristorantiCitta(1);
 	}
 
 }

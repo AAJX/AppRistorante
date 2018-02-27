@@ -1,52 +1,47 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import business.GestorePrenotazioni;
-import business.JPAUtility;
-import model.Prenotazione;
-import model.Ristorante;
-import model.Utente;
 
 /**
- * Servlet implementation class ModificaPrenotazione_Servlet
+ * Servlet implementation class ModificaOrarioPrenotazione
  */
-@WebServlet("/modificaPrenotazione")
-public class ModificaPrenotazione_Servlet extends HttpServlet {
+@WebServlet(name = "ModificaOrarioPrenotazione_Servlet", urlPatterns = { "/modificaOrarioPrenotazione" })
+public class ModificaOrarioPrenotazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificaPrenotazione_Servlet() {
+    public ModificaOrarioPrenotazione() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ObjectMapper om = new ObjectMapper();
-		
-		
-		Prenotazione prenotazione = om.readValue(request.getParameter("prenotazione"), Prenotazione.class);
-		int idRistorante = Integer.parseInt(request.getParameter("idRistorante"));
-		int codiceUtente = Integer.parseInt(request.getParameter("codiceUtente"));
+		int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
+		String email = request.getParameter("email");
+		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
+		String orario = request.getParameter("orario");
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean modificata = gp.modificaPrenotazione(prenotazione, idRistorante, codiceUtente);
+		Boolean modificata = gp.modificaOraPrenotazione(email, idRistorante, idPrenotazione, orario);
 		
 		response.getWriter().append(modificata.toString());
 	}

@@ -37,13 +37,19 @@ public class NuovoRistorante_Servlet extends HttpServlet {
 		ObjectMapper om = new ObjectMapper();
 
 		
-		Regione regione = om.readValue(request.getParameter("regione"), Regione.class);
-		Citta citta = om.readValue(request.getParameter("citta"), Citta.class);
-		Ristorante ristorante = om.readValue(request.getParameter("r"), Ristorante.class);
+		int idRegione = Integer.parseInt(request.getParameter("regione"));
+		int idCitta = Integer.parseInt(request.getParameter("citta"));
+		int idRistorante = Integer.parseInt(request.getParameter("idRistorante"));
+		String categoria = request.getParameter("categoria");
+		String indirizzo = request.getParameter("indirizzo");
+		String nome = request.getParameter("nome");
+		int numeroPosti = Integer.parseInt(request.getParameter("numeroPosti"));
+		float prezzoMenu = Float.parseFloat(request.getParameter("prezzoMenu"));
+		String telefonoRistorante = request.getParameter("telefonoRistorante");
 		
 		GestoreRistoranti gr = new GestoreRistoranti();
 
-		Boolean registrato = gr.aggiungiRistorante(regione, citta, ristorante);
+		Boolean registrato = gr.aggiungiRistorante(idRegione, idCitta, idRistorante, categoria, indirizzo, nome, numeroPosti, prezzoMenu, telefonoRistorante);
 		response.getWriter().append(registrato.toString());
 	}
 

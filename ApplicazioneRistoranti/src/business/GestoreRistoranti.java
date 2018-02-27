@@ -12,26 +12,36 @@ import model.Utente;
 public class GestoreRistoranti {
 
 	// CREA NUOVO RISTORANTE
-	public boolean aggiungiRistorante(Regione regione, Citta citta, Ristorante ristorante) {
+	
+	public boolean aggiungiRistorante(int idRegione, int idCitta, int idRistorante,String categoria,
+			String indirizzo,String nome,int numeroPosti,float prezzoMenu,String telefonoRistorante) {
+
+		
 
 		EntityManager em = JPAUtility.getInstance().getEm();
-
-		citta = em.find(Citta.class, citta.getIdCitta());
-		regione = em.find(Regione.class, regione.getIdRegione());
-
-		if (citta != null && regione != null) {
+		
+		 Regione reg = em.find(Regione.class,idRegione);
+		 Citta c = em.find(Citta.class, idCitta);
+		 Ristorante r = new Ristorante();
+		
+		if (reg != null && c != null ) {
 
 			em.getTransaction().begin();
-			citta.setRegione(regione);
-			ristorante.setCitta(citta);
-			em.persist(ristorante);
+			c.setRegione(reg);
+			r.setCitta(c);
+			r.setIdRistorante(idRistorante);
+			r.setCategoria(categoria);
+			r.setIndirizzo(indirizzo);
+			r.setNome(nome);
+			r.setNumeroPosti(numeroPosti);
+			r.setPrezzoMenu(prezzoMenu);
+			r.setTelefonoRistorante(telefonoRistorante);
+			em.persist(r);
 			em.getTransaction().commit();
-
 			return true;
+		} else {
+			return false;
 		}
-
-		return false;
-
 	}
 
 	public boolean eliminaRistorante(Ristorante ristorante) {

@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -43,10 +46,12 @@ public class Ristorante implements Serializable {
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="ristorante")
+	@JsonIgnore
 	private List<Prenotazione> prenotazioni;
 
 	//bi-directional many-to-one association to Citta
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Citta citta;
 
 	public Ristorante() {

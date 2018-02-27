@@ -12,44 +12,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import business.GestorePrenotazioni;
-import model.Prenotazione;
-import model.Ristorante;
-import model.Utente;
 
 /**
- * Servlet implementation class NuovaPrenotazione_Servlet
+ * Servlet implementation class ModificaDataPrenotazione_Servlet
  */
-@WebServlet("/nuovaPrenotazione")
-public class NuovaPrenotazione_Servlet extends HttpServlet {
+@WebServlet("/modificaDataPrenotazione")
+public class ModificaDataPrenotazione_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	GestorePrenotazioni gp = new GestorePrenotazioni();
-	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NuovaPrenotazione_Servlet() {
+    public ModificaDataPrenotazione_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ObjectMapper om = new ObjectMapper();
-		
+		int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
 		String email = request.getParameter("email");
 		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
-		
-		int idPrenotazione = Integer.parseInt(request.getParameter("id"));
-		String orario = request.getParameter("orario");
-		int numeroPrenotati = Integer.parseInt(request.getParameter("numeroPrenotati"));
 		String data = request.getParameter("data");
 		DateFormat df = new SimpleDateFormat ("yyyy-MM-dd");
 		Date dataPrenotazione = new Date();
@@ -59,12 +46,11 @@ public class NuovaPrenotazione_Servlet extends HttpServlet {
 		}catch ( ParseException e) {
 			e.printStackTrace();
 		}
+		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
+		Boolean modificata = gp.modificaDataPrenotazione(email, idRistorante, idPrenotazione, dataPrenotazione);
 		
-		
-		Boolean andataBuonFine = gp.nuovaPrenotazione(email, idRistorante, idPrenotazione, orario, numeroPrenotati, dataPrenotazione);
-		
-		response.getWriter().append(andataBuonFine.toString());
+		response.getWriter().append(modificata.toString());
 	}
 
 }
