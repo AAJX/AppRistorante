@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import business.EsitoOperazioni;
+import business.GestoreAccount;
 import business.GestoreNuovoUtente;
 import business.GestoreRistoranti;
 import model.Citta;
@@ -22,8 +26,9 @@ import model.Utente;
 @WebServlet("/nuovoAccount")
 public class NuovoAccount_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
+       private GestoreAccount ga = new GestoreAccount();
+       private ObjectMapper om = new ObjectMapper();    
+       /**
      * @see HttpServlet#HttpServlet()
      */
     public NuovoAccount_Servlet() {
@@ -37,14 +42,25 @@ public class NuovoAccount_Servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ObjectMapper om = new ObjectMapper();
+		//ObjectMapper om = new ObjectMapper();
 
-		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
+		/*Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
+		*/
+		String email = request.getParameter("email");
+		String nome = request.getParameter("nome");
+		String cognome =request.getParameter("cognome");
+		String numeroTelefono = request.getParameter("numeroTelefono");
+		String password = request.getParameter("password");
 		
-		GestoreNuovoUtente gnu = new GestoreNuovoUtente();
+		EsitoOperazioni eo = ga.registraUtente(email, cognome, nome, numeroTelefono, password);
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		out.append(om.writeValueAsString(eo));
+		//GestoreNuovoUtente gnu = new GestoreNuovoUtente();
 
-		Boolean registrato = gnu.nuovoUtente(utente);
-		response.getWriter().append(registrato.toString());
+		/*Boolean registrato = gnu.nuovoUtente(utente);
+		response.getWriter().append(registrato.toString());*/
+		
 	}
 
 }
