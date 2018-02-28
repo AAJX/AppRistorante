@@ -55,8 +55,8 @@ public class Prenotazione implements Serializable {
 		this.idPrenotazione = idPrenotazione;
 	}
 
-	public Date getData() {
-		return this.data;
+	public String getData() {
+		return sdf.format(this.data);
 	}
 
 	public void setData(Date data) {

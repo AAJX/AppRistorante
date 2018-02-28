@@ -11,11 +11,59 @@ $(window).scroll(function () {
 });
 });
 
+// registra
+/*$('#btnRegister').click(function(e) {
+	// 1. impedire al form HTML di fare submit
+	e.preventDefault();
+	$.ajax({
+		url: 'nuovoAccount',
+		method: 'post',
+		data: $('#frmRegister').serialize()
+	})
+	.done(function(esito){
+		console.log(esito);
+		if(esito.success) {
+			localStorage.setItem('utente', JSON.stringify(esito.oggettoRisultante));
+			// andare alla pagina areariservata
+			location.href ='Homepage.html';
+		} else {
+			$('#pnlErrLogin').show('fast').delay(2000).hide('fast');
+		}
+	})
+	.fail(function() {
+		console.log('qualcosa e andato storto.')
+	});
+	
+});*/
+
+
+$('#btnRegister').click(function(e) {
+	// 1. impedire al form HTML di fare submit
+	e.preventDefault();
+
+	
+	$.ajax({
+	url : 'nuovoAccount',
+	method : 'post',
+	data : $('#frmRegister').serialize()
+	}).done(function(esito) {
+	console.log(esito);
+	if (esito.success) {
+	
+	alert("Utente registrato correttamente nel db")
+	} else {
+	alert("qualcosa è andato storto")
+	}
+	});
+
+	});
+
+	// Login
 $('#btnLogin').click(function(e) {
 	// 1. impedire al form HTML di fare submit
 	e.preventDefault();
 	$.ajax({
-		url: 'login',
+		url: 'Login',
 		method: 'post',
 		data: $('#frmLogin').serialize()
 	})
@@ -24,7 +72,7 @@ $('#btnLogin').click(function(e) {
 		if(esito.success) {
 			localStorage.setItem('utente', JSON.stringify(esito.oggettoRisultante));
 			// andare alla pagina areariservata
-			location.href ='areariservata.html';
+			location.href ='Homepage.html';
 		} else {
 			$('#pnlErrLogin').show('fast').delay(2000).hide('fast');
 		}
@@ -34,3 +82,55 @@ $('#btnLogin').click(function(e) {
 	});
 	
 });
+
+//popola la pagina ristorante
+
+
+
+
+
+
+$("#btnconte").click(function() {
+	location.href='PagRisto.html';
+	
+    	$.ajax({
+		url: 'prova.html',
+		method: 'post'
+	})
+	.done(function(risposta) {
+		$('#par').html(risposta);
+	});
+  
+	
+})
+
+//	jQuery('a').click(function(){
+//		  $("#madre").data('clicked', true);
+//		  $('#par').addClass('prova');
+//		})
+		
+//if('#conte') {
+//	$.ajax({
+//		url: 'prova.html',
+//		method: 'post'
+//	})
+//	.done(function(risposta) {
+//		$('#par').html(risposta);
+//	});
+//}
+//	
+//if('#madre') {
+//	$.ajax({
+//		url: 'prova2.html',
+//		method: 'post'
+//	})
+//	.done(function(risposta) {
+//		$('#par').html(risposta);
+//	});
+//}
+
+	
+	
+
+
+	

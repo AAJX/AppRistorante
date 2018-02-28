@@ -42,7 +42,7 @@ public class NuovaPrenotazione_Servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ObjectMapper om = new ObjectMapper();
+		
 		
 		String email = request.getParameter("email");
 		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
