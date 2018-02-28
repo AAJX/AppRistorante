@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -43,10 +46,12 @@ public class Ristorante implements Serializable {
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="ristorante")
-	private List<Prenotazione> prenotaziones;
+	@JsonIgnore
+	private List<Prenotazione> prenotazioni;
 
 	//bi-directional many-to-one association to Citta
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Citta citta;
 
 	public Ristorante() {
@@ -140,26 +145,26 @@ public class Ristorante implements Serializable {
 		this.telefonoRistorante = telefonoRistorante;
 	}
 
-	public List<Prenotazione> getPrenotaziones() {
-		return this.prenotaziones;
+	public List<Prenotazione> getPrenotazioni() {
+		return this.prenotazioni;
 	}
 
-	public void setPrenotaziones(List<Prenotazione> prenotaziones) {
-		this.prenotaziones = prenotaziones;
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
 	}
 
-	public Prenotazione addPrenotazione(Prenotazione prenotazione) {
-		getPrenotaziones().add(prenotazione);
-		prenotazione.setRistorante(this);
+	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().add(prenotazioni);
+		prenotazioni.setRistorante(this);
 
-		return prenotazione;
+		return prenotazioni;
 	}
 
-	public Prenotazione removePrenotazione(Prenotazione prenotazione) {
-		getPrenotaziones().remove(prenotazione);
-		prenotazione.setRistorante(null);
+	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
+		getPrenotazioni().remove(prenotazioni);
+		prenotazioni.setRistorante(null);
 
-		return prenotazione;
+		return prenotazioni;
 	}
 
 	public Citta getCitta() {

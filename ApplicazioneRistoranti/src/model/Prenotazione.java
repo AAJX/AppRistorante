@@ -1,7 +1,12 @@
 package model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 
@@ -20,6 +25,9 @@ public class Prenotazione implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date data;
+	
+	@Transient
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Column(name="NUMERO_PRENOTATI")
 	private int numeroPrenotati;
@@ -28,10 +36,12 @@ public class Prenotazione implements Serializable {
 
 	//bi-directional many-to-one association to Ristorante
 	@ManyToOne
+	@JsonIgnore
 	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente
 	@ManyToOne
+	@JsonIgnore
 	private Utente utente;
 
 	public Prenotazione() {
@@ -45,10 +55,11 @@ public class Prenotazione implements Serializable {
 		this.idPrenotazione = idPrenotazione;
 	}
 
-	public Date getData() {
-		return this.data;
+	public String getData() {
+		return sdf.format(this.data);
 	}
 
+	
 	public void setData(Date data) {
 		this.data = data;
 	}
@@ -68,7 +79,7 @@ public class Prenotazione implements Serializable {
 	public void setOrario(String orario) {
 		this.orario = orario;
 	}
-
+	@JsonIgnore
 	public Ristorante getRistorante() {
 		return this.ristorante;
 	}

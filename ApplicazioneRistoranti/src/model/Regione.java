@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -23,7 +26,8 @@ public class Regione implements Serializable {
 
 	//bi-directional many-to-one association to Citta
 	@OneToMany(mappedBy="regione")
-	private List<Citta> cittas;
+	@JsonIgnore
+	private List<Citta> citta;
 
 	public Regione() {
 	}
@@ -43,24 +47,24 @@ public class Regione implements Serializable {
 	public void setNomeRegione(String nomeRegione) {
 		this.nomeRegione = nomeRegione;
 	}
-
-	public List<Citta> getCittas() {
-		return this.cittas;
+	@JsonIgnore
+	public List<Citta> getCitta() {
+		return this.citta;
 	}
 
-	public void setCittas(List<Citta> cittas) {
-		this.cittas = cittas;
+	public void setCitta(List<Citta> citta) {
+		this.citta = citta;
 	}
 
 	public Citta addCitta(Citta citta) {
-		getCittas().add(citta);
+		getCitta().add(citta);
 		citta.setRegione(this);
 
 		return citta;
 	}
 
 	public Citta removeCitta(Citta citta) {
-		getCittas().remove(citta);
+		getCitta().remove(citta);
 		citta.setRegione(null);
 
 		return citta;

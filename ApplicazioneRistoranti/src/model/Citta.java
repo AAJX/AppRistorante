@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -22,11 +25,13 @@ public class Citta implements Serializable {
 
 	//bi-directional many-to-one association to Regione
 	@ManyToOne
+	@JsonIgnore
 	private Regione regione;
 
 	//bi-directional many-to-one association to Ristorante
-	@OneToMany(mappedBy="citta")
-	private List<Ristorante> ristorantes;
+	@OneToMany(mappedBy="citta",cascade=CascadeType.ALL)
+	@JsonIgnore
+	private List<Ristorante> ristoranti;
 
 	public Citta() {
 	}
@@ -54,27 +59,27 @@ public class Citta implements Serializable {
 	public void setRegione(Regione regione) {
 		this.regione = regione;
 	}
-
-	public List<Ristorante> getRistorantes() {
-		return this.ristorantes;
+	@JsonIgnore
+	public List<Ristorante> getRistoranti() {
+		return this.ristoranti;
 	}
 
-	public void setRistorantes(List<Ristorante> ristorantes) {
-		this.ristorantes = ristorantes;
+	public void setRistoranti(List<Ristorante> ristoranti) {
+		this.ristoranti = ristoranti;
 	}
 
-	public Ristorante addRistorante(Ristorante ristorante) {
-		getRistorantes().add(ristorante);
-		ristorante.setCitta(this);
+	public Ristorante addRistoranti(Ristorante ristoranti) {
+		getRistoranti().add(ristoranti);
+		ristoranti.setCitta(this);
 
-		return ristorante;
+		return ristoranti;
 	}
 
-	public Ristorante removeRistorante(Ristorante ristorante) {
-		getRistorantes().remove(ristorante);
-		ristorante.setCitta(null);
+	public Ristorante removeRistoranti(Ristorante ristoranti) {
+		getRistoranti().remove(ristoranti);
+		ristoranti.setCitta(null);
 
-		return ristorante;
+		return ristoranti;
 	}
 
 }
