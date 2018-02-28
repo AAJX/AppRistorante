@@ -16,12 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".elencoristoranti" />
+        <activity android:name=".Registrazione" />
         <activity android:name=".MenuPrincipale" />
-        <activity android:name=".fragment.LoginFragment" />
         <activity android:name=".ExploreNotLogged" />
         <activity android:name=".Explore" />
-        <activity android:name=".Prenotazione"></activity>
+        <activity android:name=".Prenotazione" />
+        <activity android:name=".Ristorante"></activity>
     </application>
 
 </manifest>

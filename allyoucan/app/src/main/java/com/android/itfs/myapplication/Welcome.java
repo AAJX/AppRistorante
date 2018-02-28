@@ -10,15 +10,17 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 
 public class Welcome extends AppCompatActivity {
 
 
-    private VideoView videoview;
+    private com.crust87.texturevideoview.widget.TextureVideoView videoview ;
 
     private Button login;
+    private Button signup;
 
     private Dialog loginDialog;
     private Button accediDialog;
@@ -47,8 +49,10 @@ public class Welcome extends AppCompatActivity {
         esploraB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent openExploreNL = new Intent(Welcome.this, ExploreNotLogged.class);
+                Intent openExploreNL = new Intent(Welcome.this, Explore.class);
                 startActivity(openExploreNL);
+
+                //modificare enl
 
             }
         });
@@ -74,6 +78,10 @@ public class Welcome extends AppCompatActivity {
                 accediDialog.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        Toast.makeText(view.getContext(), "apro dialog login", Toast.LENGTH_LONG).show();
+
+
                         final String email = mail.getText().toString().trim();
                         final String password = pwd.getText().toString().trim();
 
@@ -82,7 +90,6 @@ public class Welcome extends AppCompatActivity {
 
                                 //Utility.lockscreen-> schermo non cliccabile
                                 //progressBar.setVisibility(View.VISIBLE);
-                                
 
                             }
                         }
@@ -93,6 +100,18 @@ public class Welcome extends AppCompatActivity {
                 loginDialog.show();
             }
         });
+
+        signup = (Button)findViewById(R.id.signup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(view.getContext(), Registrazione.class);
+                startActivity(i);
+
+                };
+        });
+
 
         videoview.start();
 
