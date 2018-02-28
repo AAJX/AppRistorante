@@ -59,6 +59,7 @@ public class Prenotazione implements Serializable {
 		return sdf.format(this.data);
 	}
 
+	
 	public void setData(Date data) {
 		this.data = data;
 	}
