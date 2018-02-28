@@ -8,11 +8,17 @@ import business.GestoreListaPrenotazioni;
 import business.GestoreListaRistoranti;
 
 class PrenotazioniTest {
-
+/*
 	@Test
 	public void PrenotazioniPerUtente() {
 		GestoreListaPrenotazioni pre = new GestoreListaPrenotazioni();
-		pre.prenotazioni(3);
+		pre.prenotazioniUtente("aaa@bbb");
 	}
-
+	*/
+	@Test
+	public void TuttePrenotazioni() {
+		GestoreListaPrenotazioni pre = new GestoreListaPrenotazioni();
+		pre.tutteLePrenotazioni();
+	
+}
 }

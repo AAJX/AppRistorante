@@ -19,7 +19,7 @@ public class GestorePrenotazioniRistorante {
 			    "SELECT p FROM Prenotazione p WHERE p.ristorante = :ristorante",Prenotazione.class).setParameter("ristorante", r).getResultList();
 			
 		for( Prenotazione p:list) {
-			System.out.println(p.getRistorante().getCategoria());
+			System.out.println(p.getRistorante().getNome());
 		}
 		
 		return list;    

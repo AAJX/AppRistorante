@@ -47,7 +47,7 @@ public class Regione implements Serializable {
 	public void setNomeRegione(String nomeRegione) {
 		this.nomeRegione = nomeRegione;
 	}
-
+	@JsonIgnore
 	public List<Citta> getCitta() {
 		return this.citta;
 	}

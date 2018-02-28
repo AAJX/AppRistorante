@@ -18,7 +18,6 @@ public class Citta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	
 	@Column(name="ID_CITTA")
 	private int idCitta;
 
@@ -26,6 +25,7 @@ public class Citta implements Serializable {
 
 	//bi-directional many-to-one association to Regione
 	@ManyToOne
+	@JsonIgnore
 	private Regione regione;
 
 	//bi-directional many-to-one association to Ristorante
@@ -59,7 +59,7 @@ public class Citta implements Serializable {
 	public void setRegione(Regione regione) {
 		this.regione = regione;
 	}
-
+	@JsonIgnore
 	public List<Ristorante> getRistoranti() {
 		return this.ristoranti;
 	}

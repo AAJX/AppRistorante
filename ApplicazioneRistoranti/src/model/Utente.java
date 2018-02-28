@@ -2,9 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 
@@ -17,37 +14,42 @@ import java.util.List;
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name="CODICE_UTENTE")
-	private int codiceUtente;
 
-	private String cognome;
+	
+
+	
+
     @Id
 	private String email;
 
+    private String password;
+    
 	private String nome;
+	
+	private String cognome;
 
 	@Column(name="NUMERO_TELEFONO")
 	private String numeroTelefono;
 
-	private String password;
+	
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
-	@JsonIgnore
 	private List<Prenotazione> prenotazioni;
 
 	public Utente() {
 	}
 
-//	public int getCodiceUtente() {
-//		return this.codiceUtente;
-//	}
-//
-//	public void setCodiceUtente(int codiceUtente) {
-//		this.codiceUtente = codiceUtente;
-//	}
+
+
+	
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getCognome() {
 		return this.cognome;
@@ -55,14 +57,6 @@ public class Utente implements Serializable {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
-	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getNome() {

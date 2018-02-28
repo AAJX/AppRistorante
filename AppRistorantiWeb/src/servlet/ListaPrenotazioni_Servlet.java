@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,20 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import business.GestoreListaPrenotazioni;
 import business.GestoreListaRistoranti;
-import model.Ristorante;
+import model.Utente;
+
 
 /**
- * Servlet implementation class ListaRistoranti_Servlet
+ * Servlet implementation class ListaPrenotazioni_Servlet
  */
-@WebServlet("/listaRistoranti")
-public class ListaRistoranti_Servlet extends HttpServlet {
+@WebServlet("/listaPrenotazioni")
+public class ListaPrenotazioni_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListaRistoranti_Servlet() {
+    public ListaPrenotazioni_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,24 +34,21 @@ public class ListaRistoranti_Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
 		try {
-		GestoreListaRistoranti glr = new GestoreListaRistoranti();
+		GestoreListaPrenotazioni glp = new GestoreListaPrenotazioni();
 		ObjectMapper m = new ObjectMapper();
 		response.setContentType("application/json");
-		String citta = request.getParameter("citta");
-		if (citta == null) {
-			response.getWriter().append(m.writeValueAsString(glr.tuttiRistoranti()));
+		String utente = request.getParameter("utente");
+		if (utente == null) {
+			response.getWriter().append(m.writeValueAsString(glp.tutteLePrenotazioni()));
 		} else {
-			int idCitta = Integer.parseInt(citta);
-			response.getWriter().append(m.writeValueAsString(glr.ristorantiCitta(idCitta )));
+			String email = request.getParameter(utente);
+			response.getWriter().append(m.writeValueAsString(glp.prenotazioniUtente(email)));
 		}
 		}catch(Exception ioe) {
 			ioe.printStackTrace();
 		
-		}
+		}	
+		
 	}
 
-	}
-	
-
-
-
+}
