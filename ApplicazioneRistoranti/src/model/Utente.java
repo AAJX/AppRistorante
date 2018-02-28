@@ -14,35 +14,25 @@ import java.util.List;
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-
-	
-
-	
-
-    @Id
+	@Id
 	private String email;
 
-    private String password;
-    
-	private String nome;
-	
 	private String cognome;
+
+	private String nome;
 
 	@Column(name="NUMERO_TELEFONO")
 	private String numeroTelefono;
 
-	
+	private String password;
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
-	private List<Prenotazione> prenotazioni;
+	private List<Prenotazione> prenotaziones;
 
 	public Utente() {
 	}
 
-
-
-	
 	public String getEmail() {
 		return this.email;
 	}
@@ -83,26 +73,26 @@ public class Utente implements Serializable {
 		this.password = password;
 	}
 
-	public List<Prenotazione> getPrenotazioni() {
-		return this.prenotazioni;
+	public List<Prenotazione> getPrenotaziones() {
+		return this.prenotaziones;
 	}
 
-	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
-		this.prenotazioni = prenotazioni;
+	public void setPrenotaziones(List<Prenotazione> prenotaziones) {
+		this.prenotaziones = prenotaziones;
 	}
 
-	public Prenotazione addPrenotazioni(Prenotazione prenotazioni) {
-		getPrenotazioni().add(prenotazioni);
-		prenotazioni.setUtente(this);
+	public Prenotazione addPrenotazione(Prenotazione prenotazione) {
+		getPrenotaziones().add(prenotazione);
+		prenotazione.setUtente(this);
 
-		return prenotazioni;
+		return prenotazione;
 	}
 
-	public Prenotazione removePrenotazioni(Prenotazione prenotazioni) {
-		getPrenotazioni().remove(prenotazioni);
-		prenotazioni.setUtente(null);
+	public Prenotazione removePrenotazione(Prenotazione prenotazione) {
+		getPrenotaziones().remove(prenotazione);
+		prenotazione.setUtente(null);
 
-		return prenotazioni;
+		return prenotazione;
 	}
 
 }
