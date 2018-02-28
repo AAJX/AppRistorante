@@ -14,17 +14,24 @@ import java.util.List;
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+
+	
+
+	
+
+    @Id
 	private String email;
 
-	private String cognome;
-
+    private String password;
+    
 	private String nome;
+	
+	private String cognome;
 
 	@Column(name="NUMERO_TELEFONO")
 	private String numeroTelefono;
 
-	private String password;
+	
 
 	//bi-directional many-to-one association to Prenotazione
 	@OneToMany(mappedBy="utente")
@@ -33,6 +40,9 @@ public class Utente implements Serializable {
 	public Utente() {
 	}
 
+
+
+	
 	public String getEmail() {
 		return this.email;
 	}

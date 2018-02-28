@@ -1,4 +1,4 @@
-package com.android.itfs.myapplication.model;
+package com.android.itfs.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
