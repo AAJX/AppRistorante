@@ -84,50 +84,46 @@ $('#btnLogin').click(function(e) {
 });
 
 //popola la pagina ristorante
+var pagina = "";
 
-
-
-
-
-
-$("#btnconte").click(function() {
-	location.href='PagRisto.html';
+$(document).ready(function() {
+	if($('.conte').length) {
+		pagina = "content/Conte.html";
+	}
 	
-    	$.ajax({
-		url: 'prova.html',
-		method: 'post'
+	else if($('.madre').length) {
+		pagina = "content/MadreGea.html";
+	}
+	
+	else if($('.chat').length) {
+		pagina = "content/ChatNoir.html";
+	}
+	
+		$.ajax({
+			url:pagina,
+			method: 'post',
+		})
+		.done(function(risposta) {
+			$('#par').html(risposta);
+		});	
+});		
+
+
+
+$('#btnAjax3').click(function() {
+	$.ajax({
+		url: 'oggetto.json',
+		method: 'get'
 	})
-	.done(function(risposta) {
-		$('#par').html(risposta);
+	.done(function(persone) {
+		// <li>Anna Rossi</li>
+		console.log(persone);
+		persone.forEach(function(p) {
+			var stringa = '<li>' + p.nome + ' ' + p.cognome + '</li>';
+			$('#elencoPersone').append(stringa);
+		})
 	});
-  
-	
-})
-
-//	jQuery('a').click(function(){
-//		  $("#madre").data('clicked', true);
-//		  $('#par').addClass('prova');
-//		})
-		
-//if('#conte') {
-//	$.ajax({
-//		url: 'prova.html',
-//		method: 'post'
-//	})
-//	.done(function(risposta) {
-//		$('#par').html(risposta);
-//	});
-//}
-//	
-//if('#madre') {
-//	$.ajax({
-//		url: 'prova2.html',
-//		method: 'post'
-//	})
-//	.done(function(risposta) {
-//		$('#par').html(risposta);
-//	});
-//}
+});
 
 	
 	

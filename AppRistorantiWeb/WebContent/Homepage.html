@@ -41,21 +41,21 @@
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner" >
 	    <div   class="carousel-item active">
-	     <a id="conte" href="PagRisto.html"> <img class="d-block w-100" src="media/risto/ristorante101.jpg" alt="First slide"></a>
+	     <a id="conte" href="PagRisto.html#conteProva"> <img class="d-block w-100" src="media/risto/ristorante101.jpg" alt="First slide"></a>
 	      <div class="carousel-caption d-none d-md-block">
 			    <h5>Il conte</h5>
 			    <p class=lead>Per una cena equilibrata e piena di classe</p>
 		  </div>
 	    </div>
 	    <div class="carousel-item">
-	     <a id="madre" href="PagRisto.html" > <img class="d-block w-100" src="media/risto/ristorante102.jpg" alt="Second slide"></a>
+	     <a id="madre" href="PagRisto.html#madreProva" > <img class="d-block w-100" src="media/risto/ristorante102.jpg" alt="Second slide"></a>
 	    	<div class="carousel-caption d-none d-md-block">
 				<h5>Madre Gea</h5>
 				<p class=lead>Deliziosi piatti rustici, il meglio dalla terra </p>
 	    	</div>
 	    </div>
 	    <div class="carousel-item">
-	     <a href="PagRisto.html"> <img class="d-block w-100" src="media/risto/ristorante103.jpg" alt="Third slide"></a>
+	     <a id="chat"href="PagRisto.html#chat"> <img class="d-block w-100" src="media/risto/ristorante103.jpg" alt="Third slide"></a>
 		    <div class="carousel-caption d-none d-md-block">
 			    <h5>Chat Noir</h5>
 			    <p class=lead>Romantico e sensuale, per una serata indimenticabile</p>
@@ -73,34 +73,29 @@
 	</div>
 
 <!-- prova con bottone  -->
-<button id="btnconte" class=btn >prova</button>
-
-
 <h1  class="text-danger text-center" style="margin-top:10px;">Scegli la tua meta!</h1>
 
  <!-- ricerca ristoranti -->
 <div class=container>
-<nav id="vic" class="navbar navbar-light navbar-expand-lg bg-dark">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Navbar</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-    </ul>
-      <input class="form-control mr-sm-4" type="search" placeholder="Cerca per nome,indirizzo, o città" style="width:32%;">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </div>
+<nav id="vic" class="navbar navbar-light navbar-expand-lg bg-dark justify-content-between">
+	<a id="AllRist" class="btn " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+	Tutti i ristoranti
+	</a>
+  
+     <form class="form-inline" style=width:32%;>
+      <input class="form-control mr-sm-2" type="search" placeholder="Cerca per nome,indirizzo, o città" style="width:75%;">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+  </form>
 </nav>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+<ul id="elencoPersone">
+	</ul>
+  </div>
+  </div>
 </div>
 
+   
 <!-- banner -->
 <img  id=banner src="media/risto/dining-food-Banner-1920-x-750.jpg">
 
@@ -198,5 +193,19 @@
  <script src="js/bootstrap.min.js"></script>
  <script src="js/account.js"></script>
  <script src="js/utente.js"></script>
+ <script >$('#AllRist').click(function() {
+		$.ajax({
+			url: 'oggetto.json',
+			method: 'get'
+		})
+		.done(function(persone) {
+			// <li>Anna Rossi</li>
+			console.log(persone);
+			persone.forEach(function(p) {
+				var stringa = '<li>' + p.nome + ' ' + p.cognome + '</li>';
+				$('#elencoPersone').append(stringa);
+			})
+		});
+	});</script>
 </body>
 </html>

@@ -5,10 +5,14 @@ if(utente) {
 	$('#btnAccedi').hide();
 	utente = JSON.parse(utente);
 	$('#LinkNome').html(utente.nome + ' ' + utente.cognome);
+	$('#preAttivo').show();
+	$('#preSpento').hide();
 }else {
 	$('#btnLogout').hide();
 	$('#btnAccedi').show();
 	$('#LinkNome').html( 'amico' );
+	$('#preAttivo').hide();
+	$('#preSpento').show();
 }
 
 

@@ -42,10 +42,7 @@ public class NuovoAccount_Servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//ObjectMapper om = new ObjectMapper();
-
-		/*Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
-		*/
+	
 		String email = request.getParameter("email");
 		String nome = request.getParameter("nome");
 		String cognome =request.getParameter("cognome");
@@ -56,10 +53,7 @@ public class NuovoAccount_Servlet extends HttpServlet {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.append(om.writeValueAsString(eo));
-		//GestoreNuovoUtente gnu = new GestoreNuovoUtente();
-
-		/*Boolean registrato = gnu.nuovoUtente(utente);
-		response.getWriter().append(registrato.toString());*/
+		
 		
 	}
 

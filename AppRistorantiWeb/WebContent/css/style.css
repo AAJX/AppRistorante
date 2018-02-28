@@ -51,3 +51,12 @@
 	width:initial;
 	}
 }
+
+/*PagRisto.html */
+#preSpento {
+	border-style:solid;
+	border-color:#bebebe;
+	margin-top:2%;
+	margin-bottom:auto;
+	background-color:#ffd451;
+}
