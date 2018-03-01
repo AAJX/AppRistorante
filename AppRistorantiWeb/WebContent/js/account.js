@@ -110,16 +110,16 @@ $(document).ready(function() {
 
 
 
-$('#btnAjax3').click(function() {
+$(document).ready(function(){
 	$.ajax({
-		url: 'oggetto.json',
+		url: 'listaRistoranti',
 		method: 'get'
 	})
 	.done(function(persone) {
 		// <li>Anna Rossi</li>
-		console.log(persone);
+	
 		persone.forEach(function(p) {
-			var stringa = '<li>' + p.nome + ' ' + p.cognome + '</li>';
+			var stringa = '<li>' + p.nome + '</li>';
 			$('#elencoPersone').append(stringa);
 		})
 	});

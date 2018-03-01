@@ -28,7 +28,7 @@ public class GestorePrenotazioni {
 				em.getTransaction().begin();
 				p.setRistorante(r);
 				p.setUtente(u);
-				p.getUtente();
+				
 				p.setData(data);
 				p.setOrario(orario);
 				p.setNumeroPrenotati(numeroPrenotati);

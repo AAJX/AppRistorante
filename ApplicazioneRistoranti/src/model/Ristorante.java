@@ -51,7 +51,7 @@ public class Ristorante implements Serializable {
 
 	//bi-directional many-to-one association to Citta
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JsonIgnore
+
 	private Citta citta;
 
 	public Ristorante() {
@@ -173,6 +173,12 @@ public class Ristorante implements Serializable {
 
 	public void setCitta(Citta citta) {
 		this.citta = citta;
+	}
+	
+	@Override
+	public String toString() {
+		
+		return "Ciao sono "+nome+", e ho l'id"+idRistorante;
 	}
 
 }

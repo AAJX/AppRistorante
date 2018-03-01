@@ -12,7 +12,7 @@ class ListaRistorantiTest {
 	@Test
 	public void TestListaRistorante() {
 		GestoreListaRistoranti p = new GestoreListaRistoranti();
-		p.ristorantiCitta(1);
+		p.tuttiRistoranti();
 	}
 
 }
