@@ -68,9 +68,9 @@ public class LoginDialog extends Dialog {
                             @Override
                             public void onResponse(String response) {
 
-                                Gson gson = new Gson();
+                           /*   Gson gson = new Gson();
                                 Utente u= gson.fromJson(response, Utente.class);
-                                UtenteLoggato.getInstance().setUtente(u);
+                                UtenteLoggato.getInstance().setUtente(u); */
 
                             }
                         },
