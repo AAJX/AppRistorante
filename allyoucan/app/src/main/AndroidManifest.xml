@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.itfs.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +23,12 @@
         <activity android:name=".ExploreNotLogged" />
         <activity android:name=".Explore" />
         <activity android:name=".Prenotazione" />
-        <activity android:name=".Ristorante"></activity>
+        <activity android:name=".Ristorante">
+
+        </activity>
+        <activity android:name=".ProfiloFragment">
+
+        </activity>
     </application>
 
 </manifest>

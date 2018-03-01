@@ -3,25 +3,30 @@ package com.android.itfs.myapplication.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.EditText;
 
-import com.android.itfs.myapplication.Explore;
 import com.android.itfs.myapplication.R;
+import com.android.itfs.myapplication.Utils.VolleySingleton;
+import com.android.itfs.myapplication.ProfiloFragment;
+import com.android.itfs.myapplication.model.Utente;
+import com.android.itfs.myapplication.model.UtenteLoggato;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 
-import static android.support.v4.content.ContextCompat.startActivity;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginDialog extends Dialog {
 
-    TextView username;
-    TextView password;
+    EditText email;
+    EditText password;
     Button accediDialog;
     Button registrati;
     Dialog logindialog;
@@ -31,51 +36,67 @@ public class LoginDialog extends Dialog {
 
     public LoginDialog(@NonNull Context context) {
         super(context);
-
-
-
-}
-
-    public LoginDialog(@NonNull Context context, int themeResId) {
-        super(context, themeResId);
     }
-
-    protected LoginDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
-        super(context, cancelable, cancelListener);
-    }
-
 
     //private ProgressBar progressBar;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+
+    public void Login(final String email, final String password){
 
 
 
-        logindialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+      /*  email = (EditText) findViewById(R.id.mail);
 
-        username = (TextView) findViewById(R.id.mail);
-
-        password = (TextView) findViewById(R.id.pwd);
+        password = (EditText) findViewById(R.id.pwd); */
 
         registrati = (Button) findViewById(R.id.registrati);
 
+
         accediDialog = (Button) findViewById(R.id.accediDialog);
-        accediDialog.setOnClickListener(new View.OnClickListener()
-
-          {
-              @Override
-              public void onClick(View v)
-              {
-                  Intent i = new Intent(v.getContext(), Explore.class);
-               v.getContext().startActivity(i);
-              }
+       {
 
 
-          }
-        );
+               /* final String indirizzo = email.getText().toString();
+                final String chiave = password.getText().toString();*/
+
+
+
+                String url = "http://192.168.1.128:8080/AppRistorantiWeb/Login";
+
+                StringRequest loginReq = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                Gson gson = new Gson();
+                                Utente u= gson.fromJson(response, Utente.class);
+                                UtenteLoggato.getInstance().setUtente(u);
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                            }
+                        }
+                ) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        // the POST parameters:
+                        params.put("email", email);
+                        params.put("password", password);
+                        return params;
+                    }
+                };
+
+                VolleySingleton.getInstance(getContext()).addToRequestQueue(loginReq);
+
+                Intent i = new Intent(getContext(), ProfiloFragment.class);
+                getContext().startActivity(i);
+            }
+
 
     }
 
