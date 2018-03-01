@@ -26,7 +26,7 @@ public class UtenteLoggato {
         return utente;
 
     }
-    public void setUtente(Utente utente){
+    public void setUtente(Utente utente ){
         this.utente = utente;
     }
 

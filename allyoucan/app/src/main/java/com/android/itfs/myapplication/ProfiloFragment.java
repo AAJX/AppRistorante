@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.android.itfs.myapplication.R;
+import com.android.itfs.myapplication.model.Utente;
 import com.android.itfs.myapplication.model.UtenteLoggato;
 
 /**
@@ -16,10 +17,11 @@ public class ProfiloFragment extends AppCompatActivity {
 
 
 
-    TextView nome;
-    TextView cognome;
-    TextView telefono;
+    TextView name;
+    TextView surname;
+    TextView phone;
     TextView email;
+
 
 
     @Override
@@ -27,16 +29,19 @@ public class ProfiloFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilo);
 
-        nome=findViewById(R.id.nome);
-        cognome= findViewById(R.id.cog);
-        telefono= findViewById((R.id.mail));
+
+      /*  name=findViewById(R.id.nome);
+        surname= findViewById(R.id.cog);
+        phone= findViewById((R.id.mail));
         email= findViewById((R.id.tel));
 
 
-        nome.setText(UtenteLoggato.getInstance().getUtente().getNome());
-        cognome.setText(UtenteLoggato.getInstance().getUtente().getCognome());
+
+
+        name.setText(UtenteLoggato.getInstance().getUtente().getNome());
+        surname.setText(UtenteLoggato.getInstance().getUtente().getCognome());
         email.setText(UtenteLoggato.getInstance().getUtente().getEmail());
-        telefono.setText(UtenteLoggato.getInstance().getUtente().getNumero_telefono());
+        phone.setText(UtenteLoggato.getInstance().getUtente().getNumero_telefono()); */
 
 
 
