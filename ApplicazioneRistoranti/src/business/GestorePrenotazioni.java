@@ -11,7 +11,7 @@ public class GestorePrenotazioni {
 	
 	// CREA NUOVA PRENOTAZIONE
 
-		public boolean nuovaPrenotazione(String email, int idRistorante,int idPrenotazione,String orario,int numeroPrenotati,Date data) {
+		public boolean nuovaPrenotazione(String email, int idRistorante,/*int idPrenotazione,*/String orario,int numeroPrenotati,Date data) {
 
 			EntityManager em = JPAUtility.getInstance().getEm();
 			
@@ -32,7 +32,7 @@ public class GestorePrenotazioni {
 				p.setData(data);
 				p.setOrario(orario);
 				p.setNumeroPrenotati(numeroPrenotati);
-				p.setIdPrenotazione(idPrenotazione);
+				/*p.setIdPrenotazione(idPrenotazione);*/
 				em.persist(p);
 				em.getTransaction().commit();
 				return true;

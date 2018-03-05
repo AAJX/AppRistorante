@@ -53,25 +53,27 @@
 			
 				<div style=margin-top:10%; class=container>
 					<form id="frmPrenota">
-					<label for="title" class="sr-only"></label> 
-					<a id="title" name="ristorante"></a>
-					<label for="emaill" class="sr-only"></label> 
-					<a id=emaill name="email" ></a>
-					<label for="Id" class="sr-only"></label>
-					<a id="Id" name="id">4</a>
-						<label for="inputData" class="sr-only">Data</label> 
+			 	<label for="ristorante" class="sr-only"></label> 
+					<input 
+					type="text" id="ristorante" class="form-control"
+					placeholder="Title" required name="ristorante">
+					<label for="email" class="sr-only"></label> 
+					<input 
+					type="text" id="email" class="form-control"
+					placeholder="Email" required name="email">
+						<label for="data" class="sr-only">Data</label> 
 							<input
-								type="date" id="inputData" class="form-control"
+								type="date" id="data" class="form-control"
 								placeholder="Data" required autofocus name="data"> 	
 						<label
-								for="inputOrario" class="sr-only">Ora</label> 
+								for="orario" class="sr-only">Ora</label> 
 						<input
-							type="time" id="inputOrario" class="form-control"
+							type="time" id="orario" class="form-control"
 							placeholder="Orario" required name="orario">
 							<label
-								for="inputNumeroPrenotati" class="sr-only"></label> 
+								for="numeroPrenotati" class="sr-only"></label> 
 						<input
-							type="number" id="inputNumeroPrenotati" class="form-control"
+							type="number" id="numeroPrenotati" class="form-control"
 							placeholder="NumeroPrenotati" required name="numeroPrenotati">
 						
 						<button style=margin-top:10%; class="btn btn-lg btn-primary btn-block" id="btnPrenota">Continua</button>
@@ -191,32 +193,5 @@
  <script src="js/bootstrap.min.js"></script>
  <script src="js/account.js"></script>
  <script src="js/utente.js"></script>
- <script>
-$(document).ready(function(){
-	 
-	 var url = window.location.href;
-	 
-	 if(url.search("#conte") >=0 ) {
-		 
-	 	 $('#par').addClass("conte");
-		$('#title').html( ristoranti[0].idRistorante);
-		$('#nomeRistorante').html(ristoranti[0].nome);
-		$('#nomeCitta').html(ristoranti[0].citta.nome);
-	 } else if(url.search("#madre") >=0 ) {
-		 
-	 	 $('#par').addClass("madre");
-	 	$('#title').html( ristoranti[1].idRistorante);
-	 	$('#nomeRistorante').html(ristoranti[1].nome);
-	 	$('#nomeCitta').html(ristoranti[1].citta.nome);
-	 }else if(url.search("#chat") >=0 ) {
-		 
-		 $('#par').addClass("chat");
-		 $('#title').html( ristoranti[2].idRistorante);
-		 $('#nomeRistorante').html(ristoranti[2].nome);
-		 $('#nomeCitta').html(ristoranti[2].citta.nome);
-	 }
-	 
-});
- </script>
 </body>
 </html>

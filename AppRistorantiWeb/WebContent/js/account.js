@@ -12,31 +12,6 @@ $(window).scroll(function () {
 });
 
 // registra
-/*$('#btnRegister').click(function(e) {
-	// 1. impedire al form HTML di fare submit
-	e.preventDefault();
-	$.ajax({
-		url: 'nuovoAccount',
-		method: 'post',
-		data: $('#frmRegister').serialize()
-	})
-	.done(function(esito){
-		console.log(esito);
-		if(esito.success) {
-			localStorage.setItem('utente', JSON.stringify(esito.oggettoRisultante));
-			// andare alla pagina areariservata
-			location.href ='Homepage.html';
-		} else {
-			$('#pnlErrLogin').show('fast').delay(2000).hide('fast');
-		}
-	})
-	.fail(function() {
-		console.log('qualcosa e andato storto.')
-	});
-	
-});*/
-
-
 $('#btnRegister').click(function(e) {
 	// 1. impedire al form HTML di fare submit
 	e.preventDefault();
@@ -83,7 +58,7 @@ $('#btnLogin').click(function(e) {
 	
 });
 
-//popola la pagina ristorante
+//popola la pagina ristorante di carousel
 var pagina = "";
 
 $(document).ready(function() {
@@ -126,7 +101,32 @@ $(document).ready(function(){
 });
 
 	
-	
-
+//popola la pagina ristorante 
+$(document).ready(function(){
+	 
+	 var url = window.location.href;
+	 
+	 if(url.search("#conte") >=0 ) {
+		 
+	 	 $('#par').addClass("conte");
+		$('#ristorante').val( ristoranti[0].idRistorante);
+		$('#nomeRistorante').html(ristoranti[0].nome);
+		$('#nomeCitta').html(ristoranti[0].citta.nome);
+		
+	 } else if(url.search("#madre") >=0 ) {
+		 
+	 	 $('#par').addClass("madre");
+	 	$('#ristorante').val( ristoranti[1].idRistorante);
+	 	$('#nomeRistorante').html(ristoranti[1].nome);
+	 	$('#nomeCitta').html(ristoranti[1].citta.nome);
+	 }else if(url.search("#chat") >=0 ) {
+		 
+		 $('#par').addClass("chat");
+		 $('#ristorante').val( ristoranti[2].idRistorante);
+		 $('#nomeRistorante').html(ristoranti[2].nome);
+		 $('#nomeCitta').html(ristoranti[2].citta.nome);
+	 }
+	 
+});
 
 	

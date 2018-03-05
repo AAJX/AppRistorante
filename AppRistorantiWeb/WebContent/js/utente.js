@@ -7,7 +7,7 @@ if(utente) {
 	$('#btnLogout').show();
 	$('#btnAccedi').hide();
 	$('#LinkNome').html(utente.nome + ' ' + utente.cognome);
-	$('#emaill').html(utente.email);
+	$('#email').val(utente.email);
 	$('#preAttivo').show();
 	$('#preSpento').hide();
 }else {
@@ -32,14 +32,7 @@ $(document).ready(function(){
 		method: 'get'
 	})
 	.done(function(ristoranti) {
-		// <li>Anna Rossi</li>
 		localStorage.setItem('ristoranti', JSON.stringify(ristoranti));
-//		ristoranti.forEach(function(r) {
-//			for (var i =0; i<3 ; i++)
-//			
-//			localStorage.setItem('ristorante'+i, JSON.stringify(r));
-//		
-//		})
 	});
 });
 
@@ -52,10 +45,19 @@ ristoranti = JSON.parse(ristoranti);
 
 $('#btnPrenota').click(function() {
 	
+	/*var prenotazione = {};
+	prenotazione.data=$('#data').val;
+	prenotazione.data=$('#orario').val;
+	prenotazione.data=$('#numeroPrenotati').val;
+	prenotazione.data=$('#email').val;
+	prenotazione.data=$('#id').val;
+	prenotazione.data=$('#ristorant').val;*/
+	
 $.ajax({
 	url : 'nuovaPrenotazione',
 	method : 'post',
 	data : $('#frmPrenota').serialize(),
+	//data: JSON.stringify(prenotazione)
 	}).done(function(esito) {
 	console.log(esito);
 	if (esito.success) {

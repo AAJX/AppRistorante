@@ -47,7 +47,7 @@ public class NuovaPrenotazione_Servlet extends HttpServlet {
 		String email = request.getParameter("email");
 		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
 		
-		int idPrenotazione = Integer.parseInt(request.getParameter("id"));
+	//	int idPrenotazione = Integer.parseInt(request.getParameter("id"));
 		String orario = request.getParameter("orario");
 		int numeroPrenotati = Integer.parseInt(request.getParameter("numeroPrenotati"));
 		String data = request.getParameter("data");
@@ -62,7 +62,7 @@ public class NuovaPrenotazione_Servlet extends HttpServlet {
 		
 		
 		
-		Boolean andataBuonFine = gp.nuovaPrenotazione(email, idRistorante, idPrenotazione, orario, numeroPrenotati, dataPrenotazione);
+		Boolean andataBuonFine = gp.nuovaPrenotazione(email, idRistorante, /*idPrenotazione,*/ orario, numeroPrenotati, dataPrenotazione);
 		
 		response.getWriter().append(andataBuonFine.toString());
 	}
