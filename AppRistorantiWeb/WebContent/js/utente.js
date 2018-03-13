@@ -8,6 +8,9 @@ if(utente) {
 	$('#btnAccedi').hide();
 	$('#LinkNome').html(utente.nome + ' ' + utente.cognome);
 	$('#email').val(utente.email);
+	$('#profiloNome').html(utente.nome+ ' ' + utente.cognome);
+	$('#profiloTelefono').html(utente.numeroTelefono);
+	$('#profiloEmail').html(utente.email);
 	$('#preAttivo').show();
 	$('#preSpento').hide();
 }else {
@@ -24,7 +27,7 @@ $('#btnLogout').click(function() {
 	location.href = 'Login.html';
 });
 
-// classi ristoranti
+// crea un locale storage dei ristoranti 
 
 $(document).ready(function(){
 	$.ajax({
@@ -35,36 +38,96 @@ $(document).ready(function(){
 		localStorage.setItem('ristoranti', JSON.stringify(ristoranti));
 	});
 });
-
+//inizializza ristoranti
 var ristoranti = localStorage.getItem('ristoranti');
 ristoranti = JSON.parse(ristoranti);
 
+var prenotazioni =localStorage.getItem('utente.prenotazioni');
 
 	
-
+//Prenotazione
 
 $('#btnPrenota').click(function() {
-	
-	/*var prenotazione = {};
-	prenotazione.data=$('#data').val;
-	prenotazione.data=$('#orario').val;
-	prenotazione.data=$('#numeroPrenotati').val;
-	prenotazione.data=$('#email').val;
-	prenotazione.data=$('#id').val;
-	prenotazione.data=$('#ristorant').val;*/
-	
+		
 $.ajax({
 	url : 'nuovaPrenotazione',
 	method : 'post',
 	data : $('#frmPrenota').serialize(),
-	//data: JSON.stringify(prenotazione)
 	}).done(function(esito) {
 	console.log(esito);
-	if (esito.success) {
-	
-	alert("Utente registrato correttamente nel db")
-	} else {
-	alert("qualcosa è andato storto")
-	}
+	alert("La tua prenotazione è andata a buon fine");
 	});
 });
+
+//Lista prenotazioni
+
+$(document).ready(function(){
+	$.ajax({
+		url: 'listaPrenotazioni',
+		method: 'get'
+	})
+	.done(function(prenotazioni) {
+		// <li>Anna Rossi</li>
+		var i =1;
+		prenotazioni.forEach(function(p){
+			
+			
+			var stringa = '<tr>'
+				+ '<th scope="row" >'+ i +'</th>'
+			+'<td>' + p.data + '</td>'
+			+ '<td>' + p.orario + '</td>'
+			+'<td>' + p.numeroPrenotati + '</td>'
+			+'<td>' + p.ristorante.nome + '</td>'
+			+'<tr>';
+			$('#elencoPrenotazioni').append(stringa);
+			
+			i++;
+			
+		})
+			
+	});
+});
+// Lista prenotazioni cliccabile
+$(document).ready(function(){
+	$.ajax({
+		url: 'listaPrenotazioni',
+		method: 'get'
+	})
+	.done(function(persone) {
+		
+		var i=1;
+		persone.forEach(function(pr) {
+			var stringa = '<option >'+pr.idPrenotazione+'</option>';
+			$('#elencoPe').append(stringa);
+		i++;	
+		})
+	})
+});
+
+//Cambia Ora
+
+$('#btnCambiaOrario').click(function() {
+
+	console.log($('#CambiaOrario,#frmPrenot,#frmPre').serialize())
+	$.ajax({
+		url : 'modificaOrarioPrenotazione',
+		method : 'post',
+		data :  $('#CambiaOrario,#frmPrenot,#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+		alert("La tua prenotazione è andata a buon fine");
+		});
+	});
+
+
+$('#btnCambiaCoperti').click(function() {
+	console.log($('#CambiaCoperti,#frmPrenot,#frmPre').serialize())
+	$.ajax({
+		url : 'modificaCopertiPrenotazione',
+		method : 'get',
+		data : $('#CambiaCoperti,#frmPrenot,#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+		alert("La tua prenotazione è andata a buon fine");
+		});
+	});

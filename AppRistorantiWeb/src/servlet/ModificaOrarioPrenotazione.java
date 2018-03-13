@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,18 +33,22 @@ public class ModificaOrarioPrenotazione extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
+		try {
+			String email = request.getParameter("email");
+			int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
+			int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
+			String orario = request.getParameter("orario");
+			
+			GestorePrenotazioni gp = new GestorePrenotazioni();
+			
+			Boolean modificata = gp.modificaOraPrenotazione(email, idRistorante, idPrenotazione, orario);
+			
+			response.getWriter().append(modificata.toString());
+		}catch(Exception ioe) {
+			System.out.println(ioe.getMessage());
+		}
 		
-		int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
-		String email = request.getParameter("email");
-		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
-		String orario = request.getParameter("orario");
-		
-		GestorePrenotazioni gp = new GestorePrenotazioni();
-		
-		Boolean modificata = gp.modificaOraPrenotazione(email, idRistorante, idPrenotazione, orario);
-		
-		response.getWriter().append(modificata.toString());
 	}
 
 }
