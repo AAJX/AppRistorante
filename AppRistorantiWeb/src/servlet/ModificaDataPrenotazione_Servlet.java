@@ -32,11 +32,10 @@ public class ModificaDataPrenotazione_Servlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
 		String email = request.getParameter("email");
-		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
 		String data = request.getParameter("data");
 		DateFormat df = new SimpleDateFormat ("yyyy-MM-dd");
 		Date dataPrenotazione = new Date();
@@ -48,7 +47,7 @@ public class ModificaDataPrenotazione_Servlet extends HttpServlet {
 		}
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean modificata = gp.modificaDataPrenotazione(email, idRistorante, idPrenotazione, dataPrenotazione);
+		Boolean modificata = gp.modificaDataPrenotazione(email, idPrenotazione, dataPrenotazione);
 		
 		response.getWriter().append(modificata.toString());
 	}

@@ -45,17 +45,17 @@ public class GestorePrenotazioni {
 		// MODIFICA DATA PRENOTAZIONE
 		
 
-				public boolean modificaDataPrenotazione(String email, int idRistorante,int idPrenotazione,Date data) {
+				public boolean modificaDataPrenotazione(String email, int idPrenotazione,Date data) {
 
 					EntityManager em = JPAUtility.getInstance().getEm();
 					
 					Utente u = em.find(Utente.class,email);
-					Ristorante r = em.find(Ristorante.class, idRistorante);
+				
 					Prenotazione p = em.find(Prenotazione.class, idPrenotazione);
-					if (r != null && u != null ) {
+					if ( u != null ) {
 						
 						p.setData(data);
-						p.setRistorante(r);
+						
 						p.setUtente(u);
 						em.getTransaction().begin();
 						em.merge(p);
@@ -67,17 +67,17 @@ public class GestorePrenotazioni {
 
 				//MODIFICA ORA PRENOTAZIONE
 
-				public boolean modificaOraPrenotazione(String email, int idRistorante,int idPrenotazione,String orario) {
+				public boolean modificaOraPrenotazione(String email, int idPrenotazione,String orario) {
 		
 					EntityManager em = JPAUtility.getInstance().getEm();
 					
 					Utente u = em.find(Utente.class,email);
-					Ristorante r = em.find(Ristorante.class, idRistorante);
+					
 				
-					if (r != null && u != null ) {
+					if (u != null ) {
 						Prenotazione p = em.find(Prenotazione.class, idPrenotazione);
 						p.setOrario(orario);
-						p.setRistorante(r);
+						
 						p.setUtente(u);
 						em.getTransaction().begin();
 						em.merge(p);
@@ -90,17 +90,17 @@ public class GestorePrenotazioni {
 		
 				//MODIFICA ORA PRENOTAZIONE
 
-				public boolean modificaCopertiPrenotazione(String email, int idRistorante,int idPrenotazione,int numeroPrenotati) {
+				public boolean modificaCopertiPrenotazione(String email, int idPrenotazione,int numeroPrenotati) {
 		
 					EntityManager em = JPAUtility.getInstance().getEm();
 					
 					Utente u = em.find(Utente.class,email);
-					Ristorante r = em.find(Ristorante.class, idRistorante);
+					
 				
-					if (r != null && u != null ) {
+					if (u != null ) {
 						Prenotazione p = em.find(Prenotazione.class, idPrenotazione);
 						p.setNumeroPrenotati(numeroPrenotati);
-						p.setRistorante(r);
+						
 						p.setUtente(u);
 						em.getTransaction().begin();
 						em.merge(p);

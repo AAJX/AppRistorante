@@ -97,7 +97,7 @@ $(document).ready(function(){
 		
 		var i=1;
 		persone.forEach(function(pr) {
-			var stringa = '<option >'+pr.idPrenotazione+'</option>';
+			var stringa = '<option class="optionPr">'+pr.idPrenotazione+'</option>';
 			$('#elencoPe').append(stringa);
 		i++;	
 		})
@@ -111,15 +111,15 @@ $('#btnCambiaOrario').click(function() {
 	console.log($('#CambiaOrario,#frmPrenot,#frmPre').serialize())
 	$.ajax({
 		url : 'modificaOrarioPrenotazione',
-		method : 'post',
+		method : 'get',
 		data :  $('#CambiaOrario,#frmPrenot,#frmPre').serialize(),
 		}).done(function(esito) {
 		console.log(esito);
-		alert("La tua prenotazione è andata a buon fine");
+		alert("La tua prenotazione è stata modificata");
 		});
 	});
 
-
+//Cambia Coperti
 $('#btnCambiaCoperti').click(function() {
 	console.log($('#CambiaCoperti,#frmPrenot,#frmPre').serialize())
 	$.ajax({
@@ -128,6 +128,32 @@ $('#btnCambiaCoperti').click(function() {
 		data : $('#CambiaCoperti,#frmPrenot,#frmPre').serialize(),
 		}).done(function(esito) {
 		console.log(esito);
-		alert("La tua prenotazione è andata a buon fine");
+		alert("La tua prenotazione è stata modificata");
+		});
+	});
+
+//Cambia Data
+$('#btnCambiaData').click(function() {
+	console.log($('#CambiaData,#frmPrenot,#frmPre').serialize())
+	$.ajax({
+		url : 'modificaDataPrenotazione',
+		method : 'get',
+		data : $('#CambiaData,#frmPrenot,#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+		alert("La tua prenotazione è stata modificata");
+		});
+	});
+
+//Elimina Prenotazione
+$('btnEliminaPrenotazione').click(function() {
+	console.log($('#frmPrenot,#frmPre').serialize())
+	$.ajax({
+		url : 'EliminaPrenotazione',
+		method : 'delete',
+		data : $('#frmPrenot,#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+		alert("La tua prenotazione è stata cancellata");
 		});
 	});

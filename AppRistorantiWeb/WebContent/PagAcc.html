@@ -99,20 +99,40 @@
 	</p>
 	<div class="collapse" id="Gestisci">
 	
-	<p>Scegli il numero della prenotazione da modificare</p>
+
 	
-	  <form id="frmPrenot">
+	  <form class ="form-inline" id="frmPrenot">	
+	  <div class= "col" >
+	  <p>Scegli il numero della prenotazione da modificare</p>
+	  </div>
+	  
 	   <select class="custom-select col-1"  id="elencoPe" name="idPrenotazione">
 	  </select>
+	 
 	<!--    <label
 					for="numeroPrenotati" class="sr-only"></label> 
 			<input
 				type="number" id="numeroPrenotati" class="form-control"
 				placeholder="1" required name="idPrenotazione">-->
 	  </form>
-	  
-	  
-	  <p>Cambia l'ora della tua prenotazione:</p>
+	  <br>
+<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#ora" role="tab" aria-controls="home" aria-selected="true">Ora</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#data" role="tab" aria-controls="profile" aria-selected="false">Data</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#coperti" role="tab" aria-controls="contact" aria-selected="false">Coperti</a>
+  </li>
+</ul>
+
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="ora" role="tabpanel" aria-labelledby="home-tab">
+  <br>
+   <p>Cambia l'ora della tua prenotazione:</p>
 	  <form class="form-inline" id=CambiaOrario >
 		<div class="form-group col-3" >
 			<label for="orario" class="sr-only">Ora</label>
@@ -120,17 +140,25 @@
 		</div>
 			<button type="button" class="btn btn-primary col-1" id="btnCambiaOrario">Ok</button>
 	  </form>
-	  
-	  <p>Cambia la data della tua prenotazione:</p>
-	  <form class="form-inline" >
-		<div class="form-group col-3" id=CambiaData>
+  </div>
+  
+  
+  <div class="tab-pane fade" id="data" role="tabpanel" aria-labelledby="profile-tab">
+  <br>
+  <p>Cambia la data della tua prenotazione:</p>
+	  <form class="form-inline" id=CambiaData>
+		<div class="form-group col-3" >
 			<label for="data" class="sr-only">Data</label>
 			<input type="date" id="data" class="form-control" required autofocus name="data"> 
 		</div>
 			<button type="button" class="btn btn-primary col-1" id="btnCambiaData">Ok</button>
 	  </form>
-	  
-	  <p>Cambia il numero dei coperti:</p>
+  </div>
+  
+  
+  <div class="tab-pane fade" id="coperti" role="tabpanel" aria-labelledby="contact-tab">
+  <br>
+   <p>Cambia il numero dei coperti:</p>
 	  <form class="form-inline" id=CambiaCoperti>
 		<div class="form-group col-3" >
 			<label for="coperti" class="sr-only"></label> 
@@ -139,16 +167,18 @@
 			<button type="button" class="btn btn-primary col-1" id="btnCambiaCoperti">Ok</button>
 	  </form>
 	</div>
+  </div>
+  
+</div>
+
+	<p>Vuoi davvero cancellare la tua prenotazione?</p>
+	<button type="button" class="btn btn-primary " id="btnEliminaPrenotazione">Elimina</button>
 	
-	<p>Ciccio</p>
+	<!-- form invisibile dell'email -->
 	<form id="frmPre">
-	<label for="ristorante" class="sr-only"></label> 
-		<input 
-		type="text" id="ristorante" class="form-control"
-		placeholder="Title" required name="ristorante">
 	  	<label for="email" class="sr-only"></label> 
 		<input 
-		type="text" id="email" class="form-control"
+		type="text" id="email" class="form-control invisible"
 		placeholder="Email" required name="email" >
 	</form>
 		    </div>
@@ -166,5 +196,7 @@
  <script src="js/bootstrap.min.js"></script>
  <script src="js/account.js"></script>
  <script src="js/utente.js"></script>
+ 
+
 </body>
 </html>

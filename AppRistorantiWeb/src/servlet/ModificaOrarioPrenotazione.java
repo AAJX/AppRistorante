@@ -33,16 +33,16 @@ public class ModificaOrarioPrenotazione extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
 		try {
 			String email = request.getParameter("email");
 			int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
-			int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
+			
 			String orario = request.getParameter("orario");
 			
 			GestorePrenotazioni gp = new GestorePrenotazioni();
 			
-			Boolean modificata = gp.modificaOraPrenotazione(email, idRistorante, idPrenotazione, orario);
+			Boolean modificata = gp.modificaOraPrenotazione(email, idPrenotazione, orario);
 			
 			response.getWriter().append(modificata.toString());
 		}catch(Exception ioe) {
