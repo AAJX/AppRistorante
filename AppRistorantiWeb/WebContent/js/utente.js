@@ -73,7 +73,7 @@ $(document).ready(function(){
 			
 			
 			var stringa = '<tr>'
-				+ '<th scope="row" >'+ i +'</th>'
+				+ '<th scope="row" >#'+ p.idPrenotazione +'</th>'
 			+'<td>' + p.data + '</td>'
 			+ '<td>' + p.orario + '</td>'
 			+'<td>' + p.numeroPrenotati + '</td>'
@@ -146,11 +146,11 @@ $('#btnCambiaData').click(function() {
 	});
 
 //Elimina Prenotazione
-$('btnEliminaPrenotazione').click(function() {
+$('#btnEliminaPrenotazione').click(function() {
 	console.log($('#frmPrenot,#frmPre').serialize())
 	$.ajax({
 		url : 'EliminaPrenotazione',
-		method : 'delete',
+		method : 'get',
 		data : $('#frmPrenot,#frmPre').serialize(),
 		}).done(function(esito) {
 		console.log(esito);

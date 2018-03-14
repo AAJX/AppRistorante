@@ -113,18 +113,18 @@ public class GestorePrenotazioni {
 		
 				// ELIMINA PRENOTAZIONE
 				
-				public boolean eliminaPrenotazione(Utente utente, Prenotazione prenotazione, Ristorante ristorante) {
+				public boolean eliminaPrenotazione(String email, int idPrenotazione/*, Ristorante ristorante*/) {
 					EntityManager em = JPAUtility.getInstance().getEm();
 						
-					utente = em.find(Utente.class, utente.getEmail());
-					ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
+					Utente u = em.find(Utente.class,email);
+					//ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
 						
-					prenotazione = em.find(Prenotazione.class,prenotazione.getIdPrenotazione());
+					Prenotazione p = em.find(Prenotazione.class, idPrenotazione);
 						
-					if (ristorante != null && utente != null ) {
+					if (/*ristorante != null && */u != null ) {
 
 						em.getTransaction().begin();
-						em.remove(prenotazione);
+						em.remove(p);
 						em.getTransaction().commit();
 						return true;
 					} else {
