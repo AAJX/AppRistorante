@@ -23,11 +23,14 @@ public class GestoreListaPrenotazioni {
 		Utente u = em.find(Utente.class, email);
 		
 		List<Prenotazione> list = em.createQuery(
-			    "SELECT p FROM Prenotazione p WHERE p.utente = :utente",Prenotazione.class).setParameter("utente", u).getResultList();
+			    "SELECT p FROM Prenotazione p WHERE p.utente = :utente",
+			    Prenotazione.class).setParameter("utente", u).getResultList();
 		
 		
 		for( Prenotazione p:list) {
-			System.out.println(p.getUtente().getNome());
+			System.out.println("Nome: " + p.getUtente().getNome());
+			System.out.println("Nome Ristorante: " + p.getRistorante().getNome());
+			System.out.println(" Data Prenotazione " + p.getData());
 		}
 		
 		return list;    

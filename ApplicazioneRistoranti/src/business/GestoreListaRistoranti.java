@@ -19,17 +19,34 @@ public class GestoreListaRistoranti {
 				EntityManager em = JPAUtility.getInstance().getEm();
 				Citta c = em.find(Citta.class, idCitta);
 				List<Ristorante> list = em.createQuery(
-					    "SELECT r FROM Ristorante r WHERE r.citta = :citta",Ristorante.class).setParameter("citta", c).getResultList();
+					    "SELECT r FROM Ristorante r WHERE r.citta = :citta",
+					    Ristorante.class).setParameter("citta", c).getResultList();
 					
 				for( Ristorante r:list) {
 					System.out.println(r.getNome());
 				}
 				
-				return list;    
-					    
-			
-
+				return list;   
 			}
+			
+			public List<Ristorante> ristorantiMaps() {
+				EntityManager em = JPAUtility.getInstance().getEm();
+				
+				
+				
+				List<Ristorante> list = em.createQuery(
+						
+							    "SELECT r FROM Ristorante r WHERE r.idRistorante = 1",Ristorante.class).getResultList();
+							
+						for( Ristorante r:list) {
+							System.out.println(r.getNome());
+							System.out.println(r.getLatitudine());
+							System.out.println(r.getLongitudine());
+						}
+						
+						return list;    
+			}
+			
 			
 			public List<Ristorante> tuttiRistoranti() {
 				EntityManager em = JPAUtility.getInstance().getEm();
@@ -43,5 +60,21 @@ public class GestoreListaRistoranti {
 				return list;    
 					    
 			}
+			
+			public List<Ristorante> categoriaRistoranti() {
+				EntityManager em = JPAUtility.getInstance().getEm();
+				List<Ristorante> list = em.createQuery(
+					    "SELECT r FROM Ristorante r",Ristorante.class).getResultList();
+					
+				for( Ristorante r:list) {
+					System.out.println(r.getCategoria());
+				}
+				
+				return list;    
+					    
+			}	    
+			
+
+			
 
 }
