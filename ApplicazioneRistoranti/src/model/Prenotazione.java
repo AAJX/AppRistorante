@@ -21,6 +21,7 @@ public class Prenotazione implements Serializable {
 
 	@Id
 	@Column(name="ID_PRENOTAZIONE")
+	@GeneratedValue
 	private int idPrenotazione;
 
 	@Temporal(TemporalType.DATE)

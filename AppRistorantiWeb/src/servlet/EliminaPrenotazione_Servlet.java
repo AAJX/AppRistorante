@@ -34,15 +34,15 @@ public class EliminaPrenotazione_Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//ObjectMapper om = new ObjectMapper();
+	
 		
 		String email = request.getParameter("email");
-		//Ristorante ristorante = om.readValue(request.getParameter("r"), Ristorante.class);
+	
 		int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean eliminata = gp.eliminaPrenotazione(email, idPrenotazione/*, ristorante*/);
+		Boolean eliminata = gp.eliminaPrenotazione(email, idPrenotazione);
 		
 		response.getWriter().append(eliminata.toString());
 	}

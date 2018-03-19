@@ -47,7 +47,6 @@ public class NuovaPrenotazione_Servlet extends HttpServlet {
 		String email = request.getParameter("email");
 		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
 		
-	//	int idPrenotazione = Integer.parseInt(request.getParameter("id"));
 		String orario = request.getParameter("orario");
 		int numeroPrenotati = Integer.parseInt(request.getParameter("numeroPrenotati"));
 		String data = request.getParameter("data");

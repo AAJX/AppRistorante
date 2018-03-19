@@ -13,12 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import business.EsitoOperazioni;
 import business.GestoreAccount;
-import business.GestoreNuovoUtente;
-import business.GestoreRistoranti;
-import model.Citta;
-import model.Regione;
-import model.Ristorante;
-import model.Utente;
+
 
 /**
  * Servlet implementation class NuovoAccountServlet

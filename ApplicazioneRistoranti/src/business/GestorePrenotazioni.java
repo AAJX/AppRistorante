@@ -117,11 +117,11 @@ public class GestorePrenotazioni {
 					EntityManager em = JPAUtility.getInstance().getEm();
 						
 					Utente u = em.find(Utente.class,email);
-					//ristorante = em.find(Ristorante.class, ristorante.getIdRistorante());
+				
 						
 					Prenotazione p = em.find(Prenotazione.class, idPrenotazione);
 						
-					if (/*ristorante != null && */u != null ) {
+					if (u != null ) {
 
 						em.getTransaction().begin();
 						em.remove(p);

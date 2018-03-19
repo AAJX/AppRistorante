@@ -9,37 +9,33 @@ import javax.servlet.http.HttpServletResponse;
 
 import business.GestoreAccount;
 
-
-
 /**
- * Servlet implementation class ModificaEmail_Servlet
+ * Servlet implementation class ModificaTelefonoAccount
  */
-@WebServlet("/modificaPasswordAccount")
-public class ModificaPasswordAccount_Servlet extends HttpServlet {
+@WebServlet("/ModificaTelefonoAccount")
+public class ModificaTelefonoAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-      private GestoreAccount ga = new GestoreAccount();
+	 private GestoreAccount ga = new GestoreAccount();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificaPasswordAccount_Servlet() {
+    public ModificaTelefonoAccount() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		String email= request.getParameter("email");
+		String numeroTelefono = request.getParameter("telefono");
+		
 
 		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		
-		
-		Boolean modificata = ga.modificaPasswordUtente(email, password);
+		Boolean modificata = ga.modificaTelefonoUtente(email, numeroTelefono );
 		response.getWriter().append(modificata.toString());
 	}
 

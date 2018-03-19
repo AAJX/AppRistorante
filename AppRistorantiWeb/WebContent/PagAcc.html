@@ -79,6 +79,8 @@
 		    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
 		    <h2>Le tue prenotazioni</h2>
 		      
+		      <div id="table-wrapper">
+ 				 <div id="table-scroll">
 		    <table class="table">
 				<thead>
 				  <tr>
@@ -88,16 +90,20 @@
 				    <th scope="col">Posti prenotati</th>
 				    <th scope="col">Ristorante</th>
 				  </tr>
-				</thead>
-				  <tbody id=elencoPrenotazioni>
+				</thead >
+				  <tbody id=elencoPrenotazioni >
 				  </tbody>
 			</table>
+			</div>
+			</div>
+			
+			<br>
 	<p>
-	  <a class="btn btn-primary" data-toggle="collapse" href="#Gestisci" role="button" aria-expanded="false" aria-controls="collapseExample">
+	  <a class="btn btn-primary" data-toggle="collapse" href="#Gestisci Collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
 	    Gestisci le prenotazioni
 	  </a>
 	</p>
-	<div class="collapse" id="Gestisci">
+	<div class="collapse" id="Gestisci Collapse">
 	
 
 	
@@ -125,6 +131,9 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#coperti" role="tab" aria-controls="contact" aria-selected="false">Coperti</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="cancel-tab" data-toggle="tab" href="#cancella" role="tab" aria-controls="cancel" aria-selected="false">Cancella</a>
   </li>
 </ul>
 
@@ -167,25 +176,87 @@
 			<button type="button" class="btn btn-primary col-1" id="btnCambiaCoperti">Ok</button>
 	  </form>
 	</div>
+  
+  
+  <div class="tab-pane fade" id="cancella" role="tabpanel" aria-labelledby="cancel-tab">
+  <br>
+   <p>Vuoi davvero cancellare la tua prenotazione?</p>
+	<button type="button" class="btn btn-primary " id="btnEliminaPrenotazione">Elimina</button>
+	</div>
+	
   </div>
   
-</div>
-
-	<p>Vuoi davvero cancellare la tua prenotazione?</p>
-	<button type="button" class="btn btn-primary " id="btnEliminaPrenotazione">Elimina</button>
-	
-	<!-- form invisibile dell'email -->
+  <!-- form invisibile dell'email -->
 	<form id="frmPre">
 	  	<label for="email" class="sr-only"></label> 
 		<input 
 		type="text" id="email" class="form-control invisible"
 		placeholder="Email" required name="email" >
 	</form>
-		    </div>
+	
+	</div>
+</div>
 		    
 		    <!-- Opzioni -->
 		    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">  
 		    <h2>Modifica Account</h2>
+		    <h4>Cambia i tuoi dati</h4>
+		    <div class=row>
+		    <div class=col-6>
+		    <h5>Password:</h5>
+		    <form class="form-inline" id=CambiaPassword>
+		<div class="form-group " >
+			<label for="Password" class="sr-only">Password</label>
+			<input type="password" class="form-control" id="Password" required name="password">
+		</div>
+			<button type="button" class="btn btn-primary " id="btnCambiaPassword" style="margin-left:2%">Ok</button>
+			</form>
+			
+			<h5>Telefono:</h5>
+		    <form class="form-inline" id=CambiaTelefono>
+		<div class="form-group " >
+			<label for="Telefono" class="sr-only">Telefono</label>
+			<input type="text" class="form-control" id="Telefono" required name="telefono">
+		</div>
+			<button type="button" class="btn btn-primary " id="btnCambiaTelefono" style="margin-left:2%">Ok</button>
+			</form>
+			</div>
+			 <div class=col-6>
+			<h5>Vuoi eliminare il tuo account?</h5>
+		  
+	
+			<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modalCancelAcc">Cancella il mio account</button>
+			
+			<div class="modal fade" id="modalCancelAcc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Verifica la password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form  id=VerificaPassword>
+      <label for="VPass" class="sr-only">Password</label>
+			<input type="password" class="form-control" id="VPass" placeholder="Password"required name="password">
+			</form>
+		</div>
+     
+      <div class="modal-footer">
+      <p align=center>Sicuro di volerlo fare?</p>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Esci</button>
+        <button type="button" class="btn btn-primary" id="btnCancAcc">Sì</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>
+
+</div>
+		 </div>   
 		    </div>
 	    </div>
 	  </div>

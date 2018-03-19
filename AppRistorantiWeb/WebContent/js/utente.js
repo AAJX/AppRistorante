@@ -64,13 +64,14 @@ $.ajax({
 $(document).ready(function(){
 	$.ajax({
 		url: 'listaPrenotazioni',
-		method: 'get'
+		method: 'get',
+		data: $('#frmPre').serialize()
 	})
 	.done(function(prenotazioni) {
 		// <li>Anna Rossi</li>
-		var i =1;
+
 		prenotazioni.forEach(function(p){
-			
+	
 			
 			var stringa = '<tr>'
 				+ '<th scope="row" >#'+ p.idPrenotazione +'</th>'
@@ -78,10 +79,10 @@ $(document).ready(function(){
 			+ '<td>' + p.orario + '</td>'
 			+'<td>' + p.numeroPrenotati + '</td>'
 			+'<td>' + p.ristorante.nome + '</td>'
-			+'<tr>';
+			+'</tr>';
 			$('#elencoPrenotazioni').append(stringa);
 			
-			i++;
+	
 			
 		})
 			
@@ -91,15 +92,16 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$.ajax({
 		url: 'listaPrenotazioni',
-		method: 'get'
+		method: 'get',
+		data: $('#frmPre').serialize()
 	})
 	.done(function(persone) {
 		
-		var i=1;
+		
 		persone.forEach(function(pr) {
 			var stringa = '<option class="optionPr">'+pr.idPrenotazione+'</option>';
 			$('#elencoPe').append(stringa);
-		i++;	
+			
 		})
 	})
 });
@@ -157,3 +159,51 @@ $('#btnEliminaPrenotazione').click(function() {
 		alert("La tua prenotazione è stata cancellata");
 		});
 	});
+
+// Cambia Password
+$('#btnCambiaPassword').click(function() {
+	console.log($('#CambiaPassword,#frmPre').serialize())
+	$.ajax({
+		url : 'modificaPasswordAccount',
+		method : 'get',
+		data : $('#CambiaPassword,#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+//		localStorage.removeItem('utente');
+//		localStorage.setItem('utente', JSON.stringify(utente));
+		alert("La password è stata modificata");
+		});
+	});
+
+
+//Cambia Telefono
+$('#btnCambiaTelefono').click(function() {
+	console.log($('#CambiaTelefono,#frmPre').serialize())
+	$.ajax({
+		url : 'ModificaTelefonoAccount',
+		method : 'get',
+		data : $('#CambiaTelefono,#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+//		localStorage.setItem('utente', JSON.stringify(utente));
+		alert("Il numero di telefono è stato aggiornato");
+		});
+	});
+
+//Cambia Telefono
+$('#btnCancAcc').click(function() {
+	console.log($('#VerificaPassword,#frmPre').serialize())
+	$.ajax({
+		url : 'eliminaAccount',
+		method : 'get',
+		data : $('#VerificaPassword,#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+
+		alert("Il numero di telefono è stato aggiornato");
+		localStorage.removeItem('utente');
+		location.href = 'Login.html';
+		});
+	});
+
+
