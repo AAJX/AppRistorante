@@ -37,11 +37,9 @@ public class ListaPrenotazioni_Servlet extends HttpServlet {
 		GestoreListaPrenotazioni glp = new GestoreListaPrenotazioni();
 		ObjectMapper m = new ObjectMapper();
 		response.setContentType("application/json");
-		String utente = request.getParameter("utente");
-		if (utente == null) {
-			response.getWriter().append(m.writeValueAsString(glp.tutteLePrenotazioni()));
-		} else {
-			String email = request.getParameter(utente);
+		String email = request.getParameter("email");
+		if (email != null) {
+			
 			response.getWriter().append(m.writeValueAsString(glp.prenotazioniUtente(email)));
 		}
 		}catch(Exception ioe) {

@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import business.GestoreNuovoUtente;
-import model.Utente;
+import business.EsitoOperazioni;
+import business.GestoreAccount;
+
+
 
 /**
  * Servlet implementation class EliminaAccountServlet
@@ -18,7 +22,8 @@ import model.Utente;
 @WebServlet("/eliminaAccount")
 public class EliminaAccount_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+       private	GestoreAccount ga = new GestoreAccount();
+
     /**
      * @see HttpServlet#HttpServlet()
      * 
@@ -32,16 +37,15 @@ public class EliminaAccount_Servlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ObjectMapper om = new ObjectMapper();
-
-		Utente utente = om.readValue(request.getParameter("utente"), Utente.class);
+		String email = request.getParameter("email");
+		String password= request.getParameter("password");
 		
-		GestoreNuovoUtente gnu = new GestoreNuovoUtente();
-
-		Boolean eliminato = gnu.eliminaUtente(utente);
-		response.getWriter().append(eliminato.toString());
+		
+		
+		Boolean eo =  ga.rimuoviUtente(email, password);
+		response.getWriter().append(eo.toString());
 	}
 
 }

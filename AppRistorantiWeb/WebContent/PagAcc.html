@@ -4,7 +4,270 @@
 <meta charset="ISO-8859-1">
 <title>Il tuo profilo account</title>
 </head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
 <body>
+<nav class="navbar navbar-light navbar-expand-lg" style=" background-color:blue;">
+  <a > <img id="logo" class="navbar-brand"  src="media/risto/logo.jpg"></img> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+       <a class="nav-link" href="Homepage.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Chisiamo.html">La nostra filosofia</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Feedback.html">Lascia un commento</a>
+      </li>
+    </ul> 
+  </div>
+<a id="LinkAccount" href="PagAcc.html" class="text-light " >Ciao, <span id="LinkNome"></span></a>
+<button id="btnAccedi" type="button" class="btn btn-outline-light " style="font-weight:bold;" data-toggle="modal" data-target="#Modal">Accedi</button>
+<button class="btn btn-outline-light" id="btnLogout" style="font-weight:bold;">Esci</button>
+</nav>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style=background-color:#ffffff;>
+    <li class="breadcrumb-item"><a href="Homepage.html">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">MyAccount</li>
+  </ol>
+</nav>
+
+<div class=container-fluid >
+	<div class=row>
+	<div class=col-3>
+	<h1 style="font-family:Sans-serif;">Il tuo profilo</h1>
+	<img src=media/padreMaronno.jpg class=img-fluid style=border-radius:8.25rem;>
+	
+	<div class="col-9" style=margin-top:10%;>
+	    <div class="list-group" id="list-tab" role="tablist">
+	      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#profilo-account" role="tab" aria-controls="home">Profilo account</a>
+	      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Le tue prenotazioni</a>
+	      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Opzioni</a>
+	    </div>
+	</div>
+	</div>
+	
+	
+	 <div class="col-8">
+	 
+	 <!-- profilo -->
+	    <div class="tab-content" id="nav-tabContent">
+		    <div class="tab-pane fade show active" id="profilo-account" role="tabpanel" aria-labelledby="list-home-list">
+		    <h2>Dettagli account</h2>
+			    <div class=container> 
+				    <div class=row>
+				        <div class=col-2>
+					    <h5>Nome : </h5>
+					    <h5>Telefono: </h5>
+					    <h5>Email: </h5>
+						</div>
+					<div class=col-6>
+					<h5> <span id="profiloNome" style=margin-left:4%;></span> </h5>
+					<h5> <span id="profiloTelefono" style=margin-left:4%;></span> </h5>
+					<h5> <span id="profiloEmail" style=margin-left:4%;></span> </h5>
+					</div>
+				    </div>
+			    </div>  
+		    </div>
+		    
+		    <!-- Lista Prenotazioni -->
+		    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+		    <h2>Le tue prenotazioni</h2>
+		      
+		      <div id="table-wrapper">
+ 				 <div id="table-scroll">
+		    <table class="table">
+				<thead>
+				  <tr>
+				    <th scope="col">Codice</th>
+				    <th scope="col">Data</th>
+				    <th scope="col">Orario</th>
+				    <th scope="col">Posti prenotati</th>
+				    <th scope="col">Ristorante</th>
+				  </tr>
+				</thead >
+				  <tbody id=elencoPrenotazioni >
+				  </tbody>
+			</table>
+			</div>
+			</div>
+			
+			<br>
+	<p>
+	  <a class="btn btn-primary" data-toggle="collapse" href="#Gestisci Collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+	    Gestisci le prenotazioni
+	  </a>
+	</p>
+	<div class="collapse" id="Gestisci Collapse">
+	
+
+	
+	  <form class ="form-inline" id="frmPrenot">	
+	  <div class= "col" >
+	  <p>Scegli il numero della prenotazione da modificare</p>
+	  </div>
+	  
+	   <select class="custom-select col-1"  id="elencoPe" name="idPrenotazione">
+	  </select>
+	 
+	<!--    <label
+					for="numeroPrenotati" class="sr-only"></label> 
+			<input
+				type="number" id="numeroPrenotati" class="form-control"
+				placeholder="1" required name="idPrenotazione">-->
+	  </form>
+	  <br>
+<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#ora" role="tab" aria-controls="home" aria-selected="true">Ora</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#data" role="tab" aria-controls="profile" aria-selected="false">Data</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#coperti" role="tab" aria-controls="contact" aria-selected="false">Coperti</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="cancel-tab" data-toggle="tab" href="#cancella" role="tab" aria-controls="cancel" aria-selected="false">Cancella</a>
+  </li>
+</ul>
+
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="ora" role="tabpanel" aria-labelledby="home-tab">
+  <br>
+   <p>Cambia l'ora della tua prenotazione:</p>
+	  <form class="form-inline" id=CambiaOrario >
+		<div class="form-group col-3" >
+			<label for="orario" class="sr-only">Ora</label>
+			<input type="time" class="form-control" id="orario" required name="orario">
+		</div>
+			<button type="button" class="btn btn-primary col-1" id="btnCambiaOrario">Ok</button>
+	  </form>
+  </div>
+  
+  
+  <div class="tab-pane fade" id="data" role="tabpanel" aria-labelledby="profile-tab">
+  <br>
+  <p>Cambia la data della tua prenotazione:</p>
+	  <form class="form-inline" id=CambiaData>
+		<div class="form-group col-3" >
+			<label for="data" class="sr-only">Data</label>
+			<input type="date" id="data" class="form-control" required autofocus name="data"> 
+		</div>
+			<button type="button" class="btn btn-primary col-1" id="btnCambiaData">Ok</button>
+	  </form>
+  </div>
+  
+  
+  <div class="tab-pane fade" id="coperti" role="tabpanel" aria-labelledby="contact-tab">
+  <br>
+   <p>Cambia il numero dei coperti:</p>
+	  <form class="form-inline" id=CambiaCoperti>
+		<div class="form-group col-3" >
+			<label for="coperti" class="sr-only"></label> 
+			<input type="number" id="coperti" class="form-control"placeholder="coperti" required name="coperti">
+		</div>
+			<button type="button" class="btn btn-primary col-1" id="btnCambiaCoperti">Ok</button>
+	  </form>
+	</div>
+  
+  
+  <div class="tab-pane fade" id="cancella" role="tabpanel" aria-labelledby="cancel-tab">
+  <br>
+   <p>Vuoi davvero cancellare la tua prenotazione?</p>
+	<button type="button" class="btn btn-primary " id="btnEliminaPrenotazione">Elimina</button>
+	</div>
+	
+  </div>
+  
+  <!-- form invisibile dell'email -->
+	<form id="frmPre">
+	  	<label for="email" class="sr-only"></label> 
+		<input 
+		type="text" id="email" class="form-control invisible"
+		placeholder="Email" required name="email" >
+	</form>
+	
+	</div>
+</div>
+		    
+		    <!-- Opzioni -->
+		    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">  
+		    <h2>Modifica Account</h2>
+		    <h4>Cambia i tuoi dati</h4>
+		    <div class=row>
+		    <div class=col-6>
+		    <h5>Password:</h5>
+		    <form class="form-inline" id=CambiaPassword>
+		<div class="form-group " >
+			<label for="Password" class="sr-only">Password</label>
+			<input type="password" class="form-control" id="Password" required name="password">
+		</div>
+			<button type="button" class="btn btn-primary " id="btnCambiaPassword" style="margin-left:2%">Ok</button>
+			</form>
+			
+			<h5>Telefono:</h5>
+		    <form class="form-inline" id=CambiaTelefono>
+		<div class="form-group " >
+			<label for="Telefono" class="sr-only">Telefono</label>
+			<input type="text" class="form-control" id="Telefono" required name="telefono">
+		</div>
+			<button type="button" class="btn btn-primary " id="btnCambiaTelefono" style="margin-left:2%">Ok</button>
+			</form>
+			</div>
+			 <div class=col-6>
+			<h5>Vuoi eliminare il tuo account?</h5>
+		  
+	
+			<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modalCancelAcc">Cancella il mio account</button>
+			
+			<div class="modal fade" id="modalCancelAcc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Verifica la password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form  id=VerificaPassword>
+      <label for="VPass" class="sr-only">Password</label>
+			<input type="password" class="form-control" id="VPass" placeholder="Password"required name="password">
+			</form>
+		</div>
+     
+      <div class="modal-footer">
+      <p align=center>Sicuro di volerlo fare?</p>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Esci</button>
+        <button type="button" class="btn btn-primary" id="btnCancAcc">Sì</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>
+
+</div>
+		 </div>   
+		    </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/account.js"></script>
+ <script src="js/utente.js"></script>
+ 
 
 </body>
 </html>

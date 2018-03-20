@@ -1,9 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.android.itfs.myapplication.model.Registrazione">
+    android:background="@color/black"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
-</android.support.constraint.ConstraintLayout>
+
+    <com.crust87.texturevideoview.widget.TextureVideoView
+        android:id="@id/videoView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        app:scaleType="centerCrop"
+        />
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+                app:srcCompat="@drawable/logo" />
+
+
+            <TextView
+                android:id="@+id/titnom"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
+                android:layout_marginTop="0dp"
+                android:text="NOME"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/txtnom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/titnom"
+                android:backgroundTint="@color/white"
+                android:inputType="textPersonName"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/titco"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtnom"
+                android:text="COGNOME"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/txtcogn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titco"
+                android:backgroundTint="@color/white"
+                android:inputType="textPersonName"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/titemail"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtcogn"
+                android:text="EMAIL"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/txtmail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titemail"
+                android:backgroundTint="@color/white"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tittel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtmail"
+                android:text="TELEFONO"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/txttel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tittel"
+                android:backgroundTint="@color/white"
+                android:inputType="number"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/titpwd"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txttel"
+                android:text="PASSWORD"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/txtpwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titpwd"
+                android:backgroundTint="@color/white"
+                android:inputType="textPassword"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/titpwd2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtpwd"
+                android:text="CONFERMA PASSWORD"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/txtpwd2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titpwd2"
+                android:backgroundTint="@color/white"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/signupB"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/txtpwd2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/buttonstyle"
+                android:text="REGISTRAMI"
+                android:textColor="@color/orange" />
+
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

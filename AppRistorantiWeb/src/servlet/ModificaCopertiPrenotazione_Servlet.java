@@ -27,15 +27,14 @@ public class ModificaCopertiPrenotazione_Servlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idPrenotazione  = Integer.parseInt(request.getParameter("idPrenotazione"));
 		String email = request.getParameter("email");
-		int idRistorante = Integer.parseInt(request.getParameter("ristorante"));
 		int numeroPrenotati = Integer.parseInt(request.getParameter("coperti"));
 		
 		GestorePrenotazioni gp = new GestorePrenotazioni();
 		
-		Boolean modificata = gp.modificaCopertiPrenotazione(email, idRistorante, idPrenotazione, numeroPrenotati);
+		Boolean modificata = gp.modificaCopertiPrenotazione(email, idPrenotazione, numeroPrenotati);
 		
 		response.getWriter().append(modificata.toString());
 	}

@@ -54,8 +54,11 @@ public class GestoreListaRistoranti {
 					    "SELECT r FROM Ristorante r",Ristorante.class).getResultList();
 					
 				for( Ristorante r:list) {
-					System.out.println(r.getNome());
+					System.out.println(r.getIdRistorante());
 				}
+				
+		
+				
 				
 				return list;    
 					    

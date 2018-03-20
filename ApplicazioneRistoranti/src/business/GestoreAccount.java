@@ -2,6 +2,7 @@ package business;
 
 import javax.persistence.EntityManager;
 
+import model.Prenotazione;
 import model.Utente;
 
 public class GestoreAccount {
@@ -39,9 +40,7 @@ public class GestoreAccount {
 		return _return;
 	}
 		
-		
-		
-		
+
 	
 	public EsitoOperazioni registraUtente(Utente nuovoUtente) {
 		EsitoOperazioni _return = new EsitoOperazioni();
@@ -69,31 +68,70 @@ public class GestoreAccount {
 		return _return;
 	}	
 
-	public EsitoOperazioni rimuoviUtente(String email) {
-		EsitoOperazioni _return = new EsitoOperazioni();
-		try {
+	public boolean rimuoviUtente(String email, String password) {
+		
+		
 			EntityManager em = JPAUtility.getInstance().getEm();
 			Utente u = em.find(Utente.class, email);
-			if (u != null) {
+			String pass = u.getPassword();
+
+			
+			if (u != null && pass.equals(password) ) {
 				em.getTransaction().begin();
 				em.remove(u);
 				em.getTransaction().commit();
-				
-				_return.setSuccess(true);
-				_return.setMessaggio("Utente eliminato");
-				_return.setOggettoRisultante(null);
-			} else {
-				_return.setSuccess(false);
-				_return.setMessaggio("L'utente non esiste");
-				_return.setOggettoRisultante(null);
-			}
-		} catch (Exception ex) {
-			_return.setSuccess(false);
-			_return.setMessaggio("Qualcosa è andato male => " + ex.getMessage());
-			_return.setOggettoRisultante(ex);
+				return true;
 		}
-		return _return;
+		return false;
 	}
 	
 	
+	
+
+	public boolean modificaPasswordUtente(String email ,String password) {
+
+		EntityManager em = JPAUtility.getInstance().getEm();
+		
+			 Utente u = em.find(Utente.class,email);
+		
+			 if(u !=null) {
+				 
+				 u.setPassword(password);
+				 
+					em.getTransaction().begin();
+					em.merge(u);
+					em.getTransaction().commit();
+					
+					return true;
+				}else {
+					return false;
+					
+				}	
+	}	
+	
+	
+	public boolean modificaTelefonoUtente(String email ,String numeroTelefono) {
+
+		EntityManager em = JPAUtility.getInstance().getEm();
+		
+			 Utente u = em.find(Utente.class,email);
+		
+			 if(u !=null) {
+				 
+				 u.setNumeroTelefono(numeroTelefono);
+				 
+					em.getTransaction().begin();
+					em.merge(u);
+					em.getTransaction().commit();
+					
+					return true;
+				}else {
+					return false;
+					
+				}	
+	}
+	
 }
+
+
+

@@ -12,31 +12,6 @@ $(window).scroll(function () {
 });
 
 // registra
-/*$('#btnRegister').click(function(e) {
-	// 1. impedire al form HTML di fare submit
-	e.preventDefault();
-	$.ajax({
-		url: 'nuovoAccount',
-		method: 'post',
-		data: $('#frmRegister').serialize()
-	})
-	.done(function(esito){
-		console.log(esito);
-		if(esito.success) {
-			localStorage.setItem('utente', JSON.stringify(esito.oggettoRisultante));
-			// andare alla pagina areariservata
-			location.href ='Homepage.html';
-		} else {
-			$('#pnlErrLogin').show('fast').delay(2000).hide('fast');
-		}
-	})
-	.fail(function() {
-		console.log('qualcosa e andato storto.')
-	});
-	
-});*/
-
-
 $('#btnRegister').click(function(e) {
 	// 1. impedire al form HTML di fare submit
 	e.preventDefault();
@@ -83,54 +58,75 @@ $('#btnLogin').click(function(e) {
 	
 });
 
-//popola la pagina ristorante
+//popola la pagina ristorante di carousel
+var pagina = "";
 
-
-
-
-
-
-$("#btnconte").click(function() {
-	location.href='PagRisto.html';
+$(document).ready(function() {
+	if($('.conte').length) {
+		pagina = "content/Conte.html";
+	}
 	
-    	$.ajax({
-		url: 'prova.html',
-		method: 'post'
+	else if($('.madre').length) {
+		pagina = "content/MadreGea.html";
+	}
+	
+	else if($('.chat').length) {
+		pagina = "content/ChatNoir.html";
+	}
+	
+		$.ajax({
+			url:pagina,
+			method: 'post',
+		})
+		.done(function(risposta) {
+			$('#par').html(risposta);
+		});	
+});		
+
+
+
+$(document).ready(function(){
+	$.ajax({
+		url: 'listaRistoranti',
+		method: 'get'
 	})
-	.done(function(risposta) {
-		$('#par').html(risposta);
+	.done(function(persone) {
+		// <li>Anna Rossi</li>
+	
+		persone.forEach(function(p) {
+			var stringa = '<li>' + p.nome + '</li>';
+			$('#elencoPersone').append(stringa);
+		})
 	});
-  
-	
-})
+});
 
-//	jQuery('a').click(function(){
-//		  $("#madre").data('clicked', true);
-//		  $('#par').addClass('prova');
-//		})
+	
+//popola la pagina ristorante 
+$(document).ready(function(){
+	 
+	 var url = window.location.href;
+	 
+	 if(url.search("#conte") >=0 ) {
+		 
+	 	 $('#par').addClass("conte");
+		$('#ristorante').val( ristoranti[0].idRistorante);
+		$('#nomeRistorante').html(ristoranti[0].nome);
+		$('#nomeCitta').html(ristoranti[0].citta.nome);
 		
-//if('#conte') {
-//	$.ajax({
-//		url: 'prova.html',
-//		method: 'post'
-//	})
-//	.done(function(risposta) {
-//		$('#par').html(risposta);
-//	});
-//}
-//	
-//if('#madre') {
-//	$.ajax({
-//		url: 'prova2.html',
-//		method: 'post'
-//	})
-//	.done(function(risposta) {
-//		$('#par').html(risposta);
-//	});
-//}
-
-	
-	
-
+	 } else if(url.search("#madre") >=0 ) {
+		 
+	 	 $('#par').addClass("madre");
+	 	$('#ristorante').val( ristoranti[1].idRistorante);
+	 	$('#nomeRistorante').html(ristoranti[1].nome);
+	 	$('#nomeCitta').html(ristoranti[1].citta.nome);
+	 }else if(url.search("#chat") >=0 ) {
+		 
+		 $('#par').addClass("chat");
+		 $('#ristorante').val( ristoranti[2].idRistorante);
+		 $('#nomeRistorante').html(ristoranti[2].nome);
+		 $('#nomeCitta').html(ristoranti[2].citta.nome);
+	 }
+	 
+});
 
 	

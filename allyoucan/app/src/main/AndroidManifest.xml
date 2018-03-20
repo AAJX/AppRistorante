@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.itfs.myapplication">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <permission
+        android:name="com.example.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.permission.MAPS_RECEIVE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,12 +26,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".elencoristoranti" />
+        <activity android:name=".Registrazione" />
         <activity android:name=".MenuPrincipale" />
-        <activity android:name=".fragment.LoginFragment" />
         <activity android:name=".ExploreNotLogged" />
         <activity android:name=".Explore" />
-        <activity android:name=".Prenotazione"></activity>
+        <activity android:name=".Prenotazione" />
+        <activity android:name=".Ristorante"></activity>
+        <activity android:name=".ProfiloFragment"></activity>
+        <activity
+            android:name=".NavigationDrawer"
+            android:label="@string/title_activity_navigation_drawer"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

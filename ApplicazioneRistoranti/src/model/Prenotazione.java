@@ -21,6 +21,7 @@ public class Prenotazione implements Serializable {
 
 	@Id
 	@Column(name="ID_PRENOTAZIONE")
+	@GeneratedValue
 	private int idPrenotazione;
 
 	@Temporal(TemporalType.DATE)
@@ -36,7 +37,7 @@ public class Prenotazione implements Serializable {
 
 	//bi-directional many-to-one association to Ristorante
 	@ManyToOne
-	@JsonIgnore
+	//@JsonIgnore
 	private Ristorante ristorante;
 
 	//bi-directional many-to-one association to Utente
@@ -79,7 +80,7 @@ public class Prenotazione implements Serializable {
 	public void setOrario(String orario) {
 		this.orario = orario;
 	}
-	@JsonIgnore
+//	@JsonIgnore
 	public Ristorante getRistorante() {
 		return this.ristorante;
 	}
