@@ -27,20 +27,7 @@ $('#btnLogout').click(function() {
 	location.href = 'Login.html';
 });
 
-// crea un locale storage dei ristoranti 
 
-$(document).ready(function(){
-	$.ajax({
-		url: 'listaRistoranti',
-		method: 'get'
-	})
-	.done(function(ristoranti) {
-		localStorage.setItem('ristoranti', JSON.stringify(ristoranti));
-	});
-});
-//inizializza ristoranti
-var ristoranti = localStorage.getItem('ristoranti');
-ristoranti = JSON.parse(ristoranti);
 
 var prenotazioni =localStorage.getItem('utente.prenotazioni');
 
@@ -190,7 +177,7 @@ $('#btnCambiaTelefono').click(function() {
 		});
 	});
 
-//Cambia Telefono
+//Cancella Account
 $('#btnCancAcc').click(function() {
 	console.log($('#VerificaPassword,#frmPre').serialize())
 	$.ajax({
@@ -205,5 +192,4 @@ $('#btnCancAcc').click(function() {
 		location.href = 'Login.html';
 		});
 	});
-
 

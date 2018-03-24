@@ -21,7 +21,7 @@ public class Prenotazione implements Serializable {
 
 	@Id
 	@Column(name="ID_PRENOTAZIONE")
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPrenotazione;
 
 	@Temporal(TemporalType.DATE)

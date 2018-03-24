@@ -41,21 +41,21 @@
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner" >
 	    <div   class="carousel-item active">
-	     <a id="conte" href="PagRisto.html#conte"> <img class="d-block w-100" src="media/risto/ristorante101.jpg" alt="First slide"></a>
+	     <a id="1" > <img class="d-block w-100" src="media/risto/ristorante101.jpg" alt="First slide"></a>
 	      <div class="carousel-caption d-none d-md-block">
 			    <h5>Il conte</h5>
 			    <p class=lead>Per una cena equilibrata e piena di classe</p>
 		  </div>
 	    </div>
 	    <div class="carousel-item">
-	     <a id="madre" href="PagRisto.html#madre" > <img class="d-block w-100" src="media/risto/ristorante102.jpg" alt="Second slide"></a>
+	     <a id="2" > <img class="d-block w-100" src="media/risto/ristorante102.jpg" alt="Second slide"></a>
 	    	<div class="carousel-caption d-none d-md-block">
 				<h5>Madre Gea</h5>
 				<p class=lead>Deliziosi piatti rustici, il meglio dalla terra </p>
 	    	</div>
 	    </div>
 	    <div class="carousel-item">
-	     <a id="chat"href="PagRisto.html#chat"> <img class="d-block w-100" src="media/risto/ristorante103.jpg" alt="Third slide"></a>
+	     <a id="3"> <img class="d-block w-100" src="media/risto/ristorante103.jpg" alt="Third slide"></a>
 		    <div class="carousel-caption d-none d-md-block">
 			    <h5>Chat Noir</h5>
 			    <p class=lead>Romantico e sensuale, per una serata indimenticabile</p>
@@ -77,27 +77,39 @@
 
  <!-- ricerca ristoranti -->
 <div class=container>
-<nav id="vic" class="navbar navbar-light navbar-expand-lg bg-dark justify-content-between">
-	<a class="btn " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+<nav id="vic" class="navbar navbar-light navbar-expand-lg justify-content-between" style="background-color:#589442;padding:12px">
+	<a onclick="VediTutto()" class="btn btn-success"  style="background-color:#8bd15d;border-color:#8bd15d;box-shadow:0 0 0 0.2rem rgba(40,167,69,0)">
 	Tutti i ristoranti
 	</a>
   
-     <form class="form-inline" style=width:32%;>
-      <input class="form-control mr-sm-2" type="search" placeholder="Cerca per nome,indirizzo, o città" style="width:75%;">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+     <form class="form-inline" style=width:32%; onsubmit="return false;">
+      <input id=searchRist name=citta class="form-control mr-sm-2" type="search" placeholder="Cerca per nome,indirizzo, o città" style="width:75%;">
+      <button class="btn btn-success my-2 my-sm-0" type="submit" id=btnSearchRist >Cerca</button>
   </form>
 </nav>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-<ul id="elencoPersone">
-	</ul>
+<div id=fade >
+  <div class="card card-body" style=background-color:#fff69f;>
+
+<div class="card-deck" id=elencoRistoranti>
+</div>
+
+<div class="card-deck" id=elencoRisto>
+</div>
   </div>
   </div>
 </div>
 
+
+
    
 <!-- banner -->
-<img  id=banner src="media/risto/dining-food-Banner-1920-x-750.jpg">
+<div class="card  text-white" style=margin-top:10%>
+  <img class="card-img" src="media/risto/dining-food-Banner-1920-x-750(banner)2.png" alt="Card image">
+  <div class="card-img-overlay text-center" >
+    <p class="card-text " style="margin-top:6%;font-size:20px;text-shadow:1px 1px #495057;"><strong>&copy;</strong><strong> Copyright <a class="text-success"> AllYouCan</a> all rights reserved</strong></p>
+
+  </div>
+</div>
 
 <!-- modal login -->
 <div id="Modal" class="modal fade" tabindex="-1" role="dialog">
@@ -193,6 +205,8 @@
  <script src="js/bootstrap.min.js"></script>
  <script src="js/account.js"></script>
  <script src="js/utente.js"></script>
+  <script src="js/ristorante.js"></script>
+
  
 </body>
 </html>

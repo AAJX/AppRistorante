@@ -14,6 +14,13 @@ public class GestoreListaRistoranti {
 	// LISTA RISTORANTI
 	
 	
+	public List<Ristorante> ristorantiNome(String nome) {
+		EntityManager em = JPAUtility.getInstance().getEm();
+		List<Ristorante> list = em.createQuery(
+			    "SELECT r FROM Ristorante r WHERE r.nome = :nome",Ristorante.class).setParameter("nome", nome).getResultList();
+		return list;  
+	}
+	
 	
 			public List<Ristorante> ristorantiCitta(int idCitta) {
 				EntityManager em = JPAUtility.getInstance().getEm();
@@ -36,10 +43,7 @@ public class GestoreListaRistoranti {
 				List<Ristorante> list = em.createQuery(
 					    "SELECT r FROM Ristorante r",Ristorante.class).getResultList();
 					
-				for( Ristorante r:list) {
-					System.out.println(r.getIdRistorante());
-				}
-				
+			
 		
 				
 				

@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <body>
-<nav class="navbar navbar-light navbar-expand-lg" style=" background-color:red;">
+<nav class="navbar navbar-light navbar-expand-lg" style=" background-color:#589442;">
   <a> <img id="logo" class="navbar-brand"  src="media/risto/logo.jpg"></img> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,18 +30,39 @@
 <button class="btn btn-outline-light" id="btnLogout" style="font-weight:bold;">Esci</button>
 </nav>
 
+
+
 <div class=container-fluid>
+
 	<div class=container >
-		<div class=row>
-			<div class=col-8>
-			<h1 class="display-4" style=margin-top:2%; id="nomeRistorante"></h1>
+	
+			<div class=col-8 style=display:inline-block;>
+			<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style=background-color:#ffffff;>
+    <li class="breadcrumb-item"><a href="Homepage.html">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Ristorante <span class=nomeRistorante></span></li>
+  </ol>
+</nav>
+			<h1 class="display-4 nomeRistorante"></h1>
 			<h5 id="nomeCitta"></h5>
+			
+			<p  class="display-4 text-right" id=prezzo style=font-size:20px></p>
 				<div id="par">
 				</div>
 				
+				<br>
+				<blockquote class="blockquote">
+				<p id="descrizione" style=width:100%></p>
+				</blockquote>
+				
+				<h3>Come raggiungere il nostro ristorante</h3>
+    			<div id="map"  style="height: 400px; width: 100%;"></div>
 			</div>
 			
-<div  id="preAttivo" style="border-style:solid;
+			
+			
+<div style="display:inline-block;vertical-align:top;margin-top:5%;">
+<div   id="preAttivo" style="border-style:solid;
 border-color:#bebebe;
 margin-top:2%;">
 	
@@ -90,21 +111,32 @@ margin-top:2%;">
 		</form>
 	</div>
 </div>
-		
+
+</div>
+	
+	
+	<div style="display:inline-block;vertical-align:top;margin-top:5%;">	
 <div  id="preSpento" >
 	<h5  class=text-center style=padding:20px;>Vuoi prenotare ?Prima accedi<br>
 	con un tuo <a href="#Modal" data-toggle="modal" data-target="#Modal">account</a></h5>
 	<h5 class=text-center style=padding:20px;> Non hai un account?<br>
 	Fai click <a href="#Register" data-toggle="modal" data-target="#Register">qui</a></h5>
 </div>
+	</div>	
 		
-		</div>
+		
+		
 	</div>	
 </div>
 
-<img  id=banner src="media/risto/dining-food-Banner-1920-x-750.jpg">
 
+<div class="card  text-white" style=margin-top:60px>
+  <img class="card-img" src="media/risto/dining-food-Banner-1920-x-750(banner)2.png" alt="Card image">
+  <div class="card-img-overlay text-center" >
+    <p class="card-text " style="margin-top:6%;font-size:20px;text-shadow:1px 1px #495057;"><strong class=text-dark>&copy;</strong><strong> Copyright <a class="text-success"> AllYouCan</a> all rights reserved</strong></p>
 
+  </div>
+</div>
 
 
 <div id="Modal" class="modal fade" tabindex="-1" role="dialog">
@@ -199,5 +231,30 @@ margin-top:2%;">
  <script src="js/bootstrap.min.js"></script>
  <script src="js/account.js"></script>
  <script src="js/utente.js"></script>
+  <script src="js/ristorante.js"></script>
+  <script>
+      function initMap() {
+    	  var uluru;
+    	  var url = window.location.href;
+    	  ristoranti.forEach(function(r){
+    		  if(url.search("#"+r.idRistorante) >=0){
+        		  uluru = {lat: r.latitudine, lng: r.longitudine };
+        	  }
+    	  })
+    	
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi6joPRpcwY3YE3Uyp43ZYst_ONe6ZgUE&callback=initMap">
+    </script>
 </body>
 </html>

@@ -19,6 +19,7 @@ public class Ristorante implements Serializable {
 
 	@Id
 	@Column(name="ID_RISTORANTE")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idRistorante;
 
 	private String categoria;

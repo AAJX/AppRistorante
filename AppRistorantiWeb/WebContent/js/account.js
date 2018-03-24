@@ -1,3 +1,16 @@
+
+//Citta
+$.ajax({
+	
+	url:'ListaCitta',
+	method:'get'
+}).done(function(esito){
+	localStorage.setItem('citta', JSON.stringify(esito))
+})
+
+
+
+
 // navbar animation 
 
 $(document).ready(function(){
@@ -58,75 +71,3 @@ $('#btnLogin').click(function(e) {
 	
 });
 
-//popola la pagina ristorante di carousel
-var pagina = "";
-
-$(document).ready(function() {
-	if($('.conte').length) {
-		pagina = "content/Conte.html";
-	}
-	
-	else if($('.madre').length) {
-		pagina = "content/MadreGea.html";
-	}
-	
-	else if($('.chat').length) {
-		pagina = "content/ChatNoir.html";
-	}
-	
-		$.ajax({
-			url:pagina,
-			method: 'post',
-		})
-		.done(function(risposta) {
-			$('#par').html(risposta);
-		});	
-});		
-
-
-
-$(document).ready(function(){
-	$.ajax({
-		url: 'listaRistoranti',
-		method: 'get'
-	})
-	.done(function(persone) {
-		// <li>Anna Rossi</li>
-	
-		persone.forEach(function(p) {
-			var stringa = '<li>' + p.nome + '</li>';
-			$('#elencoPersone').append(stringa);
-		})
-	});
-});
-
-	
-//popola la pagina ristorante 
-$(document).ready(function(){
-	 
-	 var url = window.location.href;
-	 
-	 if(url.search("#conte") >=0 ) {
-		 
-	 	 $('#par').addClass("conte");
-		$('#ristorante').val( ristoranti[0].idRistorante);
-		$('#nomeRistorante').html(ristoranti[0].nome);
-		$('#nomeCitta').html(ristoranti[0].citta.nome);
-		
-	 } else if(url.search("#madre") >=0 ) {
-		 
-	 	 $('#par').addClass("madre");
-	 	$('#ristorante').val( ristoranti[1].idRistorante);
-	 	$('#nomeRistorante').html(ristoranti[1].nome);
-	 	$('#nomeCitta').html(ristoranti[1].citta.nome);
-	 }else if(url.search("#chat") >=0 ) {
-		 
-		 $('#par').addClass("chat");
-		 $('#ristorante').val( ristoranti[2].idRistorante);
-		 $('#nomeRistorante').html(ristoranti[2].nome);
-		 $('#nomeCitta').html(ristoranti[2].citta.nome);
-	 }
-	 
-});
-
-	

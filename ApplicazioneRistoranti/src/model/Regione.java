@@ -26,7 +26,7 @@ public class Regione implements Serializable {
 
 	//bi-directional many-to-one association to Citta
 	@OneToMany(mappedBy="regione")
-	@JsonIgnore
+
 	private List<Citta> citta;
 
 	public Regione() {
@@ -47,7 +47,7 @@ public class Regione implements Serializable {
 	public void setNomeRegione(String nomeRegione) {
 		this.nomeRegione = nomeRegione;
 	}
-	@JsonIgnore
+	
 	public List<Citta> getCitta() {
 		return this.citta;
 	}

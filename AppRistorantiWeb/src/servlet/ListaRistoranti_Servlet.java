@@ -41,6 +41,7 @@ public class ListaRistoranti_Servlet extends HttpServlet {
 		if (citta == null) {
 			response.getWriter().append(m.writeValueAsString(glr.tuttiRistoranti()));
 		} else {
+
 			int idCitta = Integer.parseInt(citta);
 			response.getWriter().append(m.writeValueAsString(glr.ristorantiCitta(idCitta )));
 		}
