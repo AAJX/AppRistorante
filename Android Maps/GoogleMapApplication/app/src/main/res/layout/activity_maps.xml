@@ -1,0 +1,48 @@
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+<fragment
+android:layout_width="match_parent"
+android:layout_height="420dp"
+android:id="@+id/map"
+tools:context=".MapsActivity"
+android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/map"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Inserici Città"
+        android:textColor="@color/colorPrimaryDark" />
+
+
+    <Button
+        android:id="@+id/bottone1"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:backgroundTint="@color/colorAccent"
+        android:text="Cerca"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
+
+
+
+
+
+
+</LinearLayout>
+
+
+
