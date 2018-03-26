@@ -13,12 +13,20 @@ if(utente) {
 	$('#profiloEmail').html(utente.email);
 	$('#preAttivo').show();
 	$('#preSpento').hide();
+	if(utente.prenotazioni==""){
+		$("#table-wrapper").hide();
+		$("#noPrenotazioni").show();
+	}else{
+		$("#table-wrapper").show();
+		$("#noPrenotazioni").hide();
+	}
 }else {
 	$('#btnLogout').hide();
 	$('#btnAccedi').show();
 	$('#LinkNome').html( 'amico' );
 	$('#preAttivo').hide();
 	$('#preSpento').show();
+	$("#LinkAccount").removeAttr('href');
 }
 
 
@@ -34,7 +42,8 @@ var prenotazioni =localStorage.getItem('utente.prenotazioni');
 	
 //Prenotazione
 
-$('#btnPrenota').click(function() {
+$('#btnPrenota').click(function(e) {
+	e.preventDefault();
 		
 $.ajax({
 	url : 'nuovaPrenotazione',
@@ -144,6 +153,18 @@ $('#btnEliminaPrenotazione').click(function() {
 		}).done(function(esito) {
 		console.log(esito);
 		alert("La tua prenotazione è stata cancellata");
+		
+		$.ajax({
+			url : 'chiamaUtente',
+			method : 'get',
+			data : $('#frmPre').serialize(),
+			}).done(function(esito) {
+			console.log(esito);
+		localStorage.setItem('utente', JSON.stringify(esito));
+		
+			
+			});
+		
 		});
 	});
 
@@ -156,9 +177,21 @@ $('#btnCambiaPassword').click(function() {
 		data : $('#CambiaPassword,#frmPre').serialize(),
 		}).done(function(esito) {
 		console.log(esito);
-//		localStorage.removeItem('utente');
-//		localStorage.setItem('utente', JSON.stringify(utente));
+
+
 		alert("La password è stata modificata");
+		
+		$.ajax({
+			url : 'chiamaUtente',
+			method : 'get',
+			data : $('#frmPre').serialize(),
+			}).done(function(esito) {
+			console.log(esito);
+		localStorage.setItem('utente', JSON.stringify(esito));
+		
+			
+			});
+		
 		});
 	});
 
@@ -168,14 +201,26 @@ $('#btnCambiaTelefono').click(function() {
 	console.log($('#CambiaTelefono,#frmPre').serialize())
 	$.ajax({
 		url : 'ModificaTelefonoAccount',
-		method : 'get',
+		method : 'post',
 		data : $('#CambiaTelefono,#frmPre').serialize(),
 		}).done(function(esito) {
 		console.log(esito);
-//		localStorage.setItem('utente', JSON.stringify(utente));
-		alert("Il numero di telefono è stato aggiornato");
+
+		alert("Il numero di telefono è stato aggiornato");	
+		
+	$.ajax({
+		url : 'chiamaUtente',
+		method : 'get',
+		data : $('#frmPre').serialize(),
+		}).done(function(esito) {
+		console.log(esito);
+	localStorage.setItem('utente', JSON.stringify(esito));
+	
+		
 		});
 	});
+		});
+
 
 //Cancella Account
 $('#btnCancAcc').click(function() {
@@ -191,5 +236,7 @@ $('#btnCancAcc').click(function() {
 		localStorage.removeItem('utente');
 		location.href = 'Login.html';
 		});
+	
+	
 	});
 

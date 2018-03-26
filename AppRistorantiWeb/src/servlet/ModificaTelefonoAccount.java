@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import business.GestoreAccount;
 
 /**
@@ -27,7 +29,7 @@ public class ModificaTelefonoAccount extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
 		String email= request.getParameter("email");
@@ -38,5 +40,7 @@ public class ModificaTelefonoAccount extends HttpServlet {
 		Boolean modificata = ga.modificaTelefonoUtente(email, numeroTelefono );
 		response.getWriter().append(modificata.toString());
 	}
+	
+	
 
 }

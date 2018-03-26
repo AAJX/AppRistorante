@@ -1,8 +1,12 @@
 package business;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
+import model.Citta;
 import model.Prenotazione;
+import model.Ristorante;
 import model.Utente;
 
 public class GestoreAccount {
@@ -129,6 +133,15 @@ public class GestoreAccount {
 					return false;
 					
 				}	
+	}
+	
+	
+	
+	public Utente chiamaUtente(String email) {
+		EntityManager em = JPAUtility.getInstance().getEm();
+		Utente utente = em.find(Utente.class, email);
+			
+	return utente;
 	}
 	
 }

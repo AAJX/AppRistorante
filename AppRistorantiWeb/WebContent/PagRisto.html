@@ -6,8 +6,9 @@
 </head>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
-<nav class="navbar navbar-light navbar-expand-lg" style=" background-color:#589442;">
+<nav class="navbar navbar-light navbar-expand-lg" style=" background-color:#589442;box-shadow: 1px 1px 10px 1px #0000004a;">
   <a> <img id="logo" class="navbar-brand"  src="media/risto/logo.jpg"></img> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -32,7 +33,7 @@
 
 
 
-<div class=container-fluid>
+<div class=container-fluid style=margin-top:12px;>
 
 	<div class=container >
 	
@@ -44,8 +45,11 @@
   </ol>
 </nav>
 			<h1 class="display-4 nomeRistorante"></h1>
-			<h5 id="nomeCitta"></h5>
+			<div style=display:inline-block>
+			<h5><span id="nomeCitta"></span> , <span id="Via"></span> </h5>
+			</div>
 			
+			<div style=display:inline-block class="float-right" id=star></div>
 			<p  class="display-4 text-right" id=prezzo style=font-size:20px></p>
 				<div id="par">
 				</div>
@@ -55,16 +59,27 @@
 				<p id="descrizione" style=width:100%></p>
 				</blockquote>
 				
+
+				<h4>Specialità:</h4>
+				<p id=categoria></p> 
+				
+				<h4>Numero posti:</h4>
+				<p id=numeroPosti></p>
+				
 				<h3>Come raggiungere il nostro ristorante</h3>
     			<div id="map"  style="height: 400px; width: 100%;"></div>
+    			<br>
+    			<p><strong>Tel</strong>: <strong>+</strong>39 <span id=numeroDiTelefono></span> &#9743;<p>
 			</div>
+			
 			
 			
 			
 <div style="display:inline-block;vertical-align:top;margin-top:5%;">
 <div   id="preAttivo" style="border-style:solid;
 border-color:#bebebe;
-margin-top:2%;">
+margin-top:2%;
+border-radius:0.25rem">
 	
 	<h2 align="center" style="border-bottom-style:solid;
 	border-color:#bebebe;
@@ -115,7 +130,7 @@ margin-top:2%;">
 </div>
 	
 	
-	<div style="display:inline-block;vertical-align:top;margin-top:5%;">	
+	<div style="display:inline-block;vertical-align:top;margin-top:5%;border-radius:0.25rem">	
 <div  id="preSpento" >
 	<h5  class=text-center style=padding:20px;>Vuoi prenotare ?Prima accedi<br>
 	con un tuo <a href="#Modal" data-toggle="modal" data-target="#Modal">account</a></h5>

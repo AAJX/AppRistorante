@@ -14,12 +14,17 @@ public class GestoreListaRistoranti {
 	// LISTA RISTORANTI
 	
 	
-	public List<Ristorante> ristorantiNome(String nome) {
-		EntityManager em = JPAUtility.getInstance().getEm();
-		List<Ristorante> list = em.createQuery(
-			    "SELECT r FROM Ristorante r WHERE r.nome = :nome",Ristorante.class).setParameter("nome", nome).getResultList();
-		return list;  
-	}
+	
+	
+	
+	
+	
+//	public List<Ristorante> ristorantiCategoria(String categoria) {
+//		EntityManager em = JPAUtility.getInstance().getEm();
+//		List<Ristorante> list = em.createQuery(
+//			    "SELECT r FROM Ristorante r WHERE r.categoria = :categoria",Ristorante.class).setParameter("categoria", categoria).getResultList();
+//		return list;  
+//	}
 	
 	
 			public List<Ristorante> ristorantiCitta(int idCitta) {

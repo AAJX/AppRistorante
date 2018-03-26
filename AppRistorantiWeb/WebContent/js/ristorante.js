@@ -71,60 +71,17 @@ var ricerca;
 
 
 //Barra di ricerca
-$('#btnSearchRist').click(function() {
+$('#btnSearchRist').click(function(e) {
+	e.preventDefault();
 	
 
 	sessionStorage.setItem('ricerca',$('#searchRist').val());
 	ricerca=sessionStorage.getItem('ricerca');
 	
 var idcitta="";
-	
-	citta.forEach(function(c){
-		
-		if(c.nome==ricerca){
-			idcitta=c.idCitta
-			
-			$.ajax({
-				url : 'listaRistoranti',
-				method : 'get',
-				data : idcitta
-				}).done(function(ristoranti) {
-				
-					sessionStorage.setItem('risto', JSON.stringify(ristoranti));
-					
-					
-					var risto = sessionStorage.getItem('risto');
-					risto = JSON.parse(risto);
-					
-					risto.forEach(function(r) {
-						console.log(r.citta.nome)
-						if(r.citta.nome==ricerca){
-							$('#elencoRisto').fadeIn();
-							$('#elencoRisto').empty();
-							$('#elencoRistoranti').hide();
-							$('#fade').fadeIn();
-						$('#elencoRisto').append('<div class="card col-md-4" style="border: aqua;background-color: #82d264;padding: 8px;">'
-							    +'<img class="card-img-top" src="media/risto/ristorante10'+r.idRistorante+'.jpg" alt="Card image cap" style="border-radius:0.5rem;">'
-								   +' <div class="card-body">'
-								     + '<h5 class="card-title">'+r.nome+'</h5>'
-								     + '<p class="card-text">'+r.descrizione+'</p>'
-								    +'</div>'
-								   +'<div class="card-footer">'
-								   +'<a href=PagRisto.html#'+r.idRistorante+' class="btn btn-info  btn-block">Visita</a>'
-								    +'</div>'
-								  +'</div>');	
-						}
-								
-					})
-					
-				});
-			
-			
-		}else 
-			idcitta={"citta":ricerca};
-		
+
 $.ajax({
-	url : 'ListaRistorantiPerNome',
+	url : 'listaRistoranti',
 	method : 'get',
 	data : idcitta
 	}).done(function(ristoranti) {
@@ -137,7 +94,7 @@ $.ajax({
 		
 		risto.forEach(function(r) {
 			console.log(r.citta.nome)
-			if(r.nome==ricerca){
+			if(r.citta.nome==ricerca||r.nome==ricerca||r.categoria==ricerca){
 				$('#elencoRisto').fadeIn();
 				$('#elencoRisto').empty();
 				$('#elencoRistoranti').hide();
@@ -157,8 +114,6 @@ $.ajax({
 		})
 		
 	});
-	})
-	
 	
 });
 
@@ -178,9 +133,18 @@ $(document).ready(function(){
 		$('#ristorante').val( r.idRistorante);
 		$('.nomeRistorante').html(r.nome);
 		$('#nomeCitta').html(r.citta.nome);
-		//$('#nomeCitta').html(r.citta.regione);
+		$('#numeroPosti').html(r.numeroPosti);
+		$('#Via').html(r.indirizzo);
+		$('#numeroDiTelefono').html(r.telefonoRistorante);
 		$('#descrizione').html('<<..'+r.descrizione+'..>>');
 		$('#prezzo').html('Prezzo fisso: '+r.prezzoMenu+' \u20AC');
+		$('#categoria').html(r.categoria);
+		for(var i=1;i<=5;i++){
+			$('#star').append('<span class="fa fa-star cielo" ></span>')
+			if(i<=r.feedback){
+				$('.cielo').addClass('checked');
+			}
+		}
 	 } 
  })
 	 
