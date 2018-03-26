@@ -13,13 +13,6 @@ if(utente) {
 	$('#profiloEmail').html(utente.email);
 	$('#preAttivo').show();
 	$('#preSpento').hide();
-	if(utente.prenotazioni==""){
-		$("#table-wrapper").hide();
-		$("#noPrenotazioni").show();
-	}else{
-		$("#table-wrapper").show();
-		$("#noPrenotazioni").hide();
-	}
 }else {
 	$('#btnLogout').hide();
 	$('#btnAccedi').show();
@@ -64,8 +57,14 @@ $(document).ready(function(){
 		data: $('#frmPre').serialize()
 	})
 	.done(function(prenotazioni) {
-		// <li>Anna Rossi</li>
-
+	
+		if(prenotazioni==""){
+			$("#table-wrapper").hide();
+			$("#noPrenotazioni").show();
+		}else{
+			$("#table-wrapper").show();
+			$("#noPrenotazioni").hide();
+		}
 		prenotazioni.forEach(function(p){
 	
 			
@@ -215,7 +214,9 @@ $('#btnCambiaTelefono').click(function() {
 		}).done(function(esito) {
 		console.log(esito);
 	localStorage.setItem('utente', JSON.stringify(esito));
-	
+	var utent = localStorage.getItem('utente');
+	utent = JSON.parse(utent);
+	$('#profiloTelefono').html(utent.numeroTelefono);
 		
 		});
 	});
@@ -232,7 +233,7 @@ $('#btnCancAcc').click(function() {
 		}).done(function(esito) {
 		console.log(esito);
 
-		alert("Il numero di telefono è stato aggiornato");
+		alert("Il tuo account verrà rimosso");
 		localStorage.removeItem('utente');
 		location.href = 'Login.html';
 		});
